@@ -3,12 +3,11 @@ import { useHistory } from 'react-router'
 
 import logo from '../../assets/school-logo-small.png'
 
-function Home() {
+function Register() {
     const history = useHistory();
 
     const sumbit = () => {
-        localStorage.setItem("isAuthenticated", true)
-        history.push("/dashboard");
+        history.push("/login");
     }
 
     const register = () => {
@@ -28,14 +27,14 @@ function Home() {
                                     <p className="text-muted text-center">STUDENT PORTAL</p>
                                     <form onSubmit={sumbit}>
                                         <div className="mb-3">
-                                            <input id="inputEmail" type="email" placeholder="Email address" required="" autoFocus="" className="form-control  border-0 shadow-sm px-4" />
+                                            <input id="inputEmail" type="text" placeholder="Student Number" required="" autoFocus="" className="form-control  border-0 shadow-sm px-4" />
                                         </div>
                                         <div className="mb-3">
                                             <input id="inputPassword" type="password" placeholder="Password" required="" className="form-control  border-0 shadow-sm px-4 text-primary" />
                                         </div>
                                         <div className="d-grid gap-2 mt-2">
-                                        <button type="submit" className="btn btn-success btn-block text-uppercase mb-2  shadow-sm">Sign in</button>
-                                        <button onClick={register} className="btn btn-success btn-block text-uppercase mb-2  shadow-sm">Register</button>
+                                        <button type="submit" className="btn btn-success btn-block text-uppercase mb-2  shadow-sm">Register</button>
+                                        <button onClick={register} className="btn btn-success btn-block text-uppercase mb-2  shadow-sm">Back to Login </button>
                                         </div>
                                     </form>
                                 </div>
@@ -50,4 +49,4 @@ function Home() {
     )
 }
 
-export default Home
+export default Register

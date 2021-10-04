@@ -15,9 +15,9 @@ function Subjects() {
         <div className="d-sm-flex justify-content-between align-items-center mb-4" />
       </div>
       <div className="container">
-      <div class="card mt-1">
-                <div class="card-body">
-                    <span class="card-title card text-center p-2"
+      <div className="card mt-1">
+                <div className="card-body">
+                    <span className="card-title card text-center p-2"
                     style={{position: "relative", top: "-30px", backgroundColor: "white", border: 
                     "1px black solid",display: 'block',
                     width: '200px'}}>
