@@ -31,8 +31,9 @@
    text-indent: 10%;
 }
 
-body{
-    font-family: 'Arvo';
-    font-weight: normal;
-    font-style: normal;
-}
+.center {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 30%;
+  }
