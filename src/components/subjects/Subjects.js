@@ -23,7 +23,7 @@ function Subjects() {
                     width: '200px'}}>
                       <b className="text-uppercase text-dark">ENROLLED SUBJECTS</b>
                     </span>
-                      <div className="p-4">
+                      <div className="p-3">
                       <EnrolledSubjects/>
                       </div>
                   </div>
