@@ -60,7 +60,7 @@ function Sidebar() {
       <a className="nav-link" onClick={logOut}> 
       <div className="sidebar-items">
         <div className="item">
-          <i className="fas fa-sign-out mr-4"/>
+          <i className="fas fa-sign-out-alt mr-4"/>
           <span className="sidebar-text">Log-out</span>
         </div>
       </div>

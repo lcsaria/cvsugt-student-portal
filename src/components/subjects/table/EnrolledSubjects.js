@@ -22,8 +22,8 @@ function EnrolledSubjects() {
                 No enrolled subjects
             </div>
             :
-            <div class="table-responsive table-striped table-hover">
-            <table class="table">
+            <div className="table-responsive table-striped table-hover">
+            <table className="table">
                 <thead>
                     <tr>
                         <th scope="col">Course Code</th>
