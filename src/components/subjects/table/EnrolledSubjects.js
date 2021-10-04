@@ -13,7 +13,7 @@ function EnrolledSubjects() {
             </span>
             <span>
                 <b className="mr-3">Semester:</b>
-                FIRST
+                SECOND
             </span>
         </div>
         {
