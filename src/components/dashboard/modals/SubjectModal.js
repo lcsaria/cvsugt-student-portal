@@ -19,8 +19,6 @@ function SubjectModal({show, close}) {
             <Modal.Body>
                 <EnrolledSubjects/>
             </Modal.Body>
-            <Modal.Footer>
-            </Modal.Footer>
         </Modal>
         </div>
     )

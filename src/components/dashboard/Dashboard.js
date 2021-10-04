@@ -33,7 +33,7 @@ function Dashboard() {
                   style={{position: "relative", top: "-30px", backgroundColor: "white", border: 
                   "1px black solid",display: 'block',
                   width: '200px'}}>
-                    BASIC INFORMATION
+                    <b className="text-uppercase text-dark">Basic Information</b>
                   </span>
                   <h6 class="card-subtitle mb-2 text-weight-bold text-muted">SURNAME, FIRST NAME (MIDDLE NAME)</h6>
                   <p class="card-text" style={{fontSize: "12px;"}}>
@@ -51,14 +51,14 @@ function Dashboard() {
                     style={{position: "relative", top: "-30px", backgroundColor: "white", border: 
                     "1px black solid",display: 'block',
                     width: '200px'}}>
-                      DASHBOARD
+                      <b className="text-uppercase text-dark">Dashboard</b>
                     </span>
-                    <button type="button" class="btn btn-primary btn-lg btn-block" onClick={onEnrolledSubjects}>
+                    <button type="button" class="btn btn-bg-dark btn-lg btn-block" onClick={onEnrolledSubjects}>
                       <i class="fas fa-book mr-3"/>
                       Enrolled Subjects
                     </button>
-                    <button type="button" class="btn btn-primary btn-lg btn-block">
-                      <i class="fas fa-th-list mr-3"/>
+                    <button type="button" class="btn btn-bg-dark btn-lg btn-block">
+                      <i class="fas fa-newspaper mr-3"/>
                       <span>Latest Grades</span>
                     </button>
                   </div>

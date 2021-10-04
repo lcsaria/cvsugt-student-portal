@@ -49,6 +49,14 @@ function Sidebar() {
         </div>
         </div>
       </a>
+      <a className="nav-link" href="/grades">  
+      <div className="sidebar-items">
+        <div className="item">
+          <i className="fas fa-newspaper mr-4"/>
+          <span className="sidebar-text">Grades</span>
+        </div>
+        </div>
+      </a>
       <a className="nav-link" onClick={logOut}> 
       <div className="sidebar-items">
         <div className="item">

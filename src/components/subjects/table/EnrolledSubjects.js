@@ -1,6 +1,9 @@
-import React from 'react'
+import React, { useState } from 'react'
 
 function EnrolledSubjects() {
+    const [isData, setIsData] = useState(true);
+
+    
     return (
     <div>
         <div className="d-flex justify-content-between mb-3 text-dark">
@@ -13,7 +16,13 @@ function EnrolledSubjects() {
                 FIRST
             </span>
         </div>
-        <div class="table-responsive table-striped table-hover">
+        {
+            (!isData) ? 
+            <div className="text-center">
+                No enrolled subjects
+            </div>
+            :
+            <div class="table-responsive table-striped table-hover">
             <table class="table">
                 <thead>
                     <tr>
@@ -45,6 +54,7 @@ function EnrolledSubjects() {
                 </tbody>
             </table>
         </div>
+        }
     </div>
     )
 }

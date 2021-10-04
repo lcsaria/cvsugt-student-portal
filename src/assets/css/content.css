@@ -36,4 +36,12 @@
     margin-left: auto;
     margin-right: auto;
     width: 30%;
-  }
+}
+
+.btn-bg-dark{
+    background-color: #a5d6a7;
+}
+
+.btn-bg-dark:hover{
+    background-color: #d7ffd9;
+}
