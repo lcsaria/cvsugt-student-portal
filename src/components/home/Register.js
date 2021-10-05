@@ -32,9 +32,12 @@ function Register() {
                                         <div className="mb-3">
                                             <input id="inputPassword" type="password" placeholder="Password" required="" className="form-control  border-0 shadow-sm px-4 text-primary" />
                                         </div>
+                                        <div className="mb-3">
+                                            <input id="inputPassword2" type="password" placeholder="Confirm Password" required="" className="form-control  border-0 shadow-sm px-4 text-primary" />
+                                        </div>
                                         <div className="d-grid gap-2 mt-2">
                                         <button type="submit" className="btn btn-success btn-block text-uppercase mb-2  shadow-sm">Register</button>
-                                        <button onClick={register} className="btn btn-success btn-block text-uppercase mb-2  shadow-sm">Back to Login </button>
+                                        <button onClick={register} className="btn btn-dark btn-block text-uppercase mb-2  shadow-sm">Back to Login</button>
                                         </div>
                                     </form>
                                 </div>
