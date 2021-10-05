@@ -28,14 +28,14 @@ function Home() {
                                     <p className="text-muted text-center">STUDENT PORTAL</p>
                                     <form onSubmit={sumbit}>
                                         <div className="mb-3">
-                                            <input id="inputEmail" type="email" placeholder="Email address" required="" autoFocus="" className="form-control  border-0 shadow-sm px-4" />
+                                            <input id="inputStudentNumber" type="text" placeholder="Student Number" required="" autoFocus="" className="form-control  border-0 shadow-sm px-4" />
                                         </div>
                                         <div className="mb-3">
                                             <input id="inputPassword" type="password" placeholder="Password" required="" className="form-control  border-0 shadow-sm px-4 text-primary" />
                                         </div>
                                         <div className="d-grid gap-2 mt-2">
                                         <button type="submit" className="btn btn-success btn-block text-uppercase mb-2  shadow-sm">Sign in</button>
-                                        <button onClick={register} className="btn btn-success btn-block text-uppercase mb-2  shadow-sm">Register</button>
+                                        <button onClick={register} className="btn btn-dark btn-block text-uppercase mb-2  shadow-sm">Register</button>
                                         </div>
                                     </form>
                                 </div>

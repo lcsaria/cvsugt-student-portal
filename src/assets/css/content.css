@@ -45,3 +45,7 @@
 .btn-bg-dark:hover{
     background-color: #d7ffd9;
 }
+
+table{
+    width: 100%
+}
