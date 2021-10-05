@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 
 function EnrolledSubjects() {
-    const [isData, setIsData] = useState(true);
+    const isData = useState(true);
 
     
     return (
