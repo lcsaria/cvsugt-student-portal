@@ -18,7 +18,7 @@ function Grades() {
               <div className="card mt-1">
                         <div className="card-body">
                             <span className="card-title card text-center p-2"
-                            style={{position: "relative", top: "-30px", backgroundColor: "white", border: 
+                            style={{position: "relative", top: "-30px",  border: 
                             "1px black solid",display: 'block',
                             width: '200px'}}>
                               <b className="text-uppercase text-dark">My Grades</b>
