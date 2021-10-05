@@ -36,7 +36,7 @@ function Dashboard() {
                     <b className="text-uppercase text-dark">Basic Information</b>
                   </span>
                   <h6 className="card-subtitle mb-2 text-weight-bold text-muted">SURNAME, FIRST NAME (MIDDLE NAME)</h6>
-                  <p className="card-text" style={{fontSize: "12px"}}>
+                  <p className="card-text text-uppercase" style={{fontSize: "12px"}}>
                   201515782 <br/>
                   MALE<br/>
                   BACHELOR OF SCIENCE IN INFORMATION TECHNOLOGY
