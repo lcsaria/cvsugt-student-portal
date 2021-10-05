@@ -27,7 +27,10 @@ function Register() {
                                     <p className="text-muted text-center">STUDENT PORTAL</p>
                                     <form onSubmit={sumbit}>
                                         <div className="mb-3">
-                                            <input id="inputEmail" type="text" placeholder="Student Number" required="" autoFocus="" className="form-control  border-0 shadow-sm px-4" />
+                                            <input id="inputStudentNumber" type="text" placeholder="Student Number" required="" autoFocus="" className="form-control  border-0 shadow-sm px-4" />
+                                        </div>
+                                        <div className="mb-3">
+                                            <input id="inputStudentNumber" type="date" placeholder="Date" required="" autoFocus="" className="form-control  border-0 shadow-sm px-4" />
                                         </div>
                                         <div className="mb-3">
                                             <input id="inputPassword" type="password" placeholder="Password" required="" className="form-control  border-0 shadow-sm px-4 text-primary" />

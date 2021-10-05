@@ -35,8 +35,8 @@ function EnrolledSubjects() {
     return (
     <div>
         <div>
-        <div className="dropdown">
-              <select className="form-control dropdown-toggle" id="grade_type"> 
+        <div className="dropdown input-group">
+              <select className="form-control form-dropdown dropdown-toggle" id="grade_type"> 
                 {sem.map((gender) => <option key={gender.value} value={gender.value}>{gender.label}</option>)}
               </select>
               </div>
