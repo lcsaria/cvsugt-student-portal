@@ -53,11 +53,11 @@ function Dashboard() {
                     width: '200px'}}>
                       <b className="text-uppercase text-dark">Dashboard</b>
                     </span>
-                    <button type="button" className="btn btn-bg-dark btn-lg btn-block" onClick={onEnrolledSubjects}>
+                    <button type="button" className="btn btn-success btn-lg btn-block" onClick={onEnrolledSubjects}>
                       <i className="fas fa-book mr-3"/>
                       Enrolled Subjects
                     </button>
-                    <button type="button" className="btn btn-bg-dark btn-lg btn-block">
+                    <button type="button" className="btn btn-success btn-lg btn-block">
                       <i className="fas fa-newspaper mr-3"/>
                       <span>Latest Grades</span>
                     </button>
