@@ -39,13 +39,17 @@
 }
 
 .btn-bg-dark{
-    background-color: #a5d6a7;
+    background-color: #c8e6c9;
 }
 
 .btn-bg-dark:hover{
-    background-color: #d7ffd9;
+    background-color: #a5d6a7;
 }
 
 table{
     width: 100%
+}
+
+.card-title{
+    background-color: #a5d6a7;
 }
