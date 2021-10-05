@@ -53,7 +53,7 @@ function Dashboard() {
               </div>
               </div>
 
-              <div className="card mt-3">
+              <div className="card mt-5">
                 <div className="card-body">
                     <span className="card-title card text-center p-2"
                     style={{position: "relative", top: "-30px", backgroundColor: "white", border: 
