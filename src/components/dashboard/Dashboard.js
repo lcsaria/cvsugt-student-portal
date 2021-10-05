@@ -2,18 +2,26 @@ import React, { useState } from 'react'
 import Footer from '../templates/Footer'
 import Navbar from '../templates/Navbar'
 import Sidebar from '../templates/Sidebar'
+import GradeModal from './modals/GradeModal';
 import SubjectModal from './modals/SubjectModal';
 
 function Dashboard() {
   const [show, setShow] = useState(false);
-
+  const [modal, setModal] = useState("");
     const onEnrolledSubjects = () => {
-      console.log("SUBJECTS")
       setShow(true)
+      setModal("subjects")
+    }
+
+    const onMyGrades = () => {
+      setShow(true)
+      setModal("grades")
     }
 
     const handleClose = () => {
+      setModal("")
       setShow(false)
+      
     }
 
     return (
@@ -57,7 +65,8 @@ function Dashboard() {
                       <i className="fas fa-book mr-3"/>
                       Enrolled Subjects
                     </button>
-                    <button type="button" className="btn btn-bg-dark btn-lg btn-block">
+
+                    <button type="button" className="btn btn-success btn-lg btn-block" onClick={onMyGrades}>
                       <i className="fas fa-newspaper mr-3"/>
                       <span>Latest Grades</span>
                     </button>
@@ -65,7 +74,12 @@ function Dashboard() {
                 </div>
             </div>
           </div>
-          <SubjectModal show={show} close={handleClose}/>
+          {
+            modal==="subjects" && (<SubjectModal show={show} close={handleClose}/>)
+          }
+          {
+             modal==="grades" && (<GradeModal show={show} close={handleClose}/>)
+          }
           <Footer/>
         </div>
       </div>
