@@ -44,7 +44,7 @@ function Dashboard() {
                     <b className="text-uppercase text-dark">Basic Information</b>
                   </span>
                   <h6 className="card-subtitle mb-2 text-weight-bold text-muted">SURNAME, FIRST NAME (MIDDLE NAME)</h6>
-                  <p className="card-text text-uppercase" style={{fontSize: "12px"}}>
+                  <p className="card-text" style={{fontSize: "12px"}}>
                   201515782 <br/>
                   MALE<br/>
                   BACHELOR OF SCIENCE IN INFORMATION TECHNOLOGY
@@ -53,7 +53,7 @@ function Dashboard() {
               </div>
               </div>
 
-              <div className="card mt-5">
+              <div className="card mt-3">
                 <div className="card-body">
                     <span className="card-title card text-center p-2"
                     style={{position: "relative", top: "-30px",  border: 
@@ -61,11 +61,10 @@ function Dashboard() {
                     width: '200px'}}>
                       <b className="text-uppercase text-dark">Dashboard</b>
                     </span>
-                    <button type="button" className="btn btn-bg-dark btn-lg btn-block" onClick={onEnrolledSubjects}>
+                    <button type="button" className="btn btn-success btn-lg btn-block" onClick={onEnrolledSubjects}>
                       <i className="fas fa-book mr-3"/>
                       Enrolled Subjects
                     </button>
-
                     <button type="button" className="btn btn-success btn-lg btn-block" onClick={onMyGrades}>
                       <i className="fas fa-newspaper mr-3"/>
                       <span>Latest Grades</span>
