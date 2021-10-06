@@ -9,6 +9,8 @@ function Home() {
     const history = useHistory();
 
     const sumbit = () => {
+
+        // api ang pang tawag sa axios. 
         localStorage.setItem("isAuthenticated", true)
         history.push("/dashboard");
     }
