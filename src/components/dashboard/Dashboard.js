@@ -41,9 +41,9 @@ function Dashboard() {
                   style={{position: "relative", top: "-30px",  border: 
                   "1px black solid",display: 'block',
                   width: '200px'}}>
-                    <b className="text-uppercase text-dark">Basic Information</b>
+                    <b className="text-uppercase text-black">Basic Information</b>
                   </span>
-                  <h6 className="card-subtitle mb-2 text-weight-bold text-muted">SURNAME, FIRST NAME (MIDDLE NAME)</h6>
+                  <h6 className="card-subtitle mb-2 text-weight-bold text-black">DELA CRUZ, JUAN (CARLOS)</h6>
                   <p className="card-text" style={{fontSize: "12px"}}>
                   201515782 <br/>
                   MALE<br/>
@@ -54,18 +54,18 @@ function Dashboard() {
               </div>
 
               <div className="card mt-3">
-                <div className="card-body">
-                    <span className="card-title card text-center p-2"
+                <div className="card-body ">
+                    <span className="card-title card text-center p-2 "
                     style={{position: "relative", top: "-30px",  border: 
                     "1px black solid",display: 'block',
                     width: '200px'}}>
-                      <b className="text-uppercase text-dark">Dashboard</b>
+                      <b className="text-uppercase text-black">Dashboard</b>
                     </span>
-                    <button type="button" className="btn btn-bg-dark btn-lg btn-block" onClick={onEnrolledSubjects}>
+                    <button type="button" className="btn btn-bg-dark border-dark btn-lg btn-block text-black" onClick={onEnrolledSubjects}>
                       <i className="fas fa-book mr-3"/>
                       Enrolled Subjects
                     </button>
-                    <button type="button" className="btn btn-bg-dark btn-lg btn-block" onClick={onMyGrades}>
+                    <button type="button" className="btn btn-bg-dark border-dark btn-lg btn-block text-black" onClick={onMyGrades}>
                       <i className="fas fa-newspaper mr-3"/>
                       <span>Latest Grades</span>
                     </button>

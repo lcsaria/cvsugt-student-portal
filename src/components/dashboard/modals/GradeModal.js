@@ -12,7 +12,7 @@ function GradeModal({show, close}) {
               aria-labelledby="contained-modal-title-vcenter"
               centered>
             <Modal.Header closeButton>
-              <Modal.Title>
+              <Modal.Title className="text-black">
                 My Grades
               </Modal.Title>
             </Modal.Header>

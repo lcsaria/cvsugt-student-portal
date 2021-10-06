@@ -21,7 +21,7 @@ function Grades() {
                             style={{position: "relative", top: "-30px",  border: 
                             "1px black solid",display: 'block',
                             width: '200px'}}>
-                              <b className="text-uppercase text-dark">My Grades</b>
+                              <b className="text-uppercase text-black">My Grades</b>
                             </span>
                               <div className="p-4">
                               <Grade/>

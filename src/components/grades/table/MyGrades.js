@@ -41,7 +41,7 @@ function EnrolledSubjects() {
               </select>
               </div>
         </div>
-        <div className="card mt-3">
+        <div className="card mt-3 table-holder">
         <table className="table my-0 table-striped table-hover" id="dataTable">
               <thead>
                 <tr>

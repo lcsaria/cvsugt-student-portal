@@ -12,7 +12,7 @@ function SubjectModal({show, close}) {
               aria-labelledby="contained-modal-title-vcenter"
               centered>
             <Modal.Header closeButton>
-              <Modal.Title>
+              <Modal.Title className="text-black">
                 Enrolled Subject
               </Modal.Title>
             </Modal.Header>
