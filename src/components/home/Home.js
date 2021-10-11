@@ -1,15 +1,18 @@
-import React from 'react'
+import React, { useState } from 'react'
+import * as ReactBootstrap from 'react-bootstrap'
 import { useHistory } from 'react-router'
 import api from '../../api/axios'
-
 
 import logo from '../../assets/school-logo-small.png'
 
 function Home() {
+    
+    const [loading, setLoading] = useState(false);
     const history = useHistory();
 
     const sumbit = async (e) => {
         e.preventDefault();
+        setLoading(true)
         let uname = document.getElementById('inputStudentNumber').value;
         let pass = document.getElementById('inputPassword').value;
         await api.post('login',{
@@ -19,13 +22,14 @@ function Home() {
         .then(response => {
             console.log(response.data)
             alert('Welcome')
-            localStorage.setItem('student_number', response.data);
             localStorage.setItem("isAuthenticated", true)
             history.push("/dashboard")
+            setLoading(false)
         })
         .catch((err) => {
             console.log(err)
             alert('Incorrect username / password.')
+            setLoading(false)
         })
     }
 
@@ -53,7 +57,25 @@ function Home() {
                                             <input id="inputPassword" type="password" placeholder="Password" required="" className="form-control  border-0 shadow-sm px-4 text-primary" />
                                         </div>
                                         <div className="d-grid gap-2 mt-2">
-                                        <button onClick={sumbit} className="btn btn-success btn-block text-uppercase mb-2  shadow-sm">Sign in</button>
+                                        <button 
+                                            onClick={sumbit} 
+                                            className="btn btn-success btn-block text-uppercase mb-2  shadow-sm"
+                                            disabled={loading}
+                                        >
+                                            {
+                                                loading ? (
+                                                    <div>
+                                                      <span>
+                                                        <ReactBootstrap.Spinner animation="border" className="spinner-border spinner-border-sm mr-2"/>
+                                                      </span>
+                                                      <span>Login</span>
+                                                    </div>
+                                                    ) : (
+                                                    <span>Login</span>
+                                                    )
+                                            }
+                                        </button>
+
                                         <button onClick={register} className="btn btn-dark btn-block text-uppercase mb-2  shadow-sm">Register</button>
                                         </div>
                                     </form>
@@ -61,11 +83,11 @@ function Home() {
                             </div>
                         </div>
                     </div>
-                    <div className="col-md-6 d-none d-md-flex bg-image"></div>
                 </div>
+                <div className="col-md-6 d-none d-md-flex bg-image"></div>
             </div>
         </div>
-        </div>
+      </div>
     )
 }
 

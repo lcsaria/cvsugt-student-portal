@@ -11,7 +11,6 @@ function Navbar() {
     history.push("/login");
   }
   
-  console.log(window.location.pathname)
     return (
     <nav
         className="navbar navbar-light navbar-expand bg-white shadow topbar static-top"
