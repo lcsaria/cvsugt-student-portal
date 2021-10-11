@@ -60,6 +60,14 @@ function Sidebar() {
             </div>
             </div>
           </a>
+          <a className={isExpanded ?"nav-link": "nav-link mt-2"} href="/schedule"> 
+           <div className="sidebar-items">
+             <div className="item">
+             <i class="fas fa-calendar mr-4"/>
+               <span className="sidebar-text">Schedule</span>
+             </div>
+           </div>
+           </a>
            <a className={isExpanded ? "nav-link": "nav-link mt-2"} href="/subjects">  
            <div className="sidebar-items">
              <div className="item">

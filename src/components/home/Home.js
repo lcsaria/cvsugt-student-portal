@@ -55,7 +55,7 @@ function Home() {
                                             <input id="inputStudentNumber" type="text" placeholder="Student Number" required="" autoFocus="" className="form-control  border-0 shadow-sm px-4" />
                                         </div>
                                         <div className="mb-3">
-                                            <input id="inputPassword" type="password" placeholder="Password" required="" className="form-control  border-0 shadow-sm px-4 text-primary" />
+                                            <input id="inputPassword" type="password" placeholder="Password" required="" className="form-control  border-0 shadow-sm px-4 text-dark" />
                                         </div>
                                         <div className="d-grid gap-2 mt-2">
                                         <button 
