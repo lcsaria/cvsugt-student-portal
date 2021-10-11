@@ -9,7 +9,7 @@ import api from '../../api/axios';
 function Dashboard() {
   const [show, setShow] = useState(false);
   const [modal, setModal] = useState("");
-  const [info, setInfo] = useState([]);
+  const [info, setInfo] = useState('');
 
   useEffect(() => {
     let id = localStorage.getItem('student_number');
@@ -57,14 +57,13 @@ function Dashboard() {
                   width: '200px'}}>
                     <b className="text-uppercase text-black">Basic Information</b>
                   </span>
-                  <h6 className="card-subtitle mb-2 text-weight-bold text-black">{/*info ? `${info[0].last_name}, ${info[0].first_name} ${info[0].suffix}`:''} {info[0].middle_name ? `(${info[0].middle_name})` : ''}</h6>
+                  <h6 className="card-subtitle mb-2 text-weight-bold text-black">{info ? `${info[0].last_name}, ${info[0].first_name} ${info[0].suffix} (${info[0].middle_name})`:''}</h6>
                   <p className="card-text" style={{fontSize: "12px"}}>
                   {info ? info[0].student_number : 'No response'} <br/>
                   {info ? info[0].gender : 'No response'}<br/>
                   {info ? info[0].course : 'No response'}
     
                   </p>
-    */}</h6>
               </div>
               </div>
 

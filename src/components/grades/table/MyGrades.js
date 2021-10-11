@@ -2,8 +2,9 @@ import React from 'react'
 
 function EnrolledSubjects() {
     const sem = [
-        { label: "1ST SEM 2021-2022", value: "2021-1" },
-        { label: "2ND SEM 2021-2022", value: "2021-2" }
+        { label: "FIRST SEMESTER 2021-2022", value: "2021-1" },
+        { label: "SECOND SEMESTER 2021-2022", value: "2021-2" },
+        { label: "MIDYEAR 2021-2022", value: "2021-2" }
     ]
 
     const grade = [
