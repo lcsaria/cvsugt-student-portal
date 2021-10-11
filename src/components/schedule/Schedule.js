@@ -16,6 +16,12 @@ function Schedule() {
                     <div className="container">
                         <div class="card">
                             <div class="card-body">
+                                <span className="card-title card text-center p-2"
+                                style={{position: "relative", top: "-30px",  border: 
+                                "1px black solid",display: 'block',
+                                width: '200px'}}>
+                                <b className="text-uppercase text-black">SUBJECT PORTAL</b>
+                                </span>
                                 <div class="input-group rounded">
                                     <input type="search" class="form-control rounded" placeholder="Search" aria-label="Search" aria-describedby="search-addon" />
                                         <span class="input-group-text border-0" id="search-addon">
