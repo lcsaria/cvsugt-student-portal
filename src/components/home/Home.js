@@ -19,6 +19,7 @@ function Home() {
         .then(response => {
             console.log(response.data)
             alert('Welcome')
+            localStorage.setItem('student_number', response.data);
             localStorage.setItem("isAuthenticated", true)
             history.push("/dashboard")
         })
@@ -63,6 +64,7 @@ function Home() {
                     <div className="col-md-6 d-none d-md-flex bg-image"></div>
                 </div>
             </div>
+        </div>
         </div>
     )
 }

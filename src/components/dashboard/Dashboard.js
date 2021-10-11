@@ -1,13 +1,29 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import Footer from '../templates/Footer'
 import Navbar from '../templates/Navbar'
 import Sidebar from '../templates/Sidebar'
 import GradeModal from './modals/GradeModal';
 import SubjectModal from './modals/SubjectModal';
+import api from '../../api/axios';
 
 function Dashboard() {
   const [show, setShow] = useState(false);
   const [modal, setModal] = useState("");
+  const [info, setInfo] = useState([]);
+
+  useEffect(() => {
+    let id = localStorage.getItem('student_number');
+    console.log(id);
+    api.get(`userInfo/${id}`)
+    .then((response) => {
+      setInfo(response.data);
+      console.log(response.data);
+    })
+    .catch((err) => {
+      console.log(err.data);
+    })
+
+  },[]);
     const onEnrolledSubjects = () => {
       setShow(true)
       setModal("subjects")
@@ -21,9 +37,7 @@ function Dashboard() {
     const handleClose = () => {
       setModal("")
       setShow(false)
-      
     }
-
     return (
       <div id="wrapper">
           <Sidebar/>
@@ -43,13 +57,14 @@ function Dashboard() {
                   width: '200px'}}>
                     <b className="text-uppercase text-black">Basic Information</b>
                   </span>
-                  <h6 className="card-subtitle mb-2 text-weight-bold text-black">DELA CRUZ, JUAN (CARLOS)</h6>
+                  <h6 className="card-subtitle mb-2 text-weight-bold text-black">{/*info ? `${info[0].last_name}, ${info[0].first_name} ${info[0].suffix}`:''} {info[0].middle_name ? `(${info[0].middle_name})` : ''}</h6>
                   <p className="card-text" style={{fontSize: "12px"}}>
-                  201515782 <br/>
-                  MALE<br/>
-                  BACHELOR OF SCIENCE IN INFORMATION TECHNOLOGY
+                  {info ? info[0].student_number : 'No response'} <br/>
+                  {info ? info[0].gender : 'No response'}<br/>
+                  {info ? info[0].course : 'No response'}
+    
                   </p>
-
+    */}</h6>
               </div>
               </div>
 
