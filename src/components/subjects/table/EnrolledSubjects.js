@@ -9,7 +9,6 @@ function EnrolledSubjects() {
         api.get(`enrolledSubject/${id}`)
         .then(response => {
             setData(response.data);
-            console.log(response.data);
         })
         .catch(err => {
             console.log(err);
@@ -58,7 +57,7 @@ function EnrolledSubjects() {
                     </tr>
                 </thead>
                 <tbody>
-                    {renderTable}
+                    {renderTable()}
                 </tbody>
             </table>
         </div>

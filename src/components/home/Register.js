@@ -7,15 +7,16 @@ import logo from '../../assets/school-logo-small.png'
 function Register() {
     const history = useHistory();
 
-    const sumbit = () => {
+    const sumbit = async (e) => {
+        e.preventDefault()
         let studentnum = document.getElementById('inputStudentNumber').value;
         let bday = document.getElementById('inputbday').value;
         let username = document.getElementById('inputUsername').value;
         let pass = document.getElementById('inputPassword').value;
         let pass2 = document.getElementById('inputPassword2').value;
         
-        if (pass != pass2) return alert('password mismatch.')
-        api.post('register',{
+        if (pass !== pass2) return alert('password mismatch.')
+        await api.post('register',{
             username : username,
             password: pass,
             student_number: studentnum,
@@ -28,6 +29,7 @@ function Register() {
         .catch(() => {
             alert('incorrect credentials.')
         })
+        history.push("/login");
     }
 
     const register = () => {
@@ -45,7 +47,7 @@ function Register() {
                                     <img className="center" src={logo} alt="logo"/>
                                     <h4 className="display-5 text-center">CvSU - General Trias</h4>
                                     <p className="text-muted text-center">ACCOUNT REGISTRATION</p>
-                                    <form onSubmit={sumbit}>
+                                    <form>
                                         <div className="mb-3">
                                             <input id="inputStudentNumber" type="number" placeholder="Student Number" required autoFocus="" className="form-control  border-0 shadow-sm px-4" />
                                         </div>
@@ -62,11 +64,10 @@ function Register() {
                                             <input id="inputPassword2" type="password" placeholder="Confirm Password" required className="form-control  border-0 shadow-sm px-4 text-primary" />
                                         </div>
                                         <div className="d-grid gap-2 mt-2">
-                                        <button type="submit" className="btn btn-success btn-block text-uppercase mb-2  shadow-sm">Register</button>
+                                        <button onClick={sumbit} className="btn btn-success btn-block text-uppercase mb-2  shadow-sm">Register</button>
                                         <button onClick={register} className="btn btn-dark btn-block text-uppercase mb-2  shadow-sm">Back to Login</button>
                                         </div>
                                     </form>
-                                    
                                 </div>
                             </div>
                         </div>
