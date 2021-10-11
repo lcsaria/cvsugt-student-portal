@@ -21,7 +21,7 @@ function Subjects() {
                     style={{position: "relative", top: "-30px",  border: 
                     "1px black solid",display: 'block',
                     width: '200px'}}>
-                      <b className="text-uppercase text-dark">ENROLLED SUBJECTS</b>
+                      <b className="text-uppercase text-black">ENROLLED SUBJECTS</b>
                     </span>
                       <div className="p-3">
                       <EnrolledSubjects/>
