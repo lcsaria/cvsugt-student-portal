@@ -22,6 +22,7 @@ function Home() {
         .then(response => {
             console.log(response.data)
             alert('Welcome')
+            localStorage.setItem('student_number',response.data)
             localStorage.setItem("isAuthenticated", true)
             history.push("/dashboard")
             setLoading(false)
