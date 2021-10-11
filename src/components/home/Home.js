@@ -1,14 +1,30 @@
 import React from 'react'
 import { useHistory } from 'react-router'
+import api from '../../api/axios'
 
 import logo from '../../assets/school-logo-small.png'
 
 function Home() {
     const history = useHistory();
 
-    const sumbit = () => {
-        localStorage.setItem("isAuthenticated", true)
-        history.push("/dashboard");
+    const sumbit = async () => {
+        /*
+        let uname = document.getElementById('inputStudentNumber').value;
+        let pass = document.getElementById('inputPassword').value;
+        await api.post('login',{
+            username : uname,
+            password : pass
+        })
+        .then(response => {
+            alert('Welcome')
+            localStorage.setItem("isAuthenticated", true)
+            history.push("/dashboard");
+        })
+        .catch((err) => {
+            alert('Incorrect username / password.')
+        })
+        alert('Incorrect username / password.')
+        */
     }
 
     const register = () => {
