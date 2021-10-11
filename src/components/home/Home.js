@@ -7,8 +7,8 @@ import logo from '../../assets/school-logo-small.png'
 function Home() {
     const history = useHistory();
 
-    const sumbit = async () => {
-        /*
+    const sumbit = async (e) => {
+        e.preventDefault();
         let uname = document.getElementById('inputStudentNumber').value;
         let pass = document.getElementById('inputPassword').value;
         await api.post('login',{
@@ -16,15 +16,15 @@ function Home() {
             password : pass
         })
         .then(response => {
+            console.log(response.data)
             alert('Welcome')
             localStorage.setItem("isAuthenticated", true)
-            history.push("/dashboard");
+            history.push("/dashboard")
         })
         .catch((err) => {
+            console.log(err)
             alert('Incorrect username / password.')
         })
-        alert('Incorrect username / password.')
-        */
     }
 
     const register = () => {
@@ -42,7 +42,7 @@ function Home() {
                                     <img className="center" src={logo} alt="logo"/>
                                     <h4 className="display-5 text-center">CvSU - General Trias</h4>
                                     <p className="text-muted text-center">STUDENT PORTAL</p>
-                                    <form onSubmit={sumbit}>
+                                    <form>
                                         <div className="mb-3">
                                             <input id="inputStudentNumber" type="text" placeholder="Student Number" required="" autoFocus="" className="form-control  border-0 shadow-sm px-4" />
                                         </div>
@@ -50,7 +50,7 @@ function Home() {
                                             <input id="inputPassword" type="password" placeholder="Password" required="" className="form-control  border-0 shadow-sm px-4 text-primary" />
                                         </div>
                                         <div className="d-grid gap-2 mt-2">
-                                        <button type="submit" className="btn btn-success btn-block text-uppercase mb-2  shadow-sm">Sign in</button>
+                                        <button onClick={sumbit} className="btn btn-success btn-block text-uppercase mb-2  shadow-sm">Sign in</button>
                                         <button onClick={register} className="btn btn-dark btn-block text-uppercase mb-2  shadow-sm">Register</button>
                                         </div>
                                     </form>
