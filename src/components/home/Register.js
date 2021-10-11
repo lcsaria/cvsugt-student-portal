@@ -21,11 +21,11 @@ function Register() {
             student_number: studentnum,
             birthday: bday
         })
-        .then(response => {
+        .then(() => {
             alert('success!')
             history.push("/login");
         })
-        .catch(err => {
+        .catch(() => {
             alert('incorrect credentials.')
         })
     }
