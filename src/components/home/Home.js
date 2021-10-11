@@ -2,6 +2,7 @@ import React from 'react'
 import { useHistory } from 'react-router'
 import api from '../../api/axios'
 
+
 import logo from '../../assets/school-logo-small.png'
 
 function Home() {
@@ -30,6 +31,7 @@ function Home() {
     const register = () => {
         history.push("/register");
     }
+
     return (
         <div className="maincontainer">
         <div className="container-fluid">
@@ -58,11 +60,10 @@ function Home() {
                             </div>
                         </div>
                     </div>
+                    <div className="col-md-6 d-none d-md-flex bg-image"></div>
                 </div>
-                <div className="col-md-6 d-none d-md-flex bg-image"></div>
             </div>
         </div>
-      </div>
     )
 }
 
