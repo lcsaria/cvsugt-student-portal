@@ -1,9 +1,63 @@
-import React from 'react'
+import React, {useState, useEffect} from 'react'
 import Navbar from '../templates/Navbar'
 import Footer from '../templates/Footer'
 import Sidebar from '../templates/Sidebar'
+import api from '../../api/axios'
+
+/*
+*************************************** NOTE *****************************************
+* • walang laman table default.                                                      *
+* • pag search lang at walang laman yung filter display lahat from renderTable()     *
+* • sa search bar category ay subject code ( subject_code )                          *
+* • sa dropdown category ay by section ( section )                                   *
+* • clickable yung schedule code. pag na click to may lalabas na new tab or window   *
+* • laman ng new window for schedule code ay masterlist ng students enrolled under   *
+*   ng schedule code na yon. ( api.) format below                                    *
+*   *****************************************************************************    *
+*   STUDENT MASTERLIST                                                               *
+*                                                                                    *
+*   Schedule Code: 0909090                                                           *
+*   Subject Code: test101                                                            *
+*   Subject Title: test subject                                                      *
+*   Lecture Units: 3                                                                 *
+*   Lab Units: 0                                                                     *
+*   Section: BSIT 1-1                                                                *
+*   No | Name | Student Number | Course                                              *
+*                                                                                    *
+**************************************************************************************
+*/
 
 function Schedule() {
+const [data, setData] = useState([]);
+
+    useEffect( () => {
+        api.get('offeredSubjects')
+        .then(response => {
+            setData(response.data);
+            console.log(response.data);
+        })
+        .catch(err => {
+            console.log(err.data);
+        })
+    },[]);
+
+    const renderTable = () => {
+        return data.map(user => {
+            return(
+                <tr key = {user.num}>
+                    <td className="text-center">{user.subject_code}</td>
+                    <td className="text-center">{user.subject_title}</td>
+                    <th className="text-center"><a className="text-success text-middle" href = '#'>{user.sched_code}</a></th>
+                    <td className="text-center">{user.section}</td>
+                    <td className="text-center">{user.credit_unit_lec + user.credit_unit_lab}</td>
+                </tr>
+            )
+        })
+    }
+
+
+
+    
     return (
         <div id="wrapper">
             <Sidebar/>
@@ -39,20 +93,21 @@ function Schedule() {
                                          </button>
                                     </div>
                                     <div className="card mt-3 table-holder">
-                                        <table className="table my-0 table-striped table-hover" id="dataTable">
+                                        <table className="table my-0 table-striped" id="dataTable">
                                             <thead>
                                                 <tr>
-                                                <th>Subject Code</th>
-                                                <th>Description</th>
-                                                <th>Grade</th>
-                                                <th>Completion</th>
-                                                <th>Unit</th>
-                                                <th>Credit Unit</th>
+                                                <th className="text-center">SUBJECT CODE</th>
+                                                <th className="text-center">TITLE</th>
+                                                <th className="text-center">SCHEDULE CODE</th>
+                                                <th className="text-center">SECTION</th>
+                                                <th className="text-center">UNITS</th>
                                                 </tr>
                                             </thead>
+                                            <tbody>
+                                                {renderTable()}
+                                            </tbody>
                                             </table>
                                         </div>
-
                             </div>
                         </div>
                     </div>
