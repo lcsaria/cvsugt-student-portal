@@ -1,8 +1,33 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
+import api from '../../../api/axios'
 
 function EnrolledSubjects() {
-    const isData = useState(true);
+    const [data, setData] = useState([]);
+    let id = localStorage.getItem('student_number');
+    console.log({student_number: id});
+    useEffect(() => {
+        api.get(`enrolledSubject/${id}`)
+        .then(response => {
+            setData(response.data);
+        })
+        .catch(err => {
+            console.log(err);
+            setData("");
+        })
+    }, []);
 
+    const renderTable = () => {
+        return data.map(user => {
+            return ( 
+                <tr key = {user.num}>
+                <td>{user.subject_code}</td>
+                <td>{user.subject_title}</td>
+                <td>{user.credit_unit_lec}</td>
+                <td>{user.credit_unit_lab}</td>
+                </tr>
+            )
+        })
+    }
     
     return (
     <div>
@@ -17,7 +42,7 @@ function EnrolledSubjects() {
             </span>
         </div>
         {
-            (!isData) ? 
+            (!data) ? 
             <div className="text-center">
                 No enrolled subjects
             </div>
@@ -26,31 +51,14 @@ function EnrolledSubjects() {
             <table className="table">
                 <thead>
                     <tr>
-                        <th scope="col">Course Code</th>
-                        <th scope="col">Course Description</th>
-                        <th scope="col">Units</th>
-                        <th scope="col">Status</th>
+                        <th scope="col">SUBJECT CODE</th>
+                        <th scope="col">TITLE</th>
+                        <th scope="col">LECTURE UNITS</th>
+                        <th scope="col">LAB UNITS</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <th scope="row">DCIT 21</th>
-                        <td>Computer Programming I</td>
-                        <td>3</td>
-                        <td>NOT GRADED</td>
-                    </tr>
-                    <tr>
-                        <th scope="row">DCIT 21</th>
-                        <td>Computer Programming I</td>
-                        <td>3</td>
-                        <td>NOT GRADED</td>
-                    </tr>
-                    <tr>
-                        <th scope="row">DCIT 21</th>
-                        <td>Computer Programming I</td>
-                        <td>3</td>
-                        <td>NOT GRADED</td>
-                    </tr>
+                    {renderTable()}
                 </tbody>
             </table>
         </div>

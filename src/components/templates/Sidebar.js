@@ -60,11 +60,19 @@ function Sidebar() {
             </div>
             </div>
           </a>
+          <a className={isExpanded ?"nav-link": "nav-link mt-2"} href="/schedule"> 
+           <div className="sidebar-items">
+             <div className="item">
+             <i class="fas fa-calendar mr-4"/>
+               <span className="sidebar-text">Subject Portal</span>
+             </div>
+           </div>
+           </a>
            <a className={isExpanded ? "nav-link": "nav-link mt-2"} href="/subjects">  
            <div className="sidebar-items">
              <div className="item">
                <i className="fas fa-book mr-4"/>
-               <span className="sidebar-text">Subjects</span>
+               <span className="sidebar-text">Enrolled Subjects</span>
              </div>
              </div>
            </a>
@@ -72,7 +80,7 @@ function Sidebar() {
            <div className="sidebar-items">
              <div className="item">
                <i className="fas fa-newspaper mr-4"/>
-               <span className="sidebar-text">Grades</span>
+               <span className="sidebar-text">My Grades</span>
              </div>
              </div>
            </a>
@@ -105,14 +113,14 @@ function Sidebar() {
             <OverlayTrigger 
                   placement="right"
                   overlay={
-                    <Tooltip>Subjects</Tooltip>
+                    <Tooltip>Subject Portal</Tooltip>
                   }
             >
-            <a className={isExpanded ? "nav-link": "nav-link mt-2"} href="/subjects">  
+            <a className={isExpanded ? "nav-link": "nav-link mt-2"} href="/schedule">  
             <div className="sidebar-items">
               <div className="item">
-                <i className="fas fa-book mr-4"/>
-                <span className="sidebar-text">Subjects</span>
+                <i class="fas fa-calendar mr-4"/>
+                <span className="sidebar-text">Subject Portal</span>
               </div>
               </div>
             </a>
@@ -120,14 +128,29 @@ function Sidebar() {
             <OverlayTrigger 
                   placement="right"
                   overlay={
-                    <Tooltip>Grades</Tooltip>
+                    <Tooltip>Enrolled Subjects</Tooltip>
+                  }
+            >
+            <a className={isExpanded ? "nav-link": "nav-link mt-2"} href="/subjects">  
+            <div className="sidebar-items">
+              <div className="item">
+                <i className="fas fa-book mr-4"/>
+                <span className="sidebar-text">Enrolled Subjects</span>
+              </div>
+              </div>
+            </a>
+            </OverlayTrigger>
+            <OverlayTrigger 
+                  placement="right"
+                  overlay={
+                    <Tooltip>My Grades</Tooltip>
                   }
             >
             <a className={isExpanded ?"nav-link": "nav-link mt-2"} href="/grades">  
             <div className="sidebar-items">
               <div className="item">
                 <i className="fas fa-newspaper mr-4"/>
-                <span className="sidebar-text">Grades</span>
+                <span className="sidebar-text">My Grades</span>
               </div>
               </div>
             </a>

@@ -22,6 +22,7 @@ function Home() {
         .then(response => {
             console.log(response.data)
             alert('Welcome')
+            localStorage.setItem('student_number',response.data)
             localStorage.setItem("isAuthenticated", true)
             history.push("/dashboard")
             setLoading(false)
@@ -51,10 +52,10 @@ function Home() {
                                     <p className="text-muted text-center">STUDENT PORTAL</p>
                                     <form>
                                         <div className="mb-3">
-                                            <input id="inputStudentNumber" type="text" placeholder="Student Number" required="" autoFocus="" className="form-control  border-0 shadow-sm px-4" />
+                                            <input id="inputStudentNumber" type="text" placeholder="Username" required="" autoFocus="" className="form-control  border-0 shadow-sm px-4" />
                                         </div>
                                         <div className="mb-3">
-                                            <input id="inputPassword" type="password" placeholder="Password" required="" className="form-control  border-0 shadow-sm px-4 text-primary" />
+                                            <input id="inputPassword" type="password" placeholder="Password" required="" className="form-control  border-0 shadow-sm px-4 text-dark" />
                                         </div>
                                         <div className="d-grid gap-2 mt-2">
                                         <button 
