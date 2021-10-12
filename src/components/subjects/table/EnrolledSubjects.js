@@ -12,6 +12,7 @@ function EnrolledSubjects() {
         })
         .catch(err => {
             console.log(err);
+            setData("");
         })
     }, []);
 

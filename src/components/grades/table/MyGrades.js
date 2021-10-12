@@ -4,7 +4,7 @@ function EnrolledSubjects() {
     const sem = [
         { label: "FIRST SEMESTER 2021-2022", value: "2021-1" },
         { label: "SECOND SEMESTER 2021-2022", value: "2021-2" },
-        { label: "MIDYEAR 2021-2022", value: "2021-2" }
+        { label: "MIDYEAR 2021-2022", value: "2021-3" }
     ]
 
     const grade = [
