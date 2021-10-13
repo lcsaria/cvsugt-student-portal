@@ -1,11 +1,25 @@
-import React from 'react'
+import React, {useState, useEffect} from 'react'
+import api from '../../../api/axios'
 
 function EnrolledSubjects() {
-    const sem = [
-        { label: "FIRST SEMESTER 2021-2022", value: "2021-1" },
-        { label: "SECOND SEMESTER 2021-2022", value: "2021-2" },
-        { label: "MIDYEAR 2021-2022", value: "2021-3" }
-    ]
+  const [data, setData] = useState([]);
+  let id = localStorage.getItem('student_number');
+
+  useEffect(() => {
+    const tae = async () => {
+      await api.get(`semforgrades/${id}`)
+      .then(result => {
+        setData(result.data);
+        console.log(result.data);
+      })
+      .catch(err => {
+        console.log(err);
+      })
+    }
+    tae()
+  }, []);
+
+    const sem = data
 
     const grade = [
         { scode: "DCIT 21", desc: "COMPUTER PROGRAMMING 1", grade: "1.00", completion: "-", unit: "3.00", credit_unit: "3.00"},
@@ -38,7 +52,7 @@ function EnrolledSubjects() {
         <div>
         <div className="dropdown input-group">
               <select className="form-control form-dropdown dropdown-toggle" id="grade_type"> 
-                {sem.map((gender) => <option key={gender.value} value={gender.value}>{gender.label}</option>)}
+                {sem.map((gender) => <option key={gender.num} value={gender.semester}>{gender.semester + " | " + gender.schoolyear}</option>)}
               </select>
               </div>
         </div>
