@@ -1,18 +1,25 @@
 import React, { useEffect, useState } from 'react'
+import { Spinner } from 'react-bootstrap';
 import api from '../../../api/axios'
 
 function EnrolledSubjects() {
     const [data, setData] = useState([]);
+    const [loading, setLoading] = useState(false);
+
+
     let id = localStorage.getItem('student_number');
     console.log({student_number: id});
     useEffect(() => {
+        setLoading(true)
         api.get(`enrolledSubject/${id}`)
         .then(response => {
             setData(response.data);
+            setLoading(false)
         })
         .catch(err => {
             console.log(err);
             setData("");
+            setLoading(false)
         })
     }, []);
 
@@ -49,17 +56,26 @@ function EnrolledSubjects() {
             :
             <div className="table-responsive table-striped table-hover">
             <table className="table">
-                <thead>
-                    <tr>
-                        <th scope="col">SUBJECT CODE</th>
-                        <th scope="col">TITLE</th>
-                        <th scope="col">LECTURE UNITS</th>
-                        <th scope="col">LAB UNITS</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {renderTable()}
-                </tbody>
+                {
+                    (loading) ?
+                    <div className="d-flex justify-content-center">
+                        <Spinner className="d-flex justify-content-center" animation="border" role="status"/>
+                    </div>
+                    :
+                <>
+                    <thead>
+                        <tr>
+                            <th scope="col">SUBJECT CODE</th>
+                            <th scope="col">TITLE</th>
+                            <th scope="col">LECTURE UNITS</th>
+                            <th scope="col">LAB UNITS</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {renderTable()}
+                    </tbody>
+                </>
+                }
             </table>
         </div>
         }

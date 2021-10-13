@@ -3,6 +3,7 @@ import Navbar from '../templates/Navbar'
 import Footer from '../templates/Footer'
 import Sidebar from '../templates/Sidebar'
 import api from '../../api/axios'
+import { Spinner } from 'react-bootstrap'
 
 /*
 *************************************** NOTE *****************************************
@@ -29,15 +30,19 @@ import api from '../../api/axios'
 
 function Schedule() {
 const [data, setData] = useState([]);
+const [loading, setLoading] = useState(false);
 
     useEffect( () => {
+        setLoading(true)
         api.get('offeredSubjects')
         .then(response => {
             setData(response.data);
             console.log(response.data);
+            setLoading(false)
         })
         .catch(err => {
             console.log(err.data);
+            setLoading(false)
         })
     },[]);
 
@@ -93,21 +98,31 @@ const [data, setData] = useState([]);
                                          </button>
                                     </div>
                                     <div className="card mt-3 table-holder">
-                                        <table className="table my-0 table-striped" id="dataTable">
-                                            <thead>
-                                                <tr>
-                                                <th className="text-center">SUBJECT CODE</th>
-                                                <th className="text-center">TITLE</th>
-                                                <th className="text-center">SCHEDULE CODE</th>
-                                                <th className="text-center">SECTION</th>
-                                                <th className="text-center">UNITS</th>
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                                                {renderTable()}
-                                            </tbody>
-                                            </table>
+                                    {
+                                        (loading) ?
+                                        <div className="d-flex justify-content-center">
+                                            <Spinner className="d-flex justify-content-center" animation="border" role="status"/>
                                         </div>
+                                        :
+                                        <>
+                                        <table className="table my-0 table-striped" id="dataTable">
+                                        <thead>
+                                            <tr>
+                                            <th className="text-center">SUBJECT CODE</th>
+                                            <th className="text-center">TITLE</th>
+                                            <th className="text-center">SCHEDULE CODE</th>
+                                            <th className="text-center">SECTION</th>
+                                            <th className="text-center">UNITS</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            {renderTable()}
+                                        </tbody>
+                                        </table>
+                                        </>
+                                    }
+
+                                </div>
                             </div>
                         </div>
                     </div>
