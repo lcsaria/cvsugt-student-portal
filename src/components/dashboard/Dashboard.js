@@ -70,9 +70,9 @@ function Dashboard() {
                     }
                   </h6>
                   <p className="card-text" style={{fontSize: "12px"}}>
-                  <i class="fas fa-id-card mr-4"/>{info ? info[0].student_number : 'No response'} <br/>
-                  <i class="fas fa-venus-mars mr-4"/>{info ? info[0].gender : 'No response'} <br/>
-                  <i class="fas fa-laptop mr-4"/>{info ? info[0].course : 'No response'}
+                  <i class="fas fa-id-card mr-4"/>{info ? info[0].student_number : ''} <br/>
+                  <i class="fas fa-venus-mars mr-4"/>{info ? info[0].gender : ''} <br/>
+                  <i class="fas fa-laptop mr-4"/>{info ? info[0].course : ''}
     
                   </p>
               </div>
