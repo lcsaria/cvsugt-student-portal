@@ -97,14 +97,15 @@ const [loading, setLoading] = useState(false);
                                             SEARCH
                                          </button>
                                     </div>
-                                    <div className="card mt-3 table-holder">
+                                    
                                     {
                                         (loading) ?
-                                        <div className="d-flex justify-content-center">
+                                        <div className="d-flex justify-content-center mt-4">
                                             <Spinner className="d-flex justify-content-center" animation="border" role="status"/>
                                         </div>
                                         :
                                         <>
+                                        <div className="card mt-3 table-holder">
                                         <table className="table my-0 table-striped" id="dataTable">
                                         <thead>
                                             <tr>
@@ -119,10 +120,9 @@ const [loading, setLoading] = useState(false);
                                             {renderTable()}
                                         </tbody>
                                         </table>
+                                        </div>
                                         </>
                                     }
-
-                                </div>
                             </div>
                         </div>
                     </div>
