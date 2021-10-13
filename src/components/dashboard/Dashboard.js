@@ -58,6 +58,7 @@ function Dashboard() {
                     <b className="text-uppercase text-black">Basic Information</b>
                   </span>
                   <h6 className="card-subtitle mb-2 text-weight-bold text-black">
+                    <i class="fas fa-user-alt mr-4"/>
                     {info 
                     ? 
                     `${info[0].last_name}, 
@@ -69,9 +70,9 @@ function Dashboard() {
                     }
                   </h6>
                   <p className="card-text" style={{fontSize: "12px"}}>
-                  {info ? info[0].student_number : 'No response'} <br/>
-                  {info ? info[0].gender : 'No response'} <br/>
-                  {info ? info[0].course : 'No response'}
+                  <i class="fas fa-id-card mr-4"/>{info ? info[0].student_number : 'No response'} <br/>
+                  <i class="fas fa-venus-mars mr-4"/>{info ? info[0].gender : 'No response'} <br/>
+                  <i class="fas fa-laptop mr-4"/>{info ? info[0].course : 'No response'}
     
                   </p>
               </div>
