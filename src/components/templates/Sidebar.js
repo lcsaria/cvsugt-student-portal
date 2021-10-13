@@ -84,6 +84,7 @@ function Sidebar() {
              </div>
              </div>
            </a>
+           { /*
            <a className={isExpanded ?"nav-link": "nav-link mt-2"} onClick={logOut}> 
            <div className="sidebar-items">
              <div className="item">
@@ -92,6 +93,7 @@ function Sidebar() {
              </div>
            </div>
            </a>
+           */ }
            </>
         :
           <>

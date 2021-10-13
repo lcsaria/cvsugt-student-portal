@@ -18,15 +18,14 @@ function Navbar() {
       >
         <div className="container-fluid" >
           <ul className="navbar-nav ml-auto">
-            <div className="d-none d-sm-block " />
-            <li className="nav-item  no-arrow">
-              <div className="nav-item no-arrow">
+            <li className="nav-item">
+              <div className="nav-item ">
                 <a
                   className="btn-outline-light"
                   aria-expanded="false"
                   onClick={logOut}
                 >
-                  <span className="d-none d-lg-inline mb-4 mr-2 text-gray-600 small">
+                  <span className="d d-lg-inline mb-4 mr-2 text-gray-600 small">
                   <span className="fa fa-sign-out mr-2" aria-hidden="true"/>
                     Logout
                   </span>
