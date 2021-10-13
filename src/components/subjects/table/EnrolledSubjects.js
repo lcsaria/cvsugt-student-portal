@@ -8,12 +8,12 @@ function EnrolledSubjects() {
 
 
     let id = localStorage.getItem('student_number');
-    console.log({student_number: id});
     useEffect(() => {
         setLoading(true)
         api.get(`enrolledSubject/${id}`)
         .then(response => {
             setData(response.data);
+            console.log(response.data);
             setLoading(false)
         })
         .catch(err => {
@@ -26,7 +26,7 @@ function EnrolledSubjects() {
     const renderTable = () => {
         return data.map(user => {
             return ( 
-                <tr key = {user.num}>
+                <tr key = {user.sched_code}>
                 <td>{user.subject_code}</td>
                 <td>{user.subject_title}</td>
                 <td>{user.credit_unit_lec}</td>
@@ -41,11 +41,11 @@ function EnrolledSubjects() {
         <div className="d-flex justify-content-between mb-3 text-dark">
             <span>
                 <b className="mr-3">School Year:</b>
-                2021-2022
+                2021-2022 { /* DISPLAY TO DAPAT data[0].sy1 - data[0].sy2 */}
             </span>
             <span>
                 <b className="mr-3">Semester:</b>
-                SECOND
+                SECOND { /* DISPLAY TO DAPAT data[0].semester */}
             </span>
         </div>
         {

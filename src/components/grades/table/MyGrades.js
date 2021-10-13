@@ -32,8 +32,8 @@ function EnrolledSubjects() {
     const average = "1.00";
 
     //display grade
-    const displayGrade = (sem, sy) => {
-      console.log(sem,sy);
+    const displayGrade = (e) => {
+      console.log('aa');
     }
 
     const renderTable = () => {
@@ -59,7 +59,7 @@ function EnrolledSubjects() {
         <div className="dropdown input-group">
               <select className="form-control form-dropdown dropdown-toggle" id="grade_type"> 
               
-                {sem.map((gender) => <option key={gender.num} onChange={displayGrade(gender.semester, gender.schoolyear)} value={gender.semester}>{gender.semester + " | " + gender.schoolyear}</option>)}
+                {sem.map((gender) => <option key={gender.num} onChange={displayGrade()} value={{semester : gender.semester, schoolyear: gender.schoolyear}}>{gender.semester + " | " + gender.schoolyear}</option>)}
               </select>
               </div>
         </div>
