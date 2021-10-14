@@ -70,6 +70,11 @@ const [loading, setLoading] = useState(false);
         })
     }
 
+    // dito code for dropdown onchange
+    const sections = () => {
+        console.log('you click me');
+    }
+
 
 
     
@@ -97,7 +102,7 @@ const [loading, setLoading] = useState(false);
                                             <i class="fas fa-search"/>
                                         </span>
                                 </div>
-                                    <select className="form-control mt-4" onChange = { /* function for students under selected section  new tab*/ }>
+                                    <select className="form-control mt-4" onChange = { (e) => sections(e)/* function for students under selected section  new tab*/ }>
                                     {sectionlist.map((gender) => <option key={gender.num} value={JSON.stringify({section : gender.section})}>{gender.section}</option>)}
                                     </select>
                                     <div className="mt-4">
