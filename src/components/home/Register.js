@@ -63,7 +63,7 @@ function Register() {
                                             <input id="inputPassword2" type="password" placeholder="Confirm Password" required className="form-control  border-0 shadow-sm px-4 text-primary" />
                                         </div>
                                         <div className="d-grid gap-2 mt-2">
-                                        <button type="button" onClick={sumbit} className="btn btn-success btn-block text-uppercase mb-2  shadow-sm">Register</button>
+                                        <button type="button" onClick={sumbit} className="btn btn-bg-dark btn-block text-uppercase mb-2  shadow-sm">Register</button>
                                         <button type="button" onClick={register} className="btn btn-dark btn-block text-uppercase mb-2  shadow-sm">Back to Login</button>
                                         </div>
                                     </form>
