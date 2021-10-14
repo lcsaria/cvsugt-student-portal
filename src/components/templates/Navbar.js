@@ -13,7 +13,7 @@ function Navbar() {
   
     return (
     <nav
-        className="navbar navbar-light navbar-expand bg-white shadow topbar static-top"
+        className="navbar navbar-light navbar-expand bg-white shadow topbar sticky-top"
         style={{ boxShadow: "0px 4px 5px", height: "3rem"}}
       >
         <div className="container-fluid" >
