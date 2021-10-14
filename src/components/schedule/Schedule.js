@@ -30,6 +30,7 @@ import { Spinner } from 'react-bootstrap'
 
 function Schedule() {
 const [data, setData] = useState([]);
+const [sectionlist, setSectionlist] = useState([]);
 const [loading, setLoading] = useState(false);
 
     useEffect( () => {
@@ -43,6 +44,15 @@ const [loading, setLoading] = useState(false);
         .catch(err => {
             console.log(err.data);
             setLoading(false)
+        })
+        api.get('sectionsforsubject')
+        .then(response => {
+            setSectionlist(response.data);
+            console.log('data : ',response.data);
+        })
+        .catch(err => {
+            console.log(err);
+            setSectionlist('');
         })
     },[]);
 
@@ -87,10 +97,8 @@ const [loading, setLoading] = useState(false);
                                             <i class="fas fa-search"/>
                                         </span>
                                 </div>
-                                    <select className="form-control mt-4">
-                                        <option className="form-control" value="1">One</option>
-                                        <option className="form-control" value="2">Two</option>
-                                        <option  className="form-control" value="3">Three</option>
+                                    <select className="form-control mt-4" onChange = { /* function for students under selected section  new tab*/ }>
+                                    {sectionlist.map((gender) => <option key={gender.num} value={JSON.stringify({section : gender.section})}>{gender.section}</option>)}
                                     </select>
                                     <div className="mt-4">
                                         <button className="form-control btn-bg-dark">
