@@ -1,8 +1,10 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import React, {useState, useEffect}from 'react'
 import { useHistory } from 'react-router-dom';
-import {Nav, Navbar, Container, NavDropdown} from 'react-bootstrap';
-import api from '../../api/axios'
+import {Nav, Navbar, Container, NavDropdown, img} from 'react-bootstrap';
+import api from '../../api/axios';
+import logo from '../../assets/logo.png';
+import logomini from '../../assets/logomini.png';
 
 function Navbars() {
   const history = useHistory();
@@ -29,6 +31,14 @@ function Navbars() {
     return (
       <Navbar bg="white" sticky="top"> 
         <Container className="mr-1">
+        <Navbar.Brand href="#home">
+          <img
+            src={logomini}
+            className="d-inline-block align-top"
+            alt="React Bootstrap logo"
+          />
+        </Navbar.Brand>
+        <Navbar.Toggle aria-controls="responsive-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="ml-auto">
               <NavDropdown title={<div style={{display: "inline-block", marginRight: 15}}> {name ? name : 'User'} <i class="fas fa-user-alt"/></div> } id="basic-nav-dropdown"  className="border border-dark rounded ">
