@@ -29,35 +29,55 @@ import { Spinner } from 'react-bootstrap'
 */
 
 function Schedule() {
-const [data, setData] = useState([]);
-const [sectionlist, setSectionlist] = useState([]);
-const [loading, setLoading] = useState(false);
+const [data, setData] = useState([])
+const [sectionlist, setSectionlist] = useState([])
+const [section, setSection] = useState()
+const [loading, setLoading] = useState(false)
+const [search,setSearch] = useState()
 
     useEffect( () => {
         setLoading(true)
         api.get('offeredSubjects')
         .then(response => {
-            setData(response.data);
-            console.log(response.data);
+            setData(response.data)
+            console.log(response.data)
             setLoading(false)
         })
         .catch(err => {
-            console.log(err.data);
+            console.log(err.data)
             setLoading(false)
         })
         api.get('sectionsforsubject')
         .then(response => {
-            setSectionlist(response.data);
-            console.log('data : ',response.data);
+            setSectionlist(response.data)
+            console.log('data : ',response.data)
         })
         .catch(err => {
-            console.log(err);
-            setSectionlist('');
+            console.log(err)
+            setSectionlist('')
         })
-    },[]);
+    },[])
 
+    const searchSched = () => {
+        let section = document.getElementById('section').value
+        let search = document.getElementById('search').value
+        setSearch(search)
+        if (search === ""){
+            console.log("empty")
+        } else {
+            console.log(search)
+            renderTable()
+        }
+        console.log(section)
+    }
     const renderTable = () => {
-        return data.map(user => {
+        return data.filter(user => {
+            if (!search){
+                return user
+            } else if(user.subject_code.includes(search)){
+                return user
+            }
+        }).map(user => {
             return(
                 <tr key = {user.num}>
                     <td className="text-center">{user.subject_code}</td>
@@ -70,6 +90,9 @@ const [loading, setLoading] = useState(false);
         })
     }
 
+<<<<<<< HEAD
+   
+=======
     // dito code for dropdown onchange
     const sections = () => {
         console.log('you click me');
@@ -78,6 +101,7 @@ const [loading, setLoading] = useState(false);
 
 
     
+>>>>>>> 941591d375e4645636938d0816c6c988d731f6c2
     return (
         <div id="wrapper">
             <Sidebar/>
@@ -97,16 +121,21 @@ const [loading, setLoading] = useState(false);
                                 <b className="text-uppercase text-black">SUBJECT PORTAL</b>
                                 </span>
                                 <div class="input-group rounded">
-                                    <input type="search" class="form-control rounded" placeholder="Search" aria-label="Search" aria-describedby="search-addon" />
+                                    <input id="search" type="search" autocomplete="off" class="form-control rounded" placeholder="Enter subject code..." aria-label="Search" aria-describedby="search-addon" />
                                         <span class="input-group-text border-0" id="search-addon">
                                             <i class="fas fa-search"/>
                                         </span>
                                 </div>
+<<<<<<< HEAD
+                                    <select className="form-control mt-4" id="section">
+                                    {sectionlist.map((gender) => <option key={gender.num} value={gender.section}>{gender.section}</option>)}
+=======
                                     <select className="form-control mt-4" onChange = { (e) => sections(e)/* function for students under selected section  new tab*/ }>
                                     {sectionlist.map((gender) => <option key={gender.num} value={JSON.stringify({section : gender.section})}>{gender.section}</option>)}
+>>>>>>> 941591d375e4645636938d0816c6c988d731f6c2
                                     </select>
                                     <div className="mt-4">
-                                        <button className="form-control btn-bg-dark">
+                                        <button className="form-control btn-bg-dark" onClick={searchSched}>
                                             SEARCH
                                          </button>
                                     </div>

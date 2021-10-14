@@ -59,7 +59,7 @@ function EnrolledSubjects() {
     return (
     <div>
         {
-          data ? 
+          data === null ? 
           <>
           <div className="text-center">
             No grades available.

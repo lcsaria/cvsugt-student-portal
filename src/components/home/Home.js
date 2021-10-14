@@ -60,7 +60,7 @@ function Home() {
                                         <div className="d-grid gap-2 mt-2">
                                         <button 
                                             onClick={sumbit} 
-                                            className="btn btn-success btn-block text-uppercase mb-2  shadow-sm"
+                                            className="btn btn-bg-dark btn-block text-uppercase mb-2  shadow-sm"
                                             disabled={loading}
                                         >
                                             {
