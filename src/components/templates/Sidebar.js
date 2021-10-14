@@ -157,21 +157,6 @@ function Sidebar() {
               </div>
             </a>
             </OverlayTrigger>
-            <OverlayTrigger 
-                  placement="right"
-                  overlay={
-                    <Tooltip>Log-out</Tooltip>
-                  }
-            >
-            <a className={isExpanded ?"nav-link": "nav-link mt-2"} onClick={logOut}> 
-            <div className="sidebar-items">
-              <div className="item">
-                <i className="fas fa-sign-out-alt mr-4"/>
-                <span className="sidebar-text">Log-out</span>
-              </div>
-            </div>
-            </a>
-            </OverlayTrigger>
           </>
       }
 
