@@ -5,17 +5,19 @@ function EnrolledSubjects() {
   let id = localStorage.getItem('student_number')
   const [data, setData] = useState([])
   const [grades, setGrades] = useState([])
-
+  const [isGrade, setIsGrade] = useState(false)
   useEffect(() => {
     console.log(grades)
     const tae = async () => {
       await api.get(`semforgrades/${id}`)
       .then(result => {
         setData(result.data);
+        setIsGrade(true)
         console.log(result.data);
       })
       .catch(err => {
         console.log(err);
+        setIsGrade(false)
       })
     }
     tae()
@@ -60,7 +62,7 @@ function EnrolledSubjects() {
     return (
     <div>
         {
-          data === null ? 
+          (!isGrade) ? 
           <>
           <div className="text-center">
             No grades available.
