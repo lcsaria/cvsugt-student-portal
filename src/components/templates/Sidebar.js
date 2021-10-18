@@ -1,6 +1,6 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import React, { useEffect, useState } from 'react'
-import logo from '../../assets/school-logo-small.png'
+import logo from '../../assets/logo.png'
 import { useHistory } from 'react-router-dom';
 import { OverlayTrigger, Tooltip } from 'react-bootstrap';
 
@@ -37,7 +37,7 @@ function Sidebar() {
 
   return(
     <div 
-      className={isExpanded ? "Sidebar sidebar-text" : "Sidebar sidebar-text collapsed"}>
+      className= {isExpanded ? "Sidebar sidebar-text d-none d-lg-block" : "Sidebar sidebar-text collapsed d-none d-lg-block"}>
       <div className={isExpanded ? "sidebar-header" : "sidebar-header mt-2"}>
         {
            (width > 600) ?
@@ -46,7 +46,7 @@ function Sidebar() {
            <i className="fas fa-bars sidebar-icon mt-2 ml-1" />
         }
         
-        <img className="sidebar-logo ml-4" src={logo} alt="logo" width="25%"/>
+        <img className="sidebar-logo mr-3" src={logo} alt="logo" width="90%"/>
         <br className="line"/>
       </div>
       {
