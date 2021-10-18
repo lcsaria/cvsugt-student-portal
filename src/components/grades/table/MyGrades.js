@@ -7,6 +7,7 @@ function EnrolledSubjects() {
   const [grades, setGrades] = useState([])
 
   useEffect(() => {
+    console.log(grades)
     const tae = async () => {
       await api.get(`semforgrades/${id}`)
       .then(result => {

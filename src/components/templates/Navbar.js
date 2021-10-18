@@ -29,18 +29,20 @@ function Navbars() {
   }
   
     return (
+      /* NEED TO FIXED */
       <Navbar bg="white" sticky="top"> 
         <Container className="mr-1">
-        <Navbar.Brand href="#home">
+        <Navbar.Brand href="/dashboard">
           <img
             src={logomini}
             className="d-inline-block align-top"
             alt="React Bootstrap logo"
           />
         </Navbar.Brand>
+        <div className="ml-5"/>
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
-            <Nav className="ml-auto">
+            <Nav>
               <NavDropdown title={<div style={{display: "inline-block", marginRight: 15}}> {name ? name : 'User'} <i class="fas fa-user-alt"/></div> } id="basic-nav-dropdown"  className="border border-dark rounded ">
                 <NavDropdown.Item href="#action/3.1">Account Settings</NavDropdown.Item>
                 <NavDropdown.Divider />

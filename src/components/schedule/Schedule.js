@@ -90,9 +90,7 @@ const [search,setSearch] = useState()
         })
     }
 
-<<<<<<< HEAD
    
-=======
     // dito code for dropdown onchange
     const sections = () => {
         console.log('you click me');
@@ -101,7 +99,6 @@ const [search,setSearch] = useState()
 
 
     
->>>>>>> 941591d375e4645636938d0816c6c988d731f6c2
     return (
         <div id="wrapper">
             <Sidebar/>
@@ -126,13 +123,8 @@ const [search,setSearch] = useState()
                                             <i class="fas fa-search"/>
                                         </span>
                                 </div>
-<<<<<<< HEAD
                                     <select className="form-control mt-4" id="section">
                                     {sectionlist.map((gender) => <option key={gender.num} value={gender.section}>{gender.section}</option>)}
-=======
-                                    <select className="form-control mt-4" onChange = { (e) => sections(e)/* function for students under selected section  new tab*/ }>
-                                    {sectionlist.map((gender) => <option key={gender.num} value={JSON.stringify({section : gender.section})}>{gender.section}</option>)}
->>>>>>> 941591d375e4645636938d0816c6c988d731f6c2
                                     </select>
                                     <div className="mt-4">
                                         <button className="form-control btn-bg-dark" onClick={searchSched}>
