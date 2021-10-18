@@ -148,7 +148,7 @@ function Dashboard() {
                   <div className = "col-12" >
                   <h6 className="card-subtitle mb-2 text-weight-bold text-black">
                   <h6 className="card-subtitle mb-2 text-weight-bold text-black"> <i class="fas fa-envelope mr-3"/>CvSU Email Address and default password :  </h6>
-                  <b>{`${info[0].cvsu_email ? info[0].cvsu_email : 'usernamahaba.testing@cvsu.edu.ph'} | ${info[0].cvsu_email_pass ? info[0].cvsu_email_pass : 'Not Available'}` }</b> { /* wala pang data ang info[0].cvsu_email */ }
+                  <b>{info ? info[0].email : 'Not Available'} | default-password</b>{ /* wala pang data ang info[0].cvsu_email */ }
                   </h6>
                   </div>
                 </div>
