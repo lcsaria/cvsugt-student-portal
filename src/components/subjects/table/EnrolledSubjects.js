@@ -4,8 +4,8 @@ import api from '../../../api/axios'
 
 function EnrolledSubjects() {
     const [data, setData] = useState([]);
+    const [semdata, setSemdata] = useState();
     const [loading, setLoading] = useState(false);
-
 
     let id = localStorage.getItem('student_number');
     useEffect(() => {
@@ -13,6 +13,7 @@ function EnrolledSubjects() {
         api.get(`enrolledSubject/${id}`)
         .then(response => {
             setData(response.data);
+            setSemdata(response.data);
             console.log(response.data);
             setLoading(false)
         })
@@ -20,6 +21,7 @@ function EnrolledSubjects() {
             console.log(err);
             setData("");
             setLoading(false)
+
         })
     }, []);
 
@@ -27,10 +29,11 @@ function EnrolledSubjects() {
         return data.map(user => {
             return ( 
                 <tr key = {user.sched_code}>
-                <td>{user.subject_code}</td>
-                <td>{user.subject_title}</td>
-                <td>{user.credit_unit_lec}</td>
-                <td>{user.credit_unit_lab}</td>
+                    <td className="text-center">{user.subject_code}</td>
+                    <td className="text-center">{user.subject_title}</td>
+                    <th className="text-center"><a className="text-success text-middle" href = {`masterlist/?id=${user.sched_code}`} target = "_blank">{user.sched_code}</a></th>
+                    <td className="text-center">{user.credit_unit_lec}</td>
+                    <td className="text-center">{user.credit_unit_lab}</td> 
                 </tr>
             )
         })
@@ -41,11 +44,11 @@ function EnrolledSubjects() {
         <div className="d-flex justify-content-between mb-3 text-dark">
             <span>
                 <b className="mr-3">School Year:</b>
-                2021-2022 { /* DISPLAY TO DAPAT data[0].sy1 - data[0].sy2 */}
+                {semdata ? `${semdata[0].sy1} - ${semdata[0].sy2}` : ''}
             </span>
             <span>
                 <b className="mr-3">Semester:</b>
-                SECOND { /* DISPLAY TO DAPAT data[0].semester */}
+                {semdata ? semdata[0].semester : ''}
             </span>
         </div>
         {
@@ -65,10 +68,11 @@ function EnrolledSubjects() {
                 <>
                     <thead>
                         <tr>
-                            <th scope="col">SUBJECT CODE</th>
-                            <th scope="col">TITLE</th>
-                            <th scope="col">LECTURE UNITS</th>
-                            <th scope="col">LAB UNITS</th>
+                            <th scope="col" className="text-center">SUBJECT CODE</th>
+                            <th scope="col" className="text-center">TITLE</th>
+                            <th scope="col" className="text-center">SCHEDULE CODE</th>
+                            <th scope="col" className="text-center">LECTURE UNITS</th>
+                            <th scope="col" className="text-center">LAB UNITS</th>
                         </tr>
                     </thead>
                     <tbody>

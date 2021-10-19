@@ -52,11 +52,11 @@ function Navbars() {
           <Navbar.Collapse id="basic-navbar-nav">
           <div className = "ms-auto"/>
             <Nav>   
-              <Nav.Link className="d-lg-none" href="/dashboard">Home</Nav.Link>
-              <Nav.Link className="d-lg-none" href="/schedule">Subject Portal</Nav.Link>
-              <Nav.Link className="d-lg-none" href="/subjects">Enrolled Subjects</Nav.Link>
-              <Nav.Link className="d-lg-none" href="/grades">My Grades</Nav.Link>
-              <NavDropdown title={<div style={{display: "inline-block"}}><i class="fas fa-user-graduate"/> {name ? name : 'User'}</div> } id="basic-nav-dropdown" clas>
+              <Nav.Link className="d-lg-none" href="/dashboard"><i className="fas fa-home mr-3"/>Home</Nav.Link>
+              <Nav.Link className="d-lg-none" href="/schedule"><i class="fas fa-calendar mr-3"/>Subject Portal</Nav.Link>
+              <Nav.Link className="d-lg-none" href="/subjects"><i className="fas fa-book mr-3"/>Enrolled Subjects</Nav.Link>
+              <Nav.Link className="d-lg-none" href="/grades"><i className="fas fa-newspaper mr-3"/>My Grades</Nav.Link>
+              <NavDropdown title={<div style={{display: "inline-block"}}><i class="fas fa-user-graduate mr-2"/> {name ? name : 'User'}</div> } id="basic-nav-dropdown" clas>
                 <NavDropdown.Item href="#action/3.1">Account Settings</NavDropdown.Item>
                 <NavDropdown.Divider />
                 <NavDropdown.Item onClick={logOut}>Logout</NavDropdown.Item>

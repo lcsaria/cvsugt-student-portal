@@ -82,7 +82,7 @@ const [search,setSearch] = useState()
                 <tr key = {user.num}>
                     <td className="text-center">{user.subject_code}</td>
                     <td className="text-center">{user.subject_title}</td>
-                    <th className="text-center"><a className="text-success text-middle" href = '#'>{user.sched_code}</a></th>
+                    <th className="text-center"><a className="text-success text-middle" href = {`masterlist/?id=${user.sched_code}`} target = "_blank">{user.sched_code}</a></th>
                     <td className="text-center">{user.section}</td>
                     <td className="text-center">{user.credit_unit_lec + user.credit_unit_lab}</td>
                 </tr>
@@ -109,18 +109,18 @@ const [search,setSearch] = useState()
                          <div className="d-sm-flex justify-content-between align-items-center mb-4" />
                      </div>
                     <div className="container">
-                        <div class="card mb-3">
-                            <div class="card-body">
+                        <div className="card mb-3">
+                            <div className="card-body">
                                 <span className="card-title card text-center p-2"
                                 style={{position: "relative", top: "-30px",  border: 
                                 "1px black solid",display: 'block',
                                 width: '200px'}}>
                                 <b className="text-uppercase text-black">SUBJECT PORTAL</b>
                                 </span>
-                                <div class="input-group rounded">
-                                    <input id="search" type="search" autocomplete="off" class="form-control rounded" placeholder="Enter subject code..." aria-label="Search" aria-describedby="search-addon" />
-                                        <span class="input-group-text border-0" id="search-addon">
-                                            <i class="fas fa-search"/>
+                                <div className="input-group rounded">
+                                    <input id="search" type="search" autocomplete="off" className="form-control rounded" placeholder="Enter subject code..." aria-label="Search" aria-describedby="search-addon" />
+                                        <span className="input-group-text border-0" id="search-addon">
+                                            <i className="fas fa-search"/>
                                         </span>
                                 </div>
                                     <select className="form-control mt-4" defaultValue="default" id="section">

@@ -6,6 +6,7 @@ import Home from "../home/Home.js"
 import Register from '../home/Register.js'
 import Schedule from '../schedule/Schedule.js'
 import Subjects from '../subjects/Subjects.js'
+import masterlist from '../masterlist/masterlist.js'
 import ProtectedRoute from './ProtectedRoute.js'
 
 function RouteTree() {
@@ -19,6 +20,7 @@ function RouteTree() {
                 <ProtectedRoute exact path="/schedule" component={Schedule}/>
                 <ProtectedRoute exact path="/subjects" component={Subjects}/>
                 <ProtectedRoute exact path="/grades" component={Grades}/>
+                <ProtectedRoute exact path="/masterlist" component={masterlist}/>
             </Switch>
         </div>
     )
