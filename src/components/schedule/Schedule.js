@@ -123,7 +123,8 @@ const [search,setSearch] = useState()
                                             <i class="fas fa-search"/>
                                         </span>
                                 </div>
-                                    <select className="form-control mt-4" id="section">
+                                    <select className="form-control mt-4" defaultValue="default" id="section">
+                                    <option value = "default" disabled hidden>Select section</option>
                                     {sectionlist.map((gender) => <option key={gender.num} value={gender.section}>{gender.section}</option>)}
                                     </select>
                                     <div className="mt-4">
