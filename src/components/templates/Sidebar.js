@@ -63,7 +63,7 @@ function Sidebar() {
           <a className={isExpanded ?"nav-link": "nav-link mt-2"} href="/schedule"> 
            <div className="sidebar-items">
              <div className="item">
-             <i class="fas fa-calendar mr-4"/>
+             <i className="fas fa-calendar mr-4"/>
                <span className="sidebar-text">Subject Portal</span>
              </div>
            </div>
@@ -121,7 +121,7 @@ function Sidebar() {
             <a className={isExpanded ? "nav-link": "nav-link mt-2"} href="/schedule">  
             <div className="sidebar-items">
               <div className="item">
-                <i class="fas fa-calendar mr-4"/>
+                <i className="fas fa-calendar mr-4"/>
                 <span className="sidebar-text">Subject Portal</span>
               </div>
               </div>

@@ -23,6 +23,14 @@ function EnrolledSubjects() {
             setLoading(false)
 
         })
+        api.get('sem')
+        .then(response => {
+            setSemdata(response.data);
+            console.log(response.data);
+        })
+        .catch(err => {
+            console.log(err);
+        })
     }, []);
 
     const renderTable = () => {
