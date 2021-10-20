@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect, useState } from 'react'
 import { Spinner } from 'react-bootstrap';
 import api from '../../../api/axios'
@@ -31,7 +32,7 @@ function EnrolledSubjects() {
                 <tr key = {user.sched_code}>
                     <td className="text-center">{user.subject_code}</td>
                     <td className="text-center">{user.subject_title}</td>
-                    <th className="text-center"><a className="text-success text-middle" href = {`masterlist/?id=${user.sched_code}`} target = "_blank">{user.sched_code}</a></th>
+                    <th className="text-center"><a className="text-success text-middle" href = {`masterlist/?id=${user.sched_code}`} target = "_blank" rel="noreferrer">{user.sched_code}</a></th>
                     <td className="text-center">{user.credit_unit_lec}</td>
                     <td className="text-center">{user.credit_unit_lab}</td> 
                 </tr>

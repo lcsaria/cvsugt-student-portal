@@ -1,20 +1,13 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import React, { useEffect, useState } from 'react'
 import logo from '../../assets/logo.png'
-import { useHistory } from 'react-router-dom';
 import { OverlayTrigger, Tooltip } from 'react-bootstrap';
 
 function Sidebar() {
   const sidebarCollapsed = localStorage.getItem('sidebar-collapsed' || false);
   const [isExpanded, setIsExpanded] = React.useState(sidebarCollapsed ? false : true);
-  const history = useHistory();
   const [width, setWidth]   = useState(window.innerWidth);
 
-  const logOut = () => {
-    alert("Thank you!");
-    localStorage.clear();
-    history.push("/login");
-  }
 
   const updateDimensions = () => {
     setWidth(window.innerWidth);

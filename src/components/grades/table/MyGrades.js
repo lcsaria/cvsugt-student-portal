@@ -26,6 +26,7 @@ function EnrolledSubjects() {
       })
     }
     tae()
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
     const sem = data
