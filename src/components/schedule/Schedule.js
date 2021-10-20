@@ -31,7 +31,6 @@ import { Spinner } from 'react-bootstrap'
 function Schedule() {
 const [data, setData] = useState([])
 const [sectionlist, setSectionlist] = useState([])
-const [section, setSection] = useState()
 const [loading, setLoading] = useState(false)
 const [search,setSearch] = useState()
 
@@ -71,6 +70,7 @@ const [search,setSearch] = useState()
         console.log(section)
     }
     const renderTable = () => {
+        // eslint-disable-next-line array-callback-return
         return data.filter(user => {
             if (!search){
                 return user
@@ -82,7 +82,7 @@ const [search,setSearch] = useState()
                 <tr key = {user.num}>
                     <td className="text-center">{user.subject_code}</td>
                     <td className="text-center">{user.subject_title}</td>
-                    <th className="text-center"><a className="text-success text-middle" href = {`masterlist/?id=${user.sched_code}`} target = "_blank">{user.sched_code}</a></th>
+                    <th className="text-center"><a className="text-success text-middle" href = {`masterlist/?id=${user.sched_code}`} target = "_blank" rel="noreferrer">{user.sched_code}</a></th>
                     <td className="text-center">{user.section}</td>
                     <td className="text-center">{user.credit_unit_lec + user.credit_unit_lab}</td>
                 </tr>

@@ -1,10 +1,6 @@
 import React, { useEffect, useState } from 'react'
-import Navbar from '../templates/Navbar'
 import Footer from '../templates/Footer'
-import Sidebar from '../templates/Sidebar'
 import api from '../../api/axios'
-import { Spinner } from 'react-bootstrap'
-import { render } from '@testing-library/react'
 /*
 *************************************** NOTE *****************************************
 *                                                                                    *
