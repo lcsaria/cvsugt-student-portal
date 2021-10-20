@@ -21,7 +21,7 @@ function Navbars() {
       console.log(err.data);
     })
 
-  })
+  },[])
 
   const logOut = () => {
     alert("Thank you!");

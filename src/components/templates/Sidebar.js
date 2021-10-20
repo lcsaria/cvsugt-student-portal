@@ -39,7 +39,7 @@ function Sidebar() {
            <i className="fas fa-bars sidebar-icon mt-2 ml-1" />
         }
         
-        <img className="sidebar-logo mr-3" src={logo} alt="logo" width="90%"/>
+        <a href="/dashboard"><img className="sidebar-logo mr-3" src={logo} alt="logo" width="90%"/></a>
         <br className="line"/>
       </div>
       {

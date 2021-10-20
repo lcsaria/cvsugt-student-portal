@@ -20,7 +20,7 @@ function Dashboard() {
       console.log(response.data);
     })
     .catch((err) => {
-      console.log(err.data);
+      console.log('err : ',err);
     })
 
   },[]);

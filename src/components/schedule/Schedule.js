@@ -63,6 +63,10 @@ const [search,setSearch] = useState()
         setSearch(search)
         if (search === ""){
             console.log("empty")
+            if (section !== ""){
+                console.log(section)
+                renderTable() 
+            }
         } else {
             console.log(search)
             renderTable()
@@ -72,11 +76,11 @@ const [search,setSearch] = useState()
     const renderTable = () => {
         // eslint-disable-next-line array-callback-return
         return data.filter(user => {
-            if (!search){
+            if (search === ""){
                 return user
             } else if(user.subject_code.includes(search)){
                 return user
-            }
+            } 
         }).map(user => {
             return(
                 <tr key = {user.num}>
