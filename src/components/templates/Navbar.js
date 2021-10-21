@@ -57,7 +57,7 @@ function Navbars() {
               <Nav.Link className="d-lg-none" href="/subjects"><i className="fas fa-book mr-3"/>Enrolled Subjects</Nav.Link>
               <Nav.Link className="d-lg-none" href="/grades"><i className="fas fa-newspaper mr-3"/>My Grades</Nav.Link>
               <NavDropdown title={<div style={{display: "inline-block"}}><i class="fas fa-user-graduate mr-2"/> {name ? name : 'User'}</div> } id="basic-nav-dropdown" clas>
-                <NavDropdown.Item href="#action/3.1">Account Settings</NavDropdown.Item>
+                <NavDropdown.Item href="/settings">Account Settings</NavDropdown.Item>
                 <NavDropdown.Divider />
                 <NavDropdown.Item onClick={logOut}>Logout</NavDropdown.Item>
               </NavDropdown>

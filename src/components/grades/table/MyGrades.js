@@ -83,7 +83,7 @@ function EnrolledSubjects() {
             <div className="dropdown input-group">
                   <select className="form-control form-dropdown dropdown-toggle" defaultValue="default" id="grade_type" onChange={(e) => displayGrade(e)} > 
                   {/*JSON.stringfy */}
-                    <option value = "default" disabled hidden>Select the semester and year</option>
+                    <option value = "default" disabled hidden>SEMESTER | SCHOOL YEAR</option>
                     {sem.map((gender) => <option key={gender.num} value={JSON.stringify({semester : gender.semester, schoolyear: gender.schoolyear, student_number: id})}>{gender.semester + " | " + gender.schoolyear}</option>)}
                   </select>
                   </div>

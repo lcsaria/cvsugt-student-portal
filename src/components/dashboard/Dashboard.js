@@ -173,7 +173,7 @@ function Dashboard() {
                     <div className = "col-md-6 mb-2">
                       <button type="button" className="btn btn-bg-dark border-dark btn-lg btn-block text-black" onClick={onMyGrades}>
                         <i className="fas fa-newspaper mr-3"/>
-                        <span>Latest Grades</span>
+                        <span>My Grades</span>
                       </button>
                     </div>
                   </div>
