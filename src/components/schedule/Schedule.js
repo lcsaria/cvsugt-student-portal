@@ -33,6 +33,7 @@ const [data, setData] = useState([])
 const [sectionlist, setSectionlist] = useState([])
 const [loading, setLoading] = useState(false)
 const [search,setSearch] = useState()
+const [section, setSection] = useState()
 
     useEffect( () => {
         setLoading(true)
@@ -58,27 +59,54 @@ const [search,setSearch] = useState()
     },[])
 
     const searchSched = () => {
-        let section = document.getElementById('section').value
+        let sect = document.getElementById('section').value
         let search = document.getElementById('search').value
-        setSearch(search)
-        if (search === ""){
-            console.log("empty")
-            if (section !== ""){
-                console.log(section)
-                renderTable() 
-            }
-        } else {
-            console.log(search)
+        
+       console.log(sect)
+       console.log(search)
+
+       //1st condition: if none of them are clicked
+        if (sect === "default" && search === ""){
+            setSearch("")
+            setSection("")
+            renderTable()
+            
+        }
+        //2nd condition: if section is selected 
+        else if (sect !== "default" && search === ""){
+            setSearch("")
+            setSection(sect)
+            renderTable()
+        } 
+        //3rd condition: if search is selected 
+        else if (sect === "default" && search !== ""){
+            setSearch(search)
+            setSection("")
             renderTable()
         }
-        console.log(section)
+        //last condition: if both are selected 
+        else if (sect !=="default" && search !== ""){
+            setSearch(search)
+            setSection(section)
+            renderTable()
+        }
+        
     }
     const renderTable = () => {
         // eslint-disable-next-line array-callback-return
         return data.filter(user => {
-            if (search === ""){
+            if (!section && !search){
                 return user
-            } else if(user.subject_code.includes(search)){
+            } else if (section === "default" && search === ""){
+                return user
+            } else if(search === "" && user.section.includes(section)){
+                return user
+            } else if(section === "" && user.subject_code.includes(search)){
+                return user
+            } else if(section === "" && user.subject_code.includes(search)){
+                return user
+            } else if(section !== "" && search !== ""){
+                if (user.section.includes(section) && user.subject_code.includes(search))
                 return user
             } 
         }).map(user => {
@@ -128,7 +156,7 @@ const [search,setSearch] = useState()
                                         </span>
                                 </div>
                                     <select className="form-control mt-4" defaultValue="default" id="section">
-                                    <option value = "default" disabled hidden>Select section</option>
+                                    <option value="default" selected>---</option>
                                     {sectionlist.map((gender) => <option key={gender.num} value={gender.section}>{gender.section}</option>)}
                                     </select>
                                     <div className="mt-4">
