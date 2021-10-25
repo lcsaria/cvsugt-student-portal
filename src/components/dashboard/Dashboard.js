@@ -58,10 +58,9 @@ function Dashboard() {
                   <b className="text-uppercase text-black">Basic Information</b>
                 </span>
                 <div className="row">
-                  <div className = "col-md-4" >
+                  <div className = "col-lg-4 mb-3" >
                     <h6 className="card-subtitle mb-2 text-weight-bold text-black">
-                    <h6 className="card-subtitle mb-2 text-weight-bold text-black"> <i class="fas fa-user-graduate mr-3"/>Name:  </h6>
-                      <b>{info 
+                    <h6 className="card-subtitle mb-1 text-weight-bold text-black"> <i class="fas fa-user-graduate mr-3"/>  Name: <b>{info 
                       ? 
                       `${info[0].last_name}, 
                       ${info[0].first_name} 
@@ -69,19 +68,17 @@ function Dashboard() {
                       (${info[0].middle_name !== "" ? info[0].middle_name : "N/A"})`
                       :
                       ''
-                      }</b>
+                      }</b> </h6>
                     </h6>
                   </div>
-                  <div className = "col-md-4" >
+                  <div className = "col-lg-4 mb-3" >
                     <h6 className="card-subtitle mb-2 text-weight-bold text-black">
-                    <h6 className="card-subtitle mb-2 text-weight-bold text-black"> <i class="fas fa-id-card mr-3"/>Student Number:  </h6> 
-                      <b>{info ? info[0].student_number : ''}</b>
+                    <h6 className="card-subtitle mb-1 text-weight-bold text-black"> <i class="fas fa-id-card mr-3"/>Student Number:  <b>{info ? info[0].student_number : ''}</b></h6> 
                     </h6>
                     </div>
                     <div className = "col-md-4" >
                     <h6 className="card-subtitle mb-2 text-weight-bold text-black">
-                    <h6 className="card-subtitle mb-2 text-weight-bold text-black"> <i class="fas fa-venus-mars mr-3"/>Gender:  </h6>
-                      <b>{info ? info[0].gender : ''}</b>
+                    <h6 className="card-subtitle mb-1 text-weight-bold text-black"> <i class="fas fa-venus-mars mr-3"/>Gender: <b>{info ? info[0].gender : ''}</b></h6>
                     </h6>
                   </div>
                 </div>
@@ -98,16 +95,16 @@ function Dashboard() {
                     <b className="text-uppercase text-black">Education</b>
                 </span>
                 <div className="row">
-                  <div className = "col-md-8" >
+                  <div className = "col-md-8 mb-3" >
                   <h6 className="card-subtitle mb-2 text-weight-bold text-black">
-                  <h6 className="card-subtitle mb-2 text-weight-bold text-black"> <i class="fas fa-graduation-cap mr-3"/>Course:  </h6>
+                  <h6 className="card-subtitle mb-1 text-weight-bold text-black"> <i class="fas fa-graduation-cap mr-3"/>Course:  </h6>
                     <b>{info ? info[0].course_name : ''}</b>
                   </h6>
                   </div>
                   
                   <div className = "col-md-4" >
                   <h6 className="card-subtitle mb-2 text-weight-bold text-black">
-                  <h6 className="card-subtitle mb-2 text-weight-bold text-black"> <i class="fas fa-file-alt mr-3"/>Major:  </h6>
+                  <h6 className="card-subtitle mb-1 text-weight-bold text-black"> <i class="fas fa-file-alt mr-3"/>Major:  </h6>
                   <b>{info ? info[0].course_major != "" ? info[0].course_major : 'Not Applicable' : ''}</b>
                   </h6>
                   </div>
@@ -127,7 +124,7 @@ function Dashboard() {
                 <div className="row">
                   <div className = "col-12 mb-3" >
                   <h6 className="card-subtitle mb-2 text-weight-bold text-black"> 
-                  <h6 className="card-subtitle mb-2 text-weight-bold text-black"> <i class="fas fa-home mr-3"/>Address:  </h6>
+                  <h6 className="card-subtitle mb-1 text-weight-bold text-black"> <i class="fas fa-home mr-3"/>Address:  </h6>
                   <b>{info 
                       ? 
                       `${info[0].add_no}, 
@@ -141,13 +138,13 @@ function Dashboard() {
                   </div>
                   <div className = "col-12 mb-3" >
                   <h6 className="card-subtitle mb-2 text-weight-bold text-black">
-                  <h6 className="card-subtitle mb-2 text-weight-bold text-black"> <i class="fas fa-envelope mr-3"/>Email Address:  </h6>
+                  <h6 className="card-subtitle mb-1 text-weight-bold text-black"> <i class="fas fa-envelope mr-3"/>Email Address:  </h6>
                   <b>{info ? info[0].email : ''}</b>
                   </h6>
                   </div>
                   <div className = "col-12" >
                   <h6 className="card-subtitle mb-2 text-weight-bold text-black">
-                  <h6 className="card-subtitle mb-2 text-weight-bold text-black"> <i class="fas fa-envelope mr-3"/>CvSU Email Address and default password :  </h6>
+                  <h6 className="card-subtitle mb-1 text-weight-bold text-black"> <i class="fas fa-envelope mr-3"/>CvSU Email Address and default password :  </h6>
                   <b>{info ? info[0].email : 'Not Available'} | default-password</b>{ /* wala pang data ang info[0].cvsu_email */ }
                   </h6>
                   </div>
