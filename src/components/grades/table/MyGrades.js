@@ -9,6 +9,7 @@ function EnrolledSubjects() {
   const [isGrade, setIsGrade] = useState(false)
   const [isSelected, setSelected] = useState(false)
   const [loading, setLoading] = useState(false)
+  const [average, setAverage] = useState({"average": 0, "totalunits" : 0})
 
 
   useEffect(() => {
@@ -31,11 +32,12 @@ function EnrolledSubjects() {
 
     const sem = data
 
-    const average = "1.00"
-
     //display grade
     const displayGrade = async (e) => {
       let selected = JSON.parse(e.target.value)
+      let tempvar = 0
+      let tempgrade = 0
+      let gradelength = 0
       console.log(selected)
       setSelected(true)
       setLoading(true)
@@ -43,6 +45,28 @@ function EnrolledSubjects() {
         response => {
           setGrades(response.data)
           console.log(response.data)
+          
+          for (var x = 0; x < response.data.length; x++)
+          {
+            let vals = response.data[x].units;
+            let vals1 = parseFloat(response.data[x].grade);
+            tempvar = tempvar + vals
+            console.log('temp : ', vals1);
+            if (!isNaN(vals1)) {
+              tempgrade += vals1
+              gradelength ++
+            }
+          }
+          console.log('tempvar : ', tempvar);
+          console.log('grade length : ', gradelength);
+          tempgrade /= gradelength;
+          let jatot = tempgrade.toFixed(2)
+          isNaN(jatot) ? jatot = "None" :
+          console.log('total = ',jatot);
+          setAverage(meowstate => ({
+            ...meowstate, totalunits: tempvar, average: jatot
+          }));
+          console.log('sample : ',average);
           renderTable()
           setLoading(false)
         }
@@ -56,13 +80,12 @@ function EnrolledSubjects() {
        return (
         grades.map(grade => {
             return (
-             <tr key = {grade.schedule_code}>
-                <td>{grade.subject_code}</td>    
-                <td>{grade.subject_title}</td>
-                <td>{grade.grade}</td>
-                <td>{grade.completegrade}</td>
-                <td>{grade.units}</td>
-                <td>{grade.creditunits}</td>
+             <tr key = {grade.subject_code}>
+                <td data-label="Subject Code : ">{grade.subject_code}</td>    
+                <td data-label="Description : ">{grade.subject_title}</td>
+                <td data-label="Grade : ">{grade.grade}</td>
+                <td data-label="Completion : ">{grade.completegrade}</td>
+                <td data-label="Unit : ">{grade.units}</td>
              </tr>
             )
          })
@@ -91,8 +114,8 @@ function EnrolledSubjects() {
             {
               isSelected ? 
               <>
-              <div className="card mt-3 table-holder">
-                <table className="table my-0 table-striped table-hover" id="dataTable">
+              <div className="mt-3 table-holder">
+                <table className="table" id="dataTable">
                 {
                     (loading) ?
                     <div className="d-flex justify-content-center">
@@ -107,14 +130,20 @@ function EnrolledSubjects() {
                         <th>Grade</th>
                         <th>Completion</th>
                         <th>Unit</th>
-                        <th>Credit Unit</th>
                       </tr>
                     </thead>
                     <tbody>
                       {renderTable()}
                     </tbody>
-                    <tfoot className="mt-2 mr-2 mb-2 px-3 text-right">
-                      Average: {average}
+                    <tfoot>
+                      <div className="row ml-1"> 
+                        <div className="col-12">
+                          Total Units: <b>{average.totalunits}</b>
+                        </div>
+                        <div className="col-12" style={{marginTop: -15}}>
+                          Average: <b>{average.average}</b>
+                        </div>
+                      </div>
                     </tfoot>
                     </>
                 }

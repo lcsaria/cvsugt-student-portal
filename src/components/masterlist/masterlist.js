@@ -45,10 +45,10 @@ function Masterlist() {
         return data.map(user => {
             return ( 
                 <tr key = {user.num}>
-                <td className="text-center">{count++}</td>
-                <td className="text-center">{user.name}</td>
-                <td className="text-center">{user.student_number}</td>
-                <td className="text-center">{user.course}</td>
+                <td data-label="Number : ">{count++}</td>
+                <td data-label="Name : ">{user.name}</td>
+                <td data-label="Student Number : ">{user.student_number}</td>
+                <td data-label="Course : ">{user.course}</td>
                 </tr>
             )
         })
@@ -79,21 +79,21 @@ function Masterlist() {
                                 <h6>Section: <b>{ddata ? ddata[0].section : ''}</b> </h6>
                                 </span>
                                 { /* dito table for list of students */ }
-                                <div className="card mt-3 table-holder">
-                                        <table className="table my-0 table-striped" id="dataTable">
+                                <div className="mt-3 table-holder">
+                                    <table className="table" id="dataTable">
                                         <thead>
                                             <tr>
-                                            <th className="text-center">No.</th>
-                                            <th className="text-center">Name</th>
-                                            <th className="text-center">Student Number</th>
-                                            <th className="text-center">Course</th>
+                                            <th>No.</th>
+                                            <th>Name</th>
+                                            <th>Student Number</th>
+                                            <th>Course</th>
                                             </tr>
                                         </thead>
                                         <tbody>
                                             {renderTable()}
                                         </tbody>
-                                        </table>
-                                        </div>
+                                    </table>
+                                </div>
                             </div>
                         </div>
                     </div>

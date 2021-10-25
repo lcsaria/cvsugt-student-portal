@@ -23,7 +23,7 @@ function Grades() {
                     width: '200px'}}>
                       <b className="text-uppercase text-black">My Grades</b>
                     </span>
-                      <div className="p-4">
+                      <div className="p-2">
                       <Grade/>
                       </div>
                   </div>
