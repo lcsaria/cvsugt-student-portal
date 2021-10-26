@@ -38,11 +38,11 @@ function EnrolledSubjects() {
         return data.map(user => {
             return ( 
                 <tr key = {user.sched_code}>
-                    <td className="text-center">{user.subject_code}</td>
-                    <td className="text-center">{user.subject_title}</td>
-                    <th className="text-center"><a className="text-success text-middle" href = {`masterlist/?id=${user.sched_code}`} target = "_blank" rel="noreferrer">{user.sched_code}</a></th>
-                    <td className="text-center">{user.credit_unit_lec}</td>
-                    <td className="text-center">{user.credit_unit_lab}</td> 
+                    <td data-label="Subject code : ">{user.subject_code}</td>
+                    <td data-label="Title : ">{user.subject_title}</td>
+                    <td data-label="Schedule code : "><a className="text-success text-middle" href = {`masterlist/?id=${user.sched_code}`} target = "_blank" rel="noreferrer"><b>{user.sched_code}</b></a></td>
+                    <td data-label="Lecture Units : ">{user.credit_unit_lec}</td>
+                    <td data-label="Lab Units : ">{user.credit_unit_lab}</td> 
                 </tr>
             )
         })
@@ -77,11 +77,11 @@ function EnrolledSubjects() {
                 <>
                     <thead>
                         <tr>
-                            <th scope="col" className="text-center">SUBJECT CODE</th>
-                            <th scope="col" className="text-center">TITLE</th>
-                            <th scope="col" className="text-center">SCHEDULE CODE</th>
-                            <th scope="col" className="text-center">LECTURE UNITS</th>
-                            <th scope="col" className="text-center">LAB UNITS</th>
+                            <th>SUBJECT CODE</th>
+                            <th>TITLE</th>
+                            <th>SCHEDULE CODE</th>
+                            <th>LECTURE UNITS</th>
+                            <th>LAB UNITS</th>
                         </tr>
                     </thead>
                     <tbody>
