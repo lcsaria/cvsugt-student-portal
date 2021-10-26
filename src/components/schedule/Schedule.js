@@ -99,15 +99,6 @@ const [section, setSection] = useState()
         })
     }
 
-   
-    // dito code for dropdown onchange
-    const sections = () => {
-        console.log('you click me');
-    }
-
-
-
-    
     return (
         <div id="wrapper">
             <Sidebar/>
