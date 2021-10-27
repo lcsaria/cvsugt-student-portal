@@ -105,7 +105,7 @@ function Dashboard() {
                   <div className = "col-md-4" >
                   <h6 className="card-subtitle mb-2 text-weight-bold text-black">
                   <h6 className="card-subtitle mb-1 text-weight-bold text-black"> <i class="fas fa-file-alt mr-3"/>Major:  </h6>
-                  <b>{info ? info[0].course_major != "" ? info[0].course_major : 'Not Applicable' : ''}</b>
+                  <b>{info ? info[0].course_major !== "" ? info[0].course_major : 'Not Applicable' : ''}</b>
                   </h6>
                   </div>
                 </div>

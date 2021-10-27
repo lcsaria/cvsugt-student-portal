@@ -9,6 +9,9 @@ import Subjects from '../subjects/Subjects.js'
 import masterlist from '../masterlist/masterlist.js'
 import ProtectedRoute from './ProtectedRoute.js'
 import settings from '../settings/settings'
+import requestdocu from '../request_documents/request_documents'
+import addsubject from '../addsubject/addsubject'
+import onlineenrollment from '../online_enrollment/onlineenrollment'
 
 function RouteTree() {
     return (
@@ -23,6 +26,9 @@ function RouteTree() {
                 <ProtectedRoute exact path="/grades" component={Grades}/>
                 <ProtectedRoute exact path="/masterlist" component={masterlist}/>
                 <ProtectedRoute exact path="/settings" component={settings}/>
+                <ProtectedRoute exact path="/request" component={requestdocu}/>
+                <ProtectedRoute exact path="/addsubject" component={addsubject}/>
+                <ProtectedRoute exact path="/enrollment" component={onlineenrollment}/>
             </Switch>
         </div>
     )

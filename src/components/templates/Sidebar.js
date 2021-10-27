@@ -1,7 +1,7 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import React, { useEffect, useState } from 'react'
 import logo from '../../assets/logo.png'
-import { OverlayTrigger, Tooltip } from 'react-bootstrap';
+import { Collapse, OverlayTrigger, Tooltip } from 'react-bootstrap';
 
 function Sidebar() {
   const sidebarCollapsed = localStorage.getItem('sidebar-collapsed' || false);
@@ -77,6 +77,30 @@ function Sidebar() {
              </div>
              </div>
            </a>
+           <a className={isExpanded ?"nav-link": "nav-link mt-2"} href="/addsubject">  
+           <div className="sidebar-items">
+             <div className="item">
+               <i className="fas fa-file-signature mr-4"/>
+               <span className="sidebar-text">Change Subject</span>
+             </div>
+             </div>
+           </a>
+           <a className={isExpanded ?"nav-link": "nav-link mt-2"} href="/enrollment">  
+           <div className="sidebar-items">
+             <div className="item">
+               <i className="fas fa-file mr-4"/>
+               <span className="sidebar-text">Online Enrollment</span>
+             </div>
+             </div>
+           </a>
+           <a className={isExpanded ?"nav-link": "nav-link mt-2"} href="/request">  
+           <div className="sidebar-items">
+             <div className="item">
+               <i className="fas fa-file-download mr-4"/>
+               <span className="sidebar-text">Request Documents</span>
+             </div>
+             </div>
+           </a>
            { /*
            <a className={isExpanded ?"nav-link": "nav-link mt-2"} onClick={logOut}> 
            <div className="sidebar-items">
@@ -88,6 +112,7 @@ function Sidebar() {
            </a>
            */ }
            </>
+           
         :
           <>
             <OverlayTrigger 
@@ -146,6 +171,51 @@ function Sidebar() {
               <div className="item">
                 <i className="fas fa-newspaper mr-4"/>
                 <span className="sidebar-text">My Grades</span>
+              </div>
+              </div>
+            </a>
+            </OverlayTrigger>
+            <OverlayTrigger 
+                  placement="right"
+                  overlay={
+                    <Tooltip>Change Subject</Tooltip>
+                  }
+            >
+            <a className={isExpanded ?"nav-link": "nav-link mt-2"} href="/addsubject">  
+            <div className="sidebar-items">
+              <div className="item">
+                <i className="fas fa-file-signature mr-4"/>
+                <span className="sidebar-text">Change Subject</span>
+              </div>
+              </div>
+            </a>
+            </OverlayTrigger>
+            <OverlayTrigger 
+                  placement="right"
+                  overlay={
+                    <Tooltip>Online Enrollment</Tooltip>
+                  }
+            >
+            <a className={isExpanded ?"nav-link": "nav-link mt-2"} href="/enrollment">  
+            <div className="sidebar-items">
+              <div className="item">
+                <i className="fas fa-file mr-4"/>
+                <span className="sidebar-text">Online Enrollment</span>
+              </div>
+              </div>
+            </a>
+            </OverlayTrigger>
+            <OverlayTrigger 
+                  placement="right"
+                  overlay={
+                    <Tooltip>Request Documents</Tooltip>
+                  }
+            >
+            <a className={isExpanded ?"nav-link": "nav-link mt-2"} href="/request">  
+            <div className="sidebar-items">
+              <div className="item">
+                <i className="fas fa-file-download mr-4"/>
+                <span className="sidebar-text">Request Documents</span>
               </div>
               </div>
             </a>
