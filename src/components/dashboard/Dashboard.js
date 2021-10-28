@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import Footer from '../templates/Footer'
 import Navbar from '../templates/Navbar'
-import Sidebar from '../templates/Sidebar'
+import Sidebar from '../templates/sidebarpt2'
 import GradeModal from './modals/GradeModal';
 import SubjectModal from './modals/SubjectModal';
 import api from '../../api/axios';
@@ -40,7 +40,7 @@ function Dashboard() {
     }
     return (
       <div id="wrapper">
-          <Sidebar/>
+          <Sidebar />
         <div className="d-flex flex-column" id="content-wrapper">
           <div id="content">
             <Navbar/>
