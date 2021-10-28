@@ -49,7 +49,7 @@ function Dashboard() {
             </div>
             <div className="container">
               { /* BASIC INFORMATION */ }
-            <div className="card mb-4 d-block">
+            <div className="card mb-4 d-block shadow">
               <div className="card-body">
                 <span className="card-title card text-center p-2"
                 style={{position: "relative", top: "-30px",  border: 
@@ -86,7 +86,7 @@ function Dashboard() {
             </div>
 
             { /* Course and Major */ }
-            <div className="card mb-4 d-block">
+            <div className="card mb-4 d-block shadow">
               <div className="card-body">
                 <span className="card-title card text-center p-2"
                   style={{position: "relative", top: "-30px",  border: 
@@ -113,7 +113,7 @@ function Dashboard() {
             </div>
 
             { /* Contact Information */ }
-            <div className="card mb-4 d-block">
+            <div className="card mb-4 d-block shadow">
               <div className="card-body">
                 <span className="card-title card text-center p-2"
                   style={{position: "relative", top: "-30px",  border: 
@@ -152,7 +152,7 @@ function Dashboard() {
               </div>
             </div>
 
-            <div className="card mb-4">
+            <div className="card mb-4 shadow">
               <div className="card-body ">
                   <span className="card-title card text-center p-2 "
                   style={{position: "relative", top: "-30px",  border: 
@@ -163,14 +163,14 @@ function Dashboard() {
                   <div className = "row">
                     <div className = "col-md-6 mb-2">
                       <button type="button" className="btn btn-bg-dark border-dark btn-lg btn-block text-black" onClick={onEnrolledSubjects}>
-                        <i className="fas fa-book mr-3"/>
+                        <i className="fas fa-book-open mr-3"/>
                         Enrolled Subjects
                       </button>
                     </div>
                     <div className = "col-md-6 mb-2">
                       <button type="button" className="btn btn-bg-dark border-dark btn-lg btn-block text-black" onClick={onMyGrades}>
-                        <i className="fas fa-newspaper mr-3"/>
-                        <span>My Grades</span>
+                        <i className="fas fa-table mr-3"/>
+                        <span>List of Grades</span>
                       </button>
                     </div>
                   </div>

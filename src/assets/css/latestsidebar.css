@@ -2,6 +2,12 @@
     height: 100%;
     width: 350px;
     background-color: #fff;
+    transition: 0.5s;
+}
+
+.sidebars.collapsed{
+    width: 60px;
+    transition: 0.5s;
 }
 
 .sidebarlist {
@@ -12,9 +18,10 @@
 
 .sidebarlist .meow {
     width: 100%;
-    height: 60px;
+    height: 57px;
     list-style-type: none;
     border-bottom: 1px solid #c7c7c7;
+    border-right: 1px solid #c7c7c7;
     margin: 0;
     color: #000;
     justify-content: center;
@@ -23,7 +30,7 @@
 
 .sidebarlist .row {
     width: 100%;
-    height: 60px;
+    height: 58px;
     list-style-type: none;
     border-bottom: 1px solid #c7c7c7;
     margin: 0;
