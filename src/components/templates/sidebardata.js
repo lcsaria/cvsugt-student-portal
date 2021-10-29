@@ -17,6 +17,11 @@ export const Sidebardata = [
         link : '/grades',
     },
     {
+        title : 'Deficiency',
+        icon : <i className="fas fa-exclamation-triangle "/>,
+        link : '/deficiency',
+    },
+    {
         title : 'Subject Portal',
         icon : <i className="fas fa-scroll "/>,
         link : '/schedule',

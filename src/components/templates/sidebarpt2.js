@@ -9,11 +9,6 @@ import { left } from '@popperjs/core';
 const Sidebar = () => {
     const [ showNav, setShowNav] = useState(true)
 
-    const handlemeow = () => {
-        setShowNav(!showNav)
-        console.log(showNav)
-    }
-
     return (
         <div className={showNav ? "sidebars d-none d-lg-block" : "sidebars collapsed d-none d-lg-block"}>
             <ul className="sidebarlist">
@@ -25,11 +20,11 @@ const Sidebar = () => {
                             <img className="sidebar-logo ml-2" src={logo} alt="logo"/>  
                         </div>
                         <div className="col-2">
-                            <i className="fas fa-bars sidebar-icon" onClick={handlemeow}/>
+                            <i className="fas fa-bars sidebar-icon" onClick={() => {setShowNav(!showNav)}}/>
                         </div>
                         </> :
                         <>
-                            <i className="fas fa-bars text-center" onClick={handlemeow}/>
+                            <i className="fas fa-bars text-center" onClick={() => {setShowNav(!showNav)}}/>
                         </>
                     }
                 </div>
@@ -44,7 +39,7 @@ const Sidebar = () => {
                             showNav ?
                             <>
                             <div id="icon">{val.icon}</div>
-                            <div id="title">{val.title}</div>
+                            <div id="title"><b>{val.title}</b></div>
                             </> : 
                             <>
                             <OverlayTrigger 

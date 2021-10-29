@@ -2,12 +2,12 @@
     height: 100%;
     width: 350px;
     background-color: #fff;
-    transition: 0.5s;
+    transition: 0.2s;
 }
 
 .sidebars.collapsed{
-    width: 60px;
-    transition: 0.5s;
+    width: 70px;
+    transition: 0.2s;
 }
 
 .sidebarlist {
@@ -46,8 +46,8 @@
 }
 
 .sidebarlist #active {
-    /* background-color: #c7c7c7; */
-    color : #1b5e20;
+    background-color: #1b5e20;
+    color : #fff;
 }
 
 .row #icon{

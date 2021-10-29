@@ -41,7 +41,7 @@ function EnrolledSubjects() {
                     <td data-label="Subject code : ">{user.subject_code}</td>
                     <td data-label="Title : ">{user.subject_title}</td>
                     <td data-label="Schedule code : "><a className="text-success text-middle" href = {`masterlist/?id=${user.sched_code}`} target = "_blank" rel="noreferrer"><b>{user.sched_code}</b></a></td>
-                    <td data-label="Lecture Units : ">{user.credit_unit_lec}</td>
+                    <td data-label="Lec Units : ">{user.credit_unit_lec}</td>
                     <td data-label="Lab Units : ">{user.credit_unit_lab}</td> 
                 </tr>
             )
@@ -80,7 +80,7 @@ function EnrolledSubjects() {
                             <th>SUBJECT CODE</th>
                             <th>TITLE</th>
                             <th>SCHEDULE CODE</th>
-                            <th>LECTURE UNITS</th>
+                            <th>LEC UNITS</th>
                             <th>LAB UNITS</th>
                         </tr>
                     </thead>

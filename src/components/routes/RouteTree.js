@@ -12,6 +12,7 @@ import settings from '../settings/settings'
 import requestdocu from '../request_documents/request_documents'
 import addsubject from '../addsubject/addsubject'
 import onlineenrollment from '../online_enrollment/onlineenrollment'
+import Deficiency from '../deficiency/deficiency.js'
 
 function RouteTree() {
     return (
@@ -29,6 +30,7 @@ function RouteTree() {
                 <ProtectedRoute exact path="/request" component={requestdocu}/>
                 <ProtectedRoute exact path="/addsubject" component={addsubject}/>
                 <ProtectedRoute exact path="/enrollment" component={onlineenrollment}/>
+                <ProtectedRoute exact path="/deficiency" component={Deficiency}/>
             </Switch>
         </div>
     )
