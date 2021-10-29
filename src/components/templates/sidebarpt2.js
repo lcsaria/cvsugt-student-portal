@@ -19,12 +19,15 @@ const Sidebar = () => {
                         <div className="col-10">
                             <img className="sidebar-logo ml-2" src={logo} alt="logo"/>  
                         </div>
-                        <div className="col-2">
-                            <i className="fas fa-bars sidebar-icon" onClick={() => {setShowNav(!showNav)}}/>
+                        <div className="col-2" onClick={() => {setShowNav(!showNav)}}>
+                            <i className="fas fa-bars sidebar-icon" />
                         </div>
                         </> :
                         <>
-                            <i className="fas fa-bars text-center" onClick={() => {setShowNav(!showNav)}}/>
+                            <div className="text-center" onClick={() => {setShowNav(!showNav)}}>
+                                <i className="fas fa-bars " />
+                            </div>
+                            
                         </>
                     }
                 </div>
