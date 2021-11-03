@@ -2,7 +2,7 @@ import React, {useState, useEffect} from 'react'
 import Navbar from '../templates/Navbar'
 import Footer from '../templates/Footer'
 import Sidebar from '../templates/sidebarpt2'
-import api from '../../api/axios'
+import axios from 'axios'
 import { Spinner } from 'react-bootstrap'
 
 function Schedule() {
@@ -14,7 +14,7 @@ const [section, setSection] = useState()
 
     useEffect( () => {
         setLoading(true)
-        api.get('offeredSubjects')
+        axios.get('offeredSubjects')
         .then(response => {
             setData(response.data)
             console.log(response.data)
@@ -24,7 +24,7 @@ const [section, setSection] = useState()
             console.log(err.data)
             setLoading(false)
         })
-        api.get('sectionsforsubject')
+        axios.get('sectionsforsubject')
         .then(response => {
             setSectionlist(response.data)
             console.log('data : ',response.data)

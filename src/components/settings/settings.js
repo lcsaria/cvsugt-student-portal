@@ -3,7 +3,7 @@ import Navbar from '../templates/Navbar'
 import Footer from '../templates/Footer'
 import Sidebar from '../templates/sidebarpt2'
 import { useHistory } from 'react-router-dom';
-import api from '../../api/axios'
+import axios from 'axios'
 import { Button, Tabs, Tab, Form} from 'react-bootstrap'
 
 function Settings() {
@@ -14,7 +14,7 @@ function Settings() {
 
     useEffect(() => {
         let id = localStorage.getItem('student_number');
-        api.get(`getusername/${id}`)
+        axios.get(`getusername/${id}`)
         .then((response) => {
           setData(response.data);
           console.log('data : ', response.data);
@@ -27,8 +27,8 @@ function Settings() {
 
     const changeusername = (e) => {
         e.preventDefault();
-        // api for change username
-        api.put('changeuser', {
+        // axios for change username
+        axios.put('changeuser', {
             username : data,
             newusername : cu.username,
             password: cu.password
@@ -49,7 +49,7 @@ function Settings() {
     const changepass = (e) => {
         e.preventDefault();
         if (cp.npassword !== cp.cpassword) return alert('New password not match!')
-        api.put('changepass', {
+        axios.put('changepass', {
             username : data,
             password: cp.opassword,
             newpassword: cp.npassword

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import Footer from '../templates/Footer'
-import api from '../../api/axios'
+import axios from 'axios'
 /*
 *************************************** NOTE *****************************************
 *                                                                                    *
@@ -28,7 +28,7 @@ function Masterlist() {
         let tempid = urlParams.get('id')
         setId(tempid)
         console.log('tempid : ', tempid);
-        api.get(`studentsbycode/${tempid}`)
+        axios.get(`studentsbycode/${tempid}`)
         .then(response => {
             setData(response.data)
             setDdata(response.data)

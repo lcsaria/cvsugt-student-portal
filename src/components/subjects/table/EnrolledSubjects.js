@@ -1,7 +1,7 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect, useState } from 'react'
 import { Spinner } from 'react-bootstrap';
-import api from '../../../api/axios'
+import axios from 'axios'
 
 function EnrolledSubjects() {
     const [data, setData] = useState([]);
@@ -11,7 +11,7 @@ function EnrolledSubjects() {
     let id = localStorage.getItem('student_number');
     useEffect(() => {
         setLoading(true)
-        api.get(`enrolledSubject/${id}`)
+        axios.get(`enrolledSubject/${id}`)
         .then(response => {
             setData(response.data);
             setSemdata(response.data);
@@ -24,7 +24,7 @@ function EnrolledSubjects() {
             setLoading(false)
 
         })
-        api.get('sem')
+        axios.get('sem')
         .then(response => {
             setSemdata(response.data);
             console.log(response.data);

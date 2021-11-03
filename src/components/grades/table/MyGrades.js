@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from 'react'
 import { Spinner } from 'react-bootstrap'
-import api from '../../../api/axios'
+import axios from 'axios'
 
 function EnrolledSubjects() {
   let id = localStorage.getItem('student_number')
@@ -15,7 +15,7 @@ function EnrolledSubjects() {
   useEffect(() => {
     console.log(grades)
     const tae = async () => {
-      await api.get(`semforgrades/${id}`)
+      await axios.get(`semforgrades/${id}`)
       .then(result => {
         setData(result.data)
         setIsGrade(true)
@@ -41,7 +41,7 @@ function EnrolledSubjects() {
       console.log(selected)
       setSelected(true)
       setLoading(true)
-      await api.post('userGrades', selected).then(
+      await axios.post('userGrades', selected).then(
         response => {
           setGrades(response.data)
           console.log(response.data)

@@ -2,7 +2,9 @@
 import React, {useState, useEffect}from 'react'
 import { useHistory } from 'react-router-dom';
 import {Nav, Navbar, Container, NavDropdown} from 'react-bootstrap';
-import api from '../../api/axios';
+//import api from '../../api/axios';
+import axios from 'axios'
+
 import logo from '../../assets/logo.png';
 import logomini from '../../assets/logomini.png';
 
@@ -12,7 +14,7 @@ function Navbars() {
   const [name, setName] = useState('');
   useEffect( () => {
     let id = localStorage.getItem('student_number');
-    api.get(`userInfo/${id}`)
+    axios.get(`userInfo/${id}`)
     .then((response) => {
       console.log(response.data);
       setName(response.data[0].first_name)
@@ -20,7 +22,6 @@ function Navbars() {
     .catch((err) => {
       console.log(err.data);
     })
-
   },[])
 
   const logOut = () => {

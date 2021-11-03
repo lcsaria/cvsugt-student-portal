@@ -4,7 +4,7 @@ import Navbar from '../templates/Navbar'
 import Sidebar from '../templates/sidebarpt2'
 import GradeModal from './modals/GradeModal';
 import SubjectModal from './modals/SubjectModal';
-import api from '../../api/axios';
+import axios from 'axios'
 
 function Dashboard() {
   const [show, setShow] = useState(false);
@@ -13,8 +13,14 @@ function Dashboard() {
 
   useEffect(() => {
     let id = localStorage.getItem('student_number');
+    console.log('ror : ', localStorage.getItem('token'));
     console.log(id);
-    api.get(`userInfo/${id}`)
+    const config = {
+      headers: {
+        Authorization : 'Bearer ' + localStorage.getItem('token')
+      }
+    }
+    axios.get(`userInfo/${id}`, config)
     .then((response) => {
       setInfo(response.data);
       console.log(response.data);
