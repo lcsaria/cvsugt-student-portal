@@ -109,7 +109,7 @@ const [section, setSection] = useState()
                          <div className="d-sm-flex justify-content-between align-items-center mb-4" />
                      </div>
                     <div className="container">
-                        <div className="card mb-3">
+                        <div className="card mb-3 shadow">
                             <div className="card-body">
                                 <span className="card-title card text-center p-2"
                                 style={{position: "relative", top: "-30px",  border: 
