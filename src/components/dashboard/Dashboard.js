@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import Footer from '../templates/Footer'
 import Navbar from '../templates/Navbar'
-import Sidebar from '../templates/sidebarpt2'
+import Sidebar from '../templates/sidebar'
 import GradeModal from './modals/GradeModal';
 import SubjectModal from './modals/SubjectModal';
 import axios from 'axios'

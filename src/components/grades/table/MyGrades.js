@@ -38,35 +38,27 @@ function EnrolledSubjects() {
       let tempvar = 0
       let tempgrade = 0
       let gradelength = 0
-      console.log(selected)
       setSelected(true)
       setLoading(true)
       await axios.post('userGrades', selected).then(
         response => {
           setGrades(response.data)
-          console.log(response.data)
-          
           for (var x = 0; x < response.data.length; x++)
           {
             let vals = response.data[x].units;
             let vals1 = parseFloat(response.data[x].grade);
-            tempvar = tempvar + vals
-            console.log('temp : ', vals1);
-            if (!isNaN(vals1)) {
-              tempgrade += vals1
-              gradelength ++
-            }
+            if (isNaN(vals1)) continue
+            if (response.data[x].subject_code == "NSTP 1" || response.data[x].subject_code == "NSTP 2") continue
+            tempgrade += vals1
+            tempvar += vals
+            gradelength ++
           }
-          console.log('tempvar : ', tempvar);
-          console.log('grade length : ', gradelength);
           tempgrade /= gradelength;
           let jatot = tempgrade.toFixed(2)
-          isNaN(jatot) ? jatot = "None" :
-          console.log('total = ',jatot);
+          isNaN(jatot) ? jatot = 0 :
           setAverage(meowstate => ({
             ...meowstate, totalunits: tempvar, average: jatot
           }));
-          console.log('sample : ',average);
           renderTable()
           setLoading(false)
         }

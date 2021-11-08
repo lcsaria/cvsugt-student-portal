@@ -1,7 +1,7 @@
 import React from 'react'
 import Footer from '../templates/Footer'
 import Navbar from '../templates/Navbar'
-import Sidebar from '../templates/sidebarpt2'
+import Sidebar from '../templates/sidebar'
 import Grade from './table/MyGrades'
 
 function Grades() {

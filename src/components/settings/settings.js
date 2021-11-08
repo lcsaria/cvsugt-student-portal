@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from 'react'
 import Navbar from '../templates/Navbar'
 import Footer from '../templates/Footer'
-import Sidebar from '../templates/sidebarpt2'
+import Sidebar from '../templates/sidebar'
 import { useHistory } from 'react-router-dom';
 import axios from 'axios'
 import { Button, Tabs, Tab, Form} from 'react-bootstrap'

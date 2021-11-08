@@ -50,15 +50,19 @@ function EnrolledSubjects() {
     
     return (
     <div>
-        <div className="d-flex justify-content-between mb-3 text-dark">
-            <span>
-                <b className="mr-3">School Year:</b>
-                {semdata ? `${semdata[0].sy1} - ${semdata[0].sy2}` : ''}
-            </span>
-            <span>
-                <b className="mr-3">Semester:</b>
-                {semdata ? semdata[0].semester : ''}
-            </span>
+        <div className="row mb-4">
+            <div className="col-md-6">
+                <span>
+                    <b className="mr-2">School Year:</b>
+                    {semdata ? `${semdata[0].sy1} - ${semdata[0].sy2}` : ''}
+                </span>
+            </div>
+            <div className="col-md-6">
+                <span>
+                    <b className="mr-2">Semester:</b>
+                    {semdata ? semdata[0].semester : ''}
+                </span>
+            </div>
         </div>
         {
             (!data) ? 
