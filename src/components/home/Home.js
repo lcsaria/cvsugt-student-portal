@@ -26,6 +26,7 @@ function Home() {
             alert('Welcome')
             localStorage.setItem('student_number',response.data.student_number)
             localStorage.setItem('token', response.data.accessToken)
+            localStorage.setItem('refreshToken', response.data.refreshToken)
             localStorage.setItem("isAuthenticated", true)
             history.push("/dashboard")
             setLoading(false)

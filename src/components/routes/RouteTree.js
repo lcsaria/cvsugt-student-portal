@@ -28,7 +28,7 @@ function RouteTree() {
                 <ProtectedRoute exact path="/masterlist" component={masterlist}/>
                 <ProtectedRoute exact path="/settings" component={settings}/>
                 <ProtectedRoute exact path="/request" component={requestdocu}/>
-                <ProtectedRoute exact path="/addsubject" component={addsubject}/>
+                { /*<ProtectedRoute exact path="/addsubject" component={addsubject}/> */ }
                 <ProtectedRoute exact path="/enrollment" component={onlineenrollment}/>
                 <ProtectedRoute exact path="/deficiency" component={Deficiency}/>
             </Switch>

@@ -24,10 +24,17 @@ function Navbars() {
     })
   },[])
 
-  const logOut = () => {
-    alert("Thank you!");
-    localStorage.clear();
-    history.push("/login");
+  const logOut = async () => {
+    let meowid = localStorage.getItem('refreshToken');
+    await axios.get(`deleterefresh/${meowid}`)
+    .then((response) => {
+      alert("Thank you!");
+      localStorage.clear();
+      history.push("/login");
+    })
+    .catch((err) => {
+      console.log(err.data);
+    })
   }
   
     return (
@@ -57,7 +64,7 @@ function Navbars() {
               <Nav.Link className="d-lg-none" href="/schedule"><i class="fas fa-calendar mr-3"/>Subject Portal</Nav.Link>
               <Nav.Link className="d-lg-none" href="/subjects"><i className="fas fa-book mr-3"/>Enrolled Subjects</Nav.Link>
               <Nav.Link className="d-lg-none" href="/grades"><i className="fas fa-newspaper mr-3"/>My Grades</Nav.Link>
-              <Nav.Link className="d-lg-none" href="/addsubject"><i className="fas fa-file-signature mr-3"/>Change Subject</Nav.Link>
+              { /* <Nav.Link className="d-lg-none" href="/addsubject"><i className="fas fa-file-signature mr-3"/>Change Subject</Nav.Link> */ }
               <Nav.Link className="d-lg-none" href="/enrollment"><i className="fas fa-file mr-3"/>Online Enrollment</Nav.Link>
               <Nav.Link className="d-lg-none" href="/request"><i className="fas fa-file-download mr-3"/>Request Documents</Nav.Link>
               <NavDropdown title={<div style={{display: "inline-block"}}><i class="fas fa-user-graduate mr-2"/> {name ? name : 'User'}</div> } id="basic-nav-dropdown" clas>

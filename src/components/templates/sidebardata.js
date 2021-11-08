@@ -26,11 +26,13 @@ export const Sidebardata = [
         icon : <i className="fas fa-scroll "/>,
         link : '/schedule',
     },
+    /*
     {
         title : 'Change Subject',
         icon : <i className="fas fa-file-signature "/>,
         link : '/addsubject',
     },
+    */
     {
         title : 'Online Enrollment',
         icon : <i className="fas fa-file "/>,
