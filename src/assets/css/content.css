@@ -106,3 +106,23 @@ table{
         color: #2e7d32;
 	}
 }
+
+.meowlogo{
+    display: block;
+}
+.logomeow{
+    display: none;
+}
+
+@media screen and (min-width: 310px){
+    .meowlogo{
+        display: none;
+    }
+    .logomeow{
+        display: block;
+    }
+}
+
+
+
+

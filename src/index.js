@@ -6,7 +6,7 @@ import reportWebVitals from './reportWebVitals';
 import { BrowserRouter as Router } from 'react-router-dom';
 import axios from 'axios'
 
-axios.defaults.baseURL = 'http://localhost:4000/api/v1';
+axios.defaults.baseURL = 'http://6dd0-152-32-77-133.ngrok.io/api/v1';
 axios.defaults.headers.common['Authorization'] = 'AUTH TOKEN';
 
 axios.interceptors.request.use(function (config) {

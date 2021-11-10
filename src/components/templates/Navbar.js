@@ -42,14 +42,14 @@ function Navbars() {
       /* NEED TO FIXED */
       <Navbar bg="white" expand="lg" sticky="top"> 
         <Container fluid>
-        <Navbar.Brand href="/dashboard" className="d-block d-sm-none">
+        <Navbar.Brand href="/dashboard" className="meowlogo">
           <img
             src={logomini}
             className="d-inline-block align-top"
             alt="React Bootstrap logo"
         />
         </Navbar.Brand>
-        <Navbar.Brand href="/dashboard" className="d-none d-sm-block d-lg-none">
+        <Navbar.Brand href="/dashboard" className="logomeow d-lg-none">
           <img
             src={logo}
             className="d-inline-block align-top"
