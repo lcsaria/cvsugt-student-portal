@@ -4,7 +4,7 @@ import Navbar from '../templates/Navbar'
 import Sidebar from '../templates/sidebar'
 import GradeModal from './modals/GradeModal';
 import SubjectModal from './modals/SubjectModal';
-import axios from 'axios'
+import axios from '../../api/api'
 
 function Dashboard() {
   const [show, setShow] = useState(false);

@@ -1,6 +1,6 @@
 import React from 'react'
 import { useHistory } from 'react-router'
-import axios from 'axios'
+import axios from '../../api/api'
 
 import logo from '../../assets/school-logo-small.png'
 

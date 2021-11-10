@@ -3,7 +3,7 @@ import React, {useState, useEffect}from 'react'
 import { useHistory } from 'react-router-dom';
 import {Nav, Navbar, Container, NavDropdown} from 'react-bootstrap';
 //import api from '../../api/axios';
-import axios from 'axios'
+import axios from '../../api/api'
 
 import logo from '../../assets/logo.png';
 import logomini from '../../assets/logomini.png';

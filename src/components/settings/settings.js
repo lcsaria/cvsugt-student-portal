@@ -3,7 +3,7 @@ import Navbar from '../templates/Navbar'
 import Footer from '../templates/Footer'
 import Sidebar from '../templates/sidebar'
 import { useHistory } from 'react-router-dom';
-import axios from 'axios'
+import axios from '../../api/api'
 import { Button, Tabs, Tab, Form} from 'react-bootstrap'
 
 function Settings() {

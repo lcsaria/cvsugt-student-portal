@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from 'react'
 import { Spinner } from 'react-bootstrap'
-import axios from 'axios'
+import axios from '../../../api/api'
 
 function EnrolledSubjects() {
   let id = localStorage.getItem('student_number')

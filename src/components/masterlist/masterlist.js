@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import Footer from '../templates/Footer'
-import axios from 'axios'
+import axios from '../../api/api'
 /*
 *************************************** NOTE *****************************************
 *                                                                                    *

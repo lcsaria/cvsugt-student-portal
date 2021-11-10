@@ -1,7 +1,7 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect, useState } from 'react'
 import { Spinner } from 'react-bootstrap';
-import axios from 'axios'
+import axios from '../../../api/api'
 
 function EnrolledSubjects() {
     const [data, setData] = useState([]);

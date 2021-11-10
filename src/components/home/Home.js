@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import * as ReactBootstrap from 'react-bootstrap'
 import { useHistory } from 'react-router'
 //import api from '../../api/axios'
-import axios from 'axios'
+import axios from '../../api/api'
 
 import logo from '../../assets/school-logo-small.png'
 
