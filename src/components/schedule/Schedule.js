@@ -2,7 +2,7 @@ import React, {useState, useEffect} from 'react'
 import Navbar from '../templates/Navbar'
 import Footer from '../templates/Footer'
 import Sidebar from '../templates/sidebar'
-import axios from 'axios'
+import axios from '../../api/api'
 import { Spinner } from 'react-bootstrap'
 
 function Schedule() {

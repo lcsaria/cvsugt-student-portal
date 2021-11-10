@@ -13,16 +13,14 @@ function EnrolledSubjects() {
 
 
   useEffect(() => {
-    console.log(grades)
     const tae = async () => {
-      await axios.get(`semforgrades/${id}`)
+      axios.get(`semforgrades/${id}`)
       .then(result => {
         setData(result.data)
         setIsGrade(true)
         console.log(result.data)
       })
-      .catch(err => {
-        console.log(err)
+      .catch(err => { 
         setIsGrade(false)
       })
     }
@@ -86,20 +84,13 @@ function EnrolledSubjects() {
     return (
     <div>
         {
-          (!isGrade) ? 
-          <>
-          <div className="text-center">
-            No grades available.
-          </div>
-          </>
-          :
+          (isGrade) ? 
           <>
           <div>
             <div className="dropdown input-group">
                   <select className="form-control form-dropdown dropdown-toggle" defaultValue="default" id="grade_type" onChange={(e) => displayGrade(e)} > 
-                  {/*JSON.stringfy */}
                     <option value = "default" disabled hidden>SEMESTER | SCHOOL YEAR</option>
-                    {sem.map((gender) => <option key={gender.num} value={JSON.stringify({semester : gender.semester, schoolyear: gender.schoolyear, student_number: id})}>{gender.semester + " | " + gender.schoolyear}</option>)}
+                    {sem.map((semdata) => <option key={semdata.num} value={JSON.stringify({semester : semdata.semester, schoolyear: semdata.schoolyear, student_number: id})}>{semdata.semester + " | " + semdata.schoolyear}</option>)}
                   </select>
                   </div>
             </div>
@@ -146,6 +137,12 @@ function EnrolledSubjects() {
                 Select the semester and year
               </div>
             }
+          </>
+          :
+          <>
+          <div className="text-center">
+            No grades available.
+          </div>
           </>
         }
     </div>
