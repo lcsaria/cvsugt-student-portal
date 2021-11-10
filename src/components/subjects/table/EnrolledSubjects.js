@@ -54,13 +54,13 @@ function EnrolledSubjects() {
             <div className="col-md-6">
                 <span>
                     <b className="mr-2">School Year:</b>
-                    {semdata ? `${semdata[0].sy1} - ${semdata[0].sy2}` : ''}
+                    {semdata ? `${semdata[0].sy1} - ${semdata[0].sy2}` : '-'}
                 </span>
             </div>
             <div className="col-md-6">
                 <span>
                     <b className="mr-2">Semester:</b>
-                    {semdata ? semdata[0].semester : ''}
+                    {semdata ? semdata[0].semester : '-'}
                 </span>
             </div>
         </div>
