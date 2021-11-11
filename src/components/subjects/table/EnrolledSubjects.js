@@ -1,29 +1,48 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect, useState } from 'react'
-import api from '../../../api/axios'
+import { Spinner } from 'react-bootstrap';
+import axios from '../../../api/api'
 
 function EnrolledSubjects() {
     const [data, setData] = useState([]);
+    const [semdata, setSemdata] = useState();
+    const [loading, setLoading] = useState(false);
+
     let id = localStorage.getItem('student_number');
-    console.log({student_number: id});
     useEffect(() => {
-        api.get(`enrolledSubject/${id}`)
+        setLoading(true)
+        axios.get(`enrolledSubject/${id}`)
         .then(response => {
             setData(response.data);
+            setSemdata(response.data);
+            console.log(response.data);
+            setLoading(false)
         })
         .catch(err => {
             console.log(err);
             setData("");
+            setLoading(false)
+
+        })
+        axios.get('sem')
+        .then(response => {
+            setSemdata(response.data);
+            console.log(response.data);
+        })
+        .catch(err => {
+            console.log(err);
         })
     }, []);
 
     const renderTable = () => {
         return data.map(user => {
             return ( 
-                <tr key = {user.num}>
-                <td>{user.subject_code}</td>
-                <td>{user.subject_title}</td>
-                <td>{user.credit_unit_lec}</td>
-                <td>{user.credit_unit_lab}</td>
+                <tr key = {user.sched_code}>
+                    <td data-label="Subject code : ">{user.subject_code}</td>
+                    <td data-label="Title : ">{user.subject_title}</td>
+                    <td data-label="Schedule code : "><a className="text-success text-middle" href = {`masterlist/?id=${user.sched_code}`} target = "_blank" rel="noreferrer"><b>{user.sched_code}</b></a></td>
+                    <td data-label="Lec Units : ">{user.credit_unit_lec}</td>
+                    <td data-label="Lab Units : ">{user.credit_unit_lab}</td> 
                 </tr>
             )
         })
@@ -31,15 +50,19 @@ function EnrolledSubjects() {
     
     return (
     <div>
-        <div className="d-flex justify-content-between mb-3 text-dark">
-            <span>
-                <b className="mr-3">School Year:</b>
-                2021-2022
-            </span>
-            <span>
-                <b className="mr-3">Semester:</b>
-                SECOND
-            </span>
+        <div className="row mb-4">
+            <div className="col-md-6">
+                <span>
+                    <b className="mr-2">School Year:</b>
+                    {semdata ? `${semdata[0].sy1} - ${semdata[0].sy2}` : '-'}
+                </span>
+            </div>
+            <div className="col-md-6">
+                <span>
+                    <b className="mr-2">Semester:</b>
+                    {semdata ? semdata[0].semester : '-'}
+                </span>
+            </div>
         </div>
         {
             (!data) ? 
@@ -49,17 +72,27 @@ function EnrolledSubjects() {
             :
             <div className="table-responsive table-striped table-hover">
             <table className="table">
-                <thead>
-                    <tr>
-                        <th scope="col">SUBJECT CODE</th>
-                        <th scope="col">TITLE</th>
-                        <th scope="col">LECTURE UNITS</th>
-                        <th scope="col">LAB UNITS</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {renderTable()}
-                </tbody>
+                {
+                    (loading) ?
+                    <div className="d-flex justify-content-center">
+                        <Spinner className="d-flex justify-content-center" animation="border" role="status"/>
+                    </div>
+                    :
+                <>
+                    <thead>
+                        <tr>
+                            <th>SUBJECT CODE</th>
+                            <th>TITLE</th>
+                            <th>SCHEDULE CODE</th>
+                            <th>LEC UNITS</th>
+                            <th>LAB UNITS</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {renderTable()}
+                    </tbody>
+                </>
+                }
             </table>
         </div>
         }

@@ -1,6 +1,6 @@
 import React from 'react'
 import { useHistory } from 'react-router'
-import api from '../../api/axios';
+import axios from '../../api/api'
 
 import logo from '../../assets/school-logo-small.png'
 
@@ -16,7 +16,7 @@ function Register() {
         let pass2 = document.getElementById('inputPassword2').value;
         
         if (pass !== pass2) return alert('password mismatch.')
-        await api.post('register',{
+        await axios.post('register',{
             username : username,
             password: pass,
             student_number: studentnum,

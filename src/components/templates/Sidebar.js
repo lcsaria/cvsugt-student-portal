@@ -1,180 +1,67 @@
-/* eslint-disable jsx-a11y/anchor-is-valid */
-import React, { useEffect, useState } from 'react'
-import logo from '../../assets/school-logo-small.png'
-import { useHistory } from 'react-router-dom';
-import { OverlayTrigger, Tooltip } from 'react-bootstrap';
+import React, { useState } from 'react';
+import '../../assets/css/latestsidebar.css'
+import {Sidebardata} from './sidebardata'
+import logo from '../../assets/logo.png'
+import { Collapse, OverlayTrigger, Tooltip } from 'react-bootstrap';
+import { left } from '@popperjs/core';
 
-function Sidebar() {
-  const sidebarCollapsed = localStorage.getItem('sidebar-collapsed' || false);
-  const [isExpanded, setIsExpanded] = React.useState(sidebarCollapsed ? false : true);
-  const history = useHistory();
-  const [width, setWidth]   = useState(window.innerWidth);
 
-  const logOut = () => {
-    alert("Thank you!");
-    localStorage.clear();
-    history.push("/login");
-  }
+const Sidebar = () => {
+    const [ showNav, setShowNav] = useState(true)
 
-  const updateDimensions = () => {
-    setWidth(window.innerWidth);
-  }
-
-  const handleToggler = () => {
-    if (isExpanded) {
-      setIsExpanded(false);
-      localStorage.setItem('sidebar-collapsed', true);
-      return;
-    }
-    setIsExpanded(true);
-    localStorage.removeItem('sidebar-collapsed');
-  }
-  
-  useEffect(() => {
-    window.addEventListener("resize", updateDimensions);
-    return () => window.removeEventListener("resize", updateDimensions);
-  }, [width]);
-
-  return(
-    <div 
-      className={isExpanded ? "Sidebar sidebar-text" : "Sidebar sidebar-text collapsed"}>
-      <div className={isExpanded ? "sidebar-header" : "sidebar-header mt-2"}>
-        {
-           (width > 600) ?
-           <i className="fas fa-bars sidebar-icon mt-2 ml-1" onClick={handleToggler}/>
-           :
-           <i className="fas fa-bars sidebar-icon mt-2 ml-1" />
-        }
-        
-        <img className="sidebar-logo ml-4" src={logo} alt="logo" width="25%"/>
-        <br className="line"/>
-      </div>
-      {
-        isExpanded ? 
-        <>
-        <a className={isExpanded ?"nav-link": "nav-link mt-3"} href="/dashboard">  
-          <div className="sidebar-items">
-            <div className="item">
-              <i className="fas fa-home mr-4"/>
-              <span className="sidebar-text">Home</span>
-            </div>
-            </div>
-          </a>
-          <a className={isExpanded ?"nav-link": "nav-link mt-2"} href="/schedule"> 
-           <div className="sidebar-items">
-             <div className="item">
-             <i class="fas fa-calendar mr-4"/>
-               <span className="sidebar-text">Subject Portal</span>
-             </div>
-           </div>
-           </a>
-           <a className={isExpanded ? "nav-link": "nav-link mt-2"} href="/subjects">  
-           <div className="sidebar-items">
-             <div className="item">
-               <i className="fas fa-book mr-4"/>
-               <span className="sidebar-text">Enrolled Subjects</span>
-             </div>
-             </div>
-           </a>
-           <a className={isExpanded ?"nav-link": "nav-link mt-2"} href="/grades">  
-           <div className="sidebar-items">
-             <div className="item">
-               <i className="fas fa-newspaper mr-4"/>
-               <span className="sidebar-text">My Grades</span>
-             </div>
-             </div>
-           </a>
-           <a className={isExpanded ?"nav-link": "nav-link mt-2"} onClick={logOut}> 
-           <div className="sidebar-items">
-             <div className="item">
-               <i className="fas fa-sign-out-alt mr-4"/>
-               <span className="sidebar-text">Log-out</span>
-             </div>
-           </div>
-           </a>
-           </>
-        :
-          <>
-            <OverlayTrigger 
-                  placement="right"
-                  overlay={
-                    <Tooltip>Home</Tooltip>
-                  }
-            >
-            <a className={isExpanded ?"nav-link": "nav-link mt-3"} href="/dashboard">  
-            <div className="sidebar-items">
-              <div className="item">
-                <i className="fas fa-home mr-4"/>
-                <span className="sidebar-text">Home</span>
-              </div>
-              </div>
-            </a>
-            </OverlayTrigger>
-            <OverlayTrigger 
-                  placement="right"
-                  overlay={
-                    <Tooltip>Subject Portal</Tooltip>
-                  }
-            >
-            <a className={isExpanded ? "nav-link": "nav-link mt-2"} href="/schedule">  
-            <div className="sidebar-items">
-              <div className="item">
-                <i class="fas fa-calendar mr-4"/>
-                <span className="sidebar-text">Subject Portal</span>
-              </div>
-              </div>
-            </a>
-            </OverlayTrigger>
-            <OverlayTrigger 
-                  placement="right"
-                  overlay={
-                    <Tooltip>Enrolled Subjects</Tooltip>
-                  }
-            >
-            <a className={isExpanded ? "nav-link": "nav-link mt-2"} href="/subjects">  
-            <div className="sidebar-items">
-              <div className="item">
-                <i className="fas fa-book mr-4"/>
-                <span className="sidebar-text">Enrolled Subjects</span>
-              </div>
-              </div>
-            </a>
-            </OverlayTrigger>
-            <OverlayTrigger 
-                  placement="right"
-                  overlay={
-                    <Tooltip>My Grades</Tooltip>
-                  }
-            >
-            <a className={isExpanded ?"nav-link": "nav-link mt-2"} href="/grades">  
-            <div className="sidebar-items">
-              <div className="item">
-                <i className="fas fa-newspaper mr-4"/>
-                <span className="sidebar-text">My Grades</span>
-              </div>
-              </div>
-            </a>
-            </OverlayTrigger>
-            <OverlayTrigger 
-                  placement="right"
-                  overlay={
-                    <Tooltip>Log-out</Tooltip>
-                  }
-            >
-            <a className={isExpanded ?"nav-link": "nav-link mt-2"} onClick={logOut}> 
-            <div className="sidebar-items">
-              <div className="item">
-                <i className="fas fa-sign-out-alt mr-4"/>
-                <span className="sidebar-text">Log-out</span>
-              </div>
-            </div>
-            </a>
-            </OverlayTrigger>
-          </>
-      }
-
-    </div>
-  );
+    return (
+        <div className={showNav ? "sidebars d-none d-lg-block" : "sidebars collapsed d-none d-lg-block"}>
+            <ul className="sidebarlist">
+                <div className="meow row">
+                    {
+                        showNav ? 
+                        <>
+                        <div className="col-10">
+                            <img className="sidebar-logo ml-2" src={logo} alt="logo"/>  
+                        </div>
+                        <div className="col-2" onClick={() => {setShowNav(!showNav)}}>
+                            <i className="fas fa-bars sidebar-icon" />
+                        </div>
+                        </> :
+                        <>
+                            <div className="text-center" onClick={() => {setShowNav(!showNav)}}>
+                                <i className="fas fa-bars " />
+                            </div>
+                            
+                        </>
+                    }
+                </div>
+                {Sidebardata.map((val, key) => {
+                    return(
+                        <li key={key} 
+                        className="row" 
+                        onClick={() => {window.location.pathname = val.link}}
+                        id={window.location.pathname === val.link ? "active" : ""}
+                        > 
+                        {
+                            showNav ?
+                            <>
+                            <div id="icon">{val.icon}</div>
+                            <div id="title"><b>{val.title}</b></div>
+                            </> : 
+                            <>
+                            <OverlayTrigger 
+                                placement="right"
+                                overlay={
+                                    <Tooltip>{val.title}</Tooltip>
+                                }
+                            >
+                            <div id="icon">{val.icon}</div>
+                            </OverlayTrigger>
+                            </>
+                        }
+                        
+                        </li>
+                    )
+                })}
+            </ul>
+        </div>
+    );
 }
 
-export default Sidebar
+export default Sidebar;

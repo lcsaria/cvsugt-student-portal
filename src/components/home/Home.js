@@ -1,7 +1,8 @@
 import React, { useState } from 'react'
 import * as ReactBootstrap from 'react-bootstrap'
 import { useHistory } from 'react-router'
-import api from '../../api/axios'
+//import api from '../../api/axios'
+import axios from '../../api/api'
 
 import logo from '../../assets/school-logo-small.png'
 
@@ -15,17 +16,21 @@ function Home() {
         setLoading(true)
         let uname = document.getElementById('inputStudentNumber').value;
         let pass = document.getElementById('inputPassword').value;
-        await api.post('login',{
+        await axios.post('login',{
             username : uname,
             password : pass
         })
         .then(response => {
-            console.log(response.data)
+            console.log(response);
+            //console.log('token : ',response.data.accessToken)
             alert('Welcome')
-            localStorage.setItem('student_number',response.data)
+            localStorage.setItem('student_number',response.data.student_number)
+            localStorage.setItem('token', response.data.accessToken)
+            localStorage.setItem('refreshToken', response.data.refreshToken)
             localStorage.setItem("isAuthenticated", true)
             history.push("/dashboard")
             setLoading(false)
+            
         })
         .catch((err) => {
             console.log(err)
