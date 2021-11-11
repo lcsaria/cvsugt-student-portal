@@ -2,6 +2,7 @@ import axios from 'axios'
 
 const api = axios.create({
     baseURL : 'http://localhost:4000/api/v1',
+    timeout: 10000, 
     headers: {
         "Content-Type":"application/json"
     }
@@ -17,11 +18,11 @@ api.interceptors.request.use(function (config) {
 
 api.interceptors.response.use(
     (res) => {
+        // dito response. 
         return res
     },
     async (err) => {
         const origconfig = err.config
-        console.log('err : ',err.config);
         if(origconfig.url !== '/auth/signin' && err.response){
             // Access Token was expired
             if(err.response.status === 403 && !origconfig._retry) {
@@ -47,11 +48,14 @@ api.interceptors.response.use(
                 }
                 catch(error){
                     console.log(error);
-                    return err
+                    return Promise.reject(error)
                 }
             }
         }
-        return err
+        else if (err.request){
+            alert('System under maintenance! please try again later.')
+        }
+        return Promise.reject(err)
     }
 )
 

@@ -1,6 +1,6 @@
 import React from 'react'
 import { Modal } from 'react-bootstrap';
-import Grades from '../../grades/table/MyGrades';
+import Grades from '../../grades/table/ListofGrades';
 
 function GradeModal({show, close}) {
     return (

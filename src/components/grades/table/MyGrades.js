@@ -17,7 +17,6 @@ function EnrolledSubjects() {
       axios.get(`semforgrades/${id}`)
       .then(result => {
         setData(result.data)
-        setIsGrade(true)
         console.log(result.data)
       })
       .catch(err => { 
@@ -141,7 +140,7 @@ function EnrolledSubjects() {
           :
           <>
           <div className="text-center">
-            No grades available.
+            Under Maintenance.
           </div>
           </>
         }
