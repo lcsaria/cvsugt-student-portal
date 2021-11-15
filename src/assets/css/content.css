@@ -79,6 +79,9 @@ table{
 	background-color: #f5f5f5;
 }
   
+.table td.points{
+    cursor: pointer;
+}
 
 /* test responsive */
 @media(max-width: 991px){

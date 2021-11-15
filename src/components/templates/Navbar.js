@@ -14,14 +14,16 @@ function Navbars() {
   const [name, setName] = useState('');
   useEffect( () => {
     let id = localStorage.getItem('student_number');
-    axios.get(`userInfo/${id}`)
-    .then((response) => {
-      console.log(response.data);
-      setName(response.data[0].first_name)
-    })
-    .catch((err) => {
-      console.log(err.data);
-    })
+    const teka = async () => {
+      await axios.get(`userInfo/${id}`)
+      .then((response) => {
+        setName(response.data[0].first_name)
+      })
+      .catch((err) => {
+        console.log(err.data);
+      })
+    }
+    teka()
   },[])
 
   const logOut = async () => {

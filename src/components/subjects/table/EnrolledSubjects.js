@@ -70,7 +70,7 @@ function EnrolledSubjects() {
                 No enrolled subjects
             </div>
             :
-            <div className="table-responsive table-striped table-hover">
+            <div className="table-holder">
             <table className="table">
                 {
                     (loading) ?

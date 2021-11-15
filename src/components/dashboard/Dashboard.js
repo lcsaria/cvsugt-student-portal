@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from 'react'
 import Footer from '../templates/Footer'
-import Navbar from '../templates/Navbar'
 import Sidebar from '../templates/sidebar'
 import GradeModal from './modals/GradeModal';
 import SubjectModal from './modals/SubjectModal';
 import axios from '../../api/api'
+import Navbar from '../templates/Navbar'
 
 function Dashboard() {
   const [show, setShow] = useState(false);
@@ -13,8 +13,6 @@ function Dashboard() {
 
   useEffect(() => {
     let id = localStorage.getItem('student_number');
-    console.log('ror : ', localStorage.getItem('token'));
-    console.log(id);
     const config = {
       headers: {
         Authorization : 'Bearer ' + localStorage.getItem('token')
@@ -23,7 +21,6 @@ function Dashboard() {
     axios.get(`userInfo/${id}`, config)
     .then((response) => {
       setInfo(response.data);
-      console.log(response.data);
     })
     .catch((err) => {
       console.log('err : ',err);
@@ -49,6 +46,7 @@ function Dashboard() {
           <Sidebar />
         <div className="d-flex flex-column" id="content-wrapper">
           <div id="content">
+
             <Navbar/>
             <div className="container-fluid">
               <div className="d-sm-flex justify-content-between align-items-center mb-4" />

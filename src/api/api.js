@@ -19,6 +19,9 @@ api.interceptors.request.use(function (config) {
 api.interceptors.response.use(
     (res) => {
         // dito response. 
+        if(res.config.url === "login"){
+            
+        }
         return res
     },
     async (err) => {

@@ -21,7 +21,6 @@ function Home() {
             password : pass
         })
         .then(response => {
-            console.log(response);
             //console.log('token : ',response.data.accessToken)
             alert('Welcome')
             localStorage.setItem('student_number',response.data.student_number)
