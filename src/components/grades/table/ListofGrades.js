@@ -1,6 +1,12 @@
 import React, {useState, useEffect} from 'react'
 import { Spinner, Button } from 'react-bootstrap'
 import axios from '../../../api/api'
+import { PDFDocument, StandardFonts, rgb, PDFDropdown } from 'pdf-lib'
+import { saveAs } from 'file-saver'
+import fdp from '../../../assets/cog-temp.pdf'
+import arial from '../../../assets/fonts/arial.ttf'
+import arialbold from '../../../assets/fonts/arialbd.ttf'
+import fontkit from '@pdf-lib/fontkit'
 
 const ListofGrades = () => {
     const [loading, setLoading] = useState(false)
@@ -88,6 +94,180 @@ const ListofGrades = () => {
         })
     }
 
+    const downloadgrades = async () => {
+        console.log('ror');
+        
+        const existingPdfBytes = await fetch(fdp).then(res => res.arrayBuffer())
+        const arialF= await fetch(arial).then(res => res.arrayBuffer())
+        const arialBoldF = await fetch(arialbold).then(res => res.arrayBuffer())
+        const pdfDoc = await PDFDocument.load(existingPdfBytes)
+
+        pdfDoc.registerFontkit(fontkit)
+
+        const timesRomanFont = await pdfDoc.embedFont(StandardFonts.Courier)
+        const timesRomanBoldFont = await pdfDoc.embedFont(StandardFonts.TimesRomanBold)
+        const arialFont = await pdfDoc.embedFont(arialF)
+        const arialBoldFont = await pdfDoc.embedFont(arialBoldF)
+
+        const pages = pdfDoc.getPages()
+        const page = pages[0]
+        const { width, height } = page.getSize()
+        const fontSize = 11;
+
+        // --------------- dito mag drawing sa papel okeh okeh ? ---------------
+
+        // NOTE : TEXT-CENTER BY TOMORROW OKEH OKEH ?
+
+        var today = new Date();
+        var d = today.getDate();
+        var y = today.getFullYear();
+        var m = today.getMonth();
+        var month = ["January", "February","March", "April", "May", "June", "July", "August", "September", "October", "November","December"];
+        m = month[m];
+
+        page.drawText(m + ' ' + d + ", " + y,{ // Date
+            x: 447,
+            y: height / 2 + 254,
+            size: fontSize,
+            font: arialFont,
+            color: rgb(0,0,0),
+            TextAlignment: 1
+        })
+        page.drawText('NAKANO, ITSUKI',{ // Name
+            x: 350,
+            y: height / 2 + 199,
+            size: fontSize,
+            font: arialBoldFont,
+            color: rgb(0,0,0)
+        })
+        page.drawText('BS EDUCATION - SCIENCE',{ // Course
+            x: 130,
+            y: height / 2 + 182,
+            size: fontSize,
+            font: arialBoldFont,
+            color: rgb(0,0,0)
+        })
+        page.drawText(grades[0].student_number.toString(),{ // Student Number
+            x: 469,
+            y: height / 2 + 182,
+            size: fontSize,
+            font: arialBoldFont,
+            color: rgb(0,0,0)
+        })
+        page.drawText(grades[0].semester,{ // Semester
+            x: 290,
+            y: height / 2 + 166,
+            size: fontSize,
+            font: arialBoldFont,
+            color: rgb(0,0,0)
+        })
+        page.drawText(grades[0].schoolyear,{ // Academic Year 2020-2021 sample
+            x: 485,
+            y: height / 2 + 166,
+            size: fontSize,
+            font: arialBoldFont,
+            color: rgb(0,0,0)
+        })
+
+        // --------------------------- GRADES ----------------------------------
+        var yy = 530
+        for (var i = 0 ; i < grades.length ; i++) {
+            page.drawText(grades[i].subject_code,{ // Course 1
+                x: 30,
+                y: yy,
+                size: 10,
+                font: arialFont,
+                color: rgb(0,0,0)
+            })
+            page.drawText(grades[i].subject_title,{ // Course title
+                x: 85,
+                y: yy,
+                size: 10,
+                font: arialFont,
+                color: rgb(0,0,0)
+            })
+            page.drawText(grades[i].grade.toString(),{ // grade 
+                x: 355,
+                y: yy,
+                size: 10,
+                font: arialFont,
+                color: rgb(0,0,0)
+            })
+            page.drawText('-',{ // comp
+                x: 412,
+                y: yy,
+                size: 10,
+                font: arialFont,
+                color: rgb(0,0,0)
+            })
+            page.drawText(grades[i].units.toString(),{ // units 
+                x: 465,
+                y: yy,
+                size: 10,
+                font: arialFont,
+                color: rgb(0,0,0)
+            })
+            page.drawText(grades[i].creditunits.toString(),{ // credit units 
+                x: 520,
+                y: yy,
+                size: 10,
+                font: arialFont,
+                color: rgb(0,0,0)
+            })
+
+            yy -= 13
+        }
+        
+        // --------------------------- END OF GRADES ----------------------------------
+        
+
+        page.drawText(average.totalunits.toString(),{ // Total units
+            x: 178,
+            y: 345,
+            size: fontSize,
+            font: arialFont,
+            color: rgb(0,0,0)
+        })
+        page.drawText('6',{ // Total credit units
+            x: 178,
+            y: 330,
+            size: fontSize,
+            font: arialFont,
+            color: rgb(0,0,0)
+        })
+        page.drawText(average.average.toString(),{ // Average
+            x: 390,
+            y: 345,
+            size: fontSize,
+            font: arialBoldFont,
+            color: rgb(0,0,0)
+        })
+        page.drawText('NONE',{ // Scholarship
+            x: 385,
+            y: 330,
+            size: fontSize,
+            font: arialBoldFont,
+            color: rgb(0,0,0)
+        })
+
+
+
+
+        // --------------- end ng pag drawing sa papel okeh okeh ? ---------------
+        const pdfBytes = await pdfDoc.save()
+        var file = new File(
+            [pdfBytes],
+            "yowme.pdf",
+            {
+              type: "application/pdf;charset=utf-8",
+            }
+          );
+        var FileSaver = require('file-saver');
+        FileSaver.saveAs(file)
+        
+
+    }
+
     return(
         (meow) ? 
         <>
@@ -134,7 +314,13 @@ const ListofGrades = () => {
                     </div>
                 </tfoot>
             </table>
-            <Button variant="success"onClick={() => alert("Coming soon.")}>Download COG</Button>
+            {
+                (selected) ? 
+                
+                    <Button variant="success"onClick={() => downloadgrades()}>Download COG</Button>
+                :
+                ''
+            }
             </div>
         </>
         :
