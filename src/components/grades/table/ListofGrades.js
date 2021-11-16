@@ -128,13 +128,34 @@ const ListofGrades = () => {
         page.drawText(m + ' ' + d + ", " + y,{ // Date
             x: 447,
             y: height / 2 + 254,
-            size: fontSize,
+            size: 10,
             font: arialFont,
             color: rgb(0,0,0),
             TextAlignment: 1
         })
-        page.drawText('NAKANO, ITSUKI',{ // Name
-            x: 350,
+        /* math table shit! 
+            center of gravity : 382 'a'
+
+            grades[0].name
+            length : 24
+            7 pixels per letter
+            305 is the center of gravity
+            77 ang na adjust to center
+
+            'kryzha'
+            length : 35
+            7 pixels per letter
+            280 is the center of gravity
+            102 ang na adjust to center
+
+
+
+
+        */
+        let kryzha = "ATIENZA, KRYZHA ANN JUNETTE LINESES"
+        console.log('length : ',kryzha.length);
+        page.drawText(kryzha,{ // Name grades[0].name
+            x: 280, 
             y: height / 2 + 199,
             size: fontSize,
             font: arialBoldFont,
@@ -173,7 +194,7 @@ const ListofGrades = () => {
         var yy = 530
         for (var i = 0 ; i < grades.length ; i++) {
             page.drawText(grades[i].subject_code,{ // Course 1
-                x: 30,
+                x: 26,
                 y: yy,
                 size: 10,
                 font: arialFont,
