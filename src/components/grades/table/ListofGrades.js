@@ -152,9 +152,7 @@ const ListofGrades = () => {
 
 
         */
-        let kryzha = "ATIENZA, KRYZHA ANN JUNETTE LINESES"
-        console.log('length : ',kryzha.length);
-        page.drawText(kryzha,{ // Name grades[0].name
+        page.drawText(grades[0].name,{ // Name 
             x: 280, 
             y: height / 2 + 199,
             size: fontSize,

@@ -27,6 +27,8 @@ function Settings() {
 
     const changeusername = (e) => {
         e.preventDefault();
+        console.log(cu.password);
+        if (!cu.password) return alert('Incorrect Password!')
         // axios for change username
         axios.put('changeuser', {
             username : data,
@@ -48,6 +50,7 @@ function Settings() {
 
     const changepass = (e) => {
         e.preventDefault();
+        if (cp.password === "") return alert('Incorrect Password!')
         if (cp.npassword !== cp.cpassword) return alert('New password not match!')
         axios.put('changepass', {
             username : data,
@@ -98,6 +101,9 @@ function Settings() {
                                             <Form.Group className="mb-3" controlId="formBasicEmail">
                                                 <Form.Label className="text-black">New Username</Form.Label>
                                                 <Form.Control required type="text" placeholder="Enter Username" onChange={e => {setCU(meowstate => ({ ...meowstate, username : e.target.value}))}} />
+                                                <Form.Control.Feedback type="invalid">
+                                                    New Username is Required.
+                                                </Form.Control.Feedback>
                                             </Form.Group>
 
                                             <Form.Group className="mb-3" controlId="formBasicPassword">
