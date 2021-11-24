@@ -92,7 +92,7 @@ const [section, setSection] = useState()
                     <td data-label="Subject code : ">{user.subject_code}</td>
                     <td data-label="Title : ">{user.subject_title}</td>
                     <td data-label="Schedule code : " className="text-success points" onClick ={()=> window.open(`masterlist/?id=${user.sched_code}`,"_blank")}><b>{user.sched_code}</b></td>
-                    <td data-label="Section : ">{user.section}</td>
+                    <td data-label="Section : ">{user.course + ' ' + user.section}</td>
                     <td data-label="Units : ">{user.credit_unit_lec + user.credit_unit_lab}</td>
                 </tr>
             )

@@ -3,22 +3,42 @@ import Navbar from '../templates/Navbar'
 import Footer from '../templates/Footer'
 import Sidebar from '../templates/sidebar'
 import { Form, FloatingLabel, Button } from 'react-bootstrap';
+import axios from '../../api/api'
 
 function Online_enrollment() {
     const [enrollmentMethod, setEnrollmentMethod] = useState(true);
     const [subject, setSubject] = useState();
+    const [checkpoint, setCheckpoint] = useState(false);
+
+    useEffect(() => {
+        let id = localStorage.getItem('student_number');
+        axios.get(`checkenrollment/${id}`)
+        .then(response => {
+            console.log(response.data);
+            setCheckpoint(true)
+        })
+        .catch(err => {
+            console.log(err);
+            //alert('you are not qualified to use this function. please contact your registrar.')
+            //window.location.href = '/dashboard'
+        })
+
+    },[])
+
     const meow = () => {
         setSubject("")
         setEnrollmentMethod(!enrollmentMethod)
     }
     const fastenroll = () => {
-        alert('under maintenance')
+        
     }
     const manualenroll = () => {
         alert('under maintenance')
-        console.log(subject);
+        if (!subject) console.log('wew');
+        
     }
     return (
+        (checkpoint) ?
         <div id="wrapper">
             <Sidebar/>
             <div className="d-flex flex-column" id="content-wrapper">
@@ -101,6 +121,8 @@ function Online_enrollment() {
                 <Footer/>
             </div>
         </div>
+        : 
+        <div></div>
     )
 }
 
