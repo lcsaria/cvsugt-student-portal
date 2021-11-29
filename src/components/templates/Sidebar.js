@@ -35,7 +35,7 @@ const Sidebar = () => {
                     return(
                         <li key={key} 
                         className="row" 
-                        onClick={() => {window.location.pathname = val.link}}
+                        onClick={() => { (val.link == "/request") ?  window.open(val.link, '_blank') : window.location.pathname = val.link}}
                         id={window.location.pathname === val.link ? "active" : ""}
                         > 
                         {
