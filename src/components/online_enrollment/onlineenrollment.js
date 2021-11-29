@@ -37,7 +37,11 @@ function Online_enrollment() {
     }
     const fastenroll = () => {
         let id = localStorage.getItem('student_number');
-        axios.post(`fastenrollment/${id}`)
+        if (document.getElementById('year').value === 'a') return alert('please select year and section.')
+        axios.post(`fastenrollment/${id}`,{
+            course : localStorage.getItem('course'),
+            yearandsection : document.getElementById('year').value 
+        })
         .then(response => {
             console.log(response.data);
         })
@@ -143,10 +147,9 @@ function Online_enrollment() {
                                     (enrollmentMethod) ?
                                     <div className='mt-4'>
                                         <FloatingLabel label="Year and Section">
-                                            <Form.Select aria-label="year">
+                                            <Form.Select aria-label="year" id='year' defaultValue='a'>
                                                 <option value='a' disabled hidden selected>--</option>
                                                 {ys.map((meow) => <option key={meow.section} value={meow.section}>{meow.section}</option>)}
-                                                
                                             </Form.Select>
                                         </FloatingLabel>
                                         <div>
