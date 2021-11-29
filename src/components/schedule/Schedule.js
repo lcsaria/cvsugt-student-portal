@@ -24,10 +24,10 @@ const [section, setSection] = useState()
             console.log(err.data)
             setLoading(false)
         })
-        axios.get('sectionsforsubject')
+        axios.get('sectionsforsubject') 
         .then(response => {
             setSectionlist(response.data)
-            console.log('data : ',response.data)
+            
         })
         .catch(err => {
             console.log(err)
@@ -38,9 +38,11 @@ const [section, setSection] = useState()
     const searchSched = () => {
         let sect = document.getElementById('section').value
         let search = document.getElementById('search').value
+        search = search.toUpperCase()
         
-       console.log(sect)
-       console.log(search)
+
+        console.log('section : ',sect)
+        console.log(search)
 
        //1st condition: if none of them are clicked
         if (sect === "default" && search === ""){
@@ -71,12 +73,14 @@ const [section, setSection] = useState()
     }
     const renderTable = () => {
         // eslint-disable-next-line array-callback-return
+        
         return data.filter(user => {
+            
             if (!section && !search){
                 return user
             } else if (section === "default" && search === ""){
                 return user
-            } else if(search === "" && user.section.includes(section)){
+            } else if(search === "" && user.course.includes(section)){
                 return user
             } else if(section === "" && user.subject_code.includes(search)){
                 return user
@@ -125,7 +129,7 @@ const [section, setSection] = useState()
                                 </div>
                                     <select className="form-control mt-4" defaultValue="default" id="section">
                                     <option value="default" selected>---</option>
-                                    {sectionlist.map((gender) => <option key={gender.num} value={gender.section}>{gender.section}</option>)}
+                                    {sectionlist.map((gender) => <option key={gender.num} value={gender.course + ' ' + gender.section}>{gender.course + ' ' + gender.section}</option>)}
                                     </select>
                                     <div className="mt-4">
                                         <button className="form-control btn-bg-dark" onClick={searchSched}>

@@ -17,6 +17,8 @@ function Navbars() {
     const teka = async () => {
       await axios.get(`userInfo/${id}`)
       .then((response) => {
+        console.log(response.data[0].course);
+        localStorage.setItem('course', response.data[0].course)
         setName(response.data[0].first_name)
       })
       .catch((err) => {
