@@ -2,9 +2,7 @@
 import React, {useState, useEffect}from 'react'
 import { useHistory } from 'react-router-dom';
 import {Nav, Navbar, Container, NavDropdown} from 'react-bootstrap';
-//import api from '../../api/axios';
 import axios from '../../api/api'
-
 import logo from '../../assets/logo.png';
 import logomini from '../../assets/logomini.png';
 
@@ -17,7 +15,6 @@ function Navbars() {
     const teka = async () => {
       await axios.get(`userInfo/${id}`)
       .then((response) => {
-        console.log(response.data[0].course);
         localStorage.setItem('course', response.data[0].course)
         setName(response.data[0].first_name)
       })
@@ -43,7 +40,6 @@ function Navbars() {
   
     return (
 
-      /* NEED TO FIXED */
       <Navbar bg="white" expand="lg" sticky="top"> 
         <Container fluid>
         <Navbar.Brand href="/dashboard" className="meowlogo">
@@ -68,7 +64,6 @@ function Navbars() {
               <Nav.Link className="d-lg-none" href="/schedule"><i class="fas fa-calendar mr-3"/>Subject Portal</Nav.Link>
               <Nav.Link className="d-lg-none" href="/subjects"><i className="fas fa-book mr-3"/>Enrolled Subjects</Nav.Link>
               <Nav.Link className="d-lg-none" href="/grades"><i className="fas fa-newspaper mr-3"/>My Grades</Nav.Link>
-              { /* <Nav.Link className="d-lg-none" href="/addsubject"><i className="fas fa-file-signature mr-3"/>Change Subject</Nav.Link> */ }
               <Nav.Link className="d-lg-none" href="/enrollment"><i className="fas fa-file mr-3"/>Online Enrollment</Nav.Link>
               <Nav.Link className="d-lg-none" href="/request" target = "_blank" rel="noreferrer"><i className="fas fa-file-download mr-3"/>Request Documents</Nav.Link>
               <NavDropdown title={<div style={{display: "inline-block"}}><i class="fas fa-user-graduate mr-2"/> {name ? name : 'User'}</div> } id="basic-nav-dropdown" clas>

@@ -9,25 +9,33 @@ function Online_enrollment() {
     const [enrollmentMethod, setEnrollmentMethod] = useState(true);
     const [checkpoint, setCheckpoint] = useState(false);
     const [ys, setys] = useState([])
+    const [sy, setsy] = useState()
 
     useEffect(() => {
         let id = localStorage.getItem('student_number');
         let course = localStorage.getItem('course');
         axios.get(`checkenrollment/${id}`)
         .then(response => {
-            console.log(response.data);
+            setsy(response.data)
             setCheckpoint(true)
         })
         .catch(err => {
-            console.log(err);
-            alert('you are not qualified to use this function. please contact your registrar.')
-            window.location.href = '/dashboard'
+            try{
+                if (err.response.status === 401) alert('you already have pending enrollment request.')
+                else alert('you are not qualified to use this function. please contact your registrar.')
+                window.location.href = '/dashboard'
+            }
+            catch(err){
+                alert('Something went wrong, please try again later.')
+            }
+            
         })
         axios.get(`yearandsection/${course}`)
         .then(response => {
             setys(response.data)
         })
         .catch(err => {
+
             console.log(err);
         })
     },[])
@@ -43,14 +51,22 @@ function Online_enrollment() {
             yearandsection : document.getElementById('year').value 
         })
         .then(response => {
-            console.log(response.data);
+            alert('Enrollment request has beed sent to registrar. give us time to send your reg form in your cvsu email.')
+            window.location.href = '/dashboard'
         })
         .catch(err => {
-            console.log(err);
+            try{
+                if (err.response.status === 401) alert('you already have pending enrollment request.')
+                else alert('something went wrong, please try again later.')
+                window.location.href = '/dashboard'
+            }
+            catch(err){
+                alert('Something went wrong, please try again later.')
+                window.location.href = '/dashboard'
+            }
         })
     }
     const manualenroll = () => {
-        alert('under maintenance')
         if (!document.getElementById('code1').value && !document.getElementById('code2').value && !document.getElementById('code3').value && !document.getElementById('code4').value && !document.getElementById('code5').value && !document.getElementById('code6').value && !document.getElementById('code7').value && !document.getElementById('code8').value && !document.getElementById('code9').value) alert('add atleast 1 subject code.');
         else{
             // process for enrollment. 
@@ -110,10 +126,20 @@ function Online_enrollment() {
             let id = localStorage.getItem('student_number');
             axios.post(`enrollment/${id}`, ror)
             .then(response => {
-                console.log(response.data);
+                alert('Enrollment request has beed sent to registrar. give us time to send your reg form in your cvsu email.')
+                window.location.href = '/dashboard'
             })
             .catch(err => {
-                console.log(err);
+                try{
+                    if (err.response.status === 401) alert('you already have pending enrollment request.')
+                    else alert('something went wrong, please try again later.')
+                    window.location.href = '/dashboard'
+                }
+                catch(err){
+                    alert('Something went wrong, please try again later.')
+                    window.location.href = '/dashboard'
+                }
+
             })
         }
     }
@@ -149,11 +175,11 @@ function Online_enrollment() {
                                         <FloatingLabel label="Year and Section">
                                             <Form.Select aria-label="year" id='year' defaultValue='a'>
                                                 <option value='a' disabled hidden selected>--</option>
-                                                {ys.map((meow) => <option key={meow.section} value={meow.section}>{meow.section}</option>)}
+                                                {ys.map((meow) => <option key={meow.section} value={meow.section}>{localStorage.getItem('course') + ' ' + meow.section}</option>)}
                                             </Form.Select>
                                         </FloatingLabel>
                                         <div>
-                                        * fast enrollment means you are enrolling all subjects in selected section for [semester], AY, [ay].
+                                        * fast enrollment means you are enrolling all subjects in selected section for {sy ? sy.semester + ' semester, AY ' + sy.schoolyear: '[semester] semester, AY [schoolyear]'}.
                                         </div>
                                         <Button variant='success' className="mt-3" onClick={() => fastenroll()}>Enroll Now</Button>
                                     </div>
@@ -195,7 +221,6 @@ function Online_enrollment() {
                                             </Form.Group>
                                         </Form>
                                         </div>
-
                                         <Button variant='success' className="mt-2" onClick={() => manualenroll()}>Enroll Now</Button>
                                     </div>
                                 }
