@@ -33,9 +33,14 @@ function Home() {
         })
         .catch((err) => {
             // next target. banned user? or maybe not well see.. 
-            console.log(err.response.status)
-            if (err.code !== "ECONNABORTED") alert('Incorrect username / password.')
-            setLoading(false)
+            try{
+                console.log(err.response.status)
+                if (err.code !== "ECONNABORTED") alert('Incorrect username / password.')
+                setLoading(false)
+            }
+            catch{
+                alert('Something went wrong, please try agian later.')
+            }
         })
     }
 

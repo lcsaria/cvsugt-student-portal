@@ -179,7 +179,7 @@ function Online_enrollment() {
                                             </Form.Select>
                                         </FloatingLabel>
                                         <div>
-                                        * fast enrollment means you are enrolling all subjects in selected section for {sy ? sy.semester + ' semester, AY ' + sy.schoolyear: '[semester] semester, AY [schoolyear]'}.
+                                        * fast enrollment means you are enrolling all subjects in selected section for <b>{sy ? sy.semester : '[semester]'}</b> semester, AY <b>{sy ? sy.schoolyear : '[ACADEMIC YEAR]'}</b>
                                         </div>
                                         <Button variant='success' className="mt-3" onClick={() => fastenroll()}>Enroll Now</Button>
                                     </div>

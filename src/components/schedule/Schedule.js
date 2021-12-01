@@ -3,7 +3,7 @@ import Navbar from '../templates/Navbar'
 import Footer from '../templates/Footer'
 import Sidebar from '../templates/sidebar'
 import axios from '../../api/api'
-import { Spinner } from 'react-bootstrap'
+import { Spinner, FloatingLabel, Form } from 'react-bootstrap'
 
 function Schedule() {
 const [data, setData] = useState([])
@@ -17,20 +17,16 @@ const [section, setSection] = useState()
         axios.get('offeredSubjects')
         .then(response => {
             setData(response.data)
-            console.log(response.data)
             setLoading(false)
         })
         .catch(err => {
-            console.log(err.data)
             setLoading(false)
         })
         axios.get('sectionsforsubject') 
         .then(response => {
             setSectionlist(response.data)
-            
         })
         .catch(err => {
-            console.log(err)
             setSectionlist('')
         })
     },[])
@@ -43,36 +39,26 @@ const [section, setSection] = useState()
             let testing = sect.split(" ");
             sect = testing
         }
-
-        console.log('section : ',sect)
-        console.log(search)
-
-       //1st condition: if none of them are clicked
         if (sect === "default" && search === ""){
             setSearch("")
             setSection("")
             renderTable()
-            
         }
-        //2nd condition: if section is selected 
         else if (sect !== "default" && search === ""){
             setSearch("")
             setSection(sect)
             renderTable()
         } 
-        //3rd condition: if search is selected 
         else if (sect === "default" && search !== ""){
             setSearch(search)
             setSection("")
             renderTable()
         }
-        //last condition: if both are selected 
         else if (sect !=="default" && search !== ""){
             setSearch(search)
             setSection(section)
             renderTable()
-        }
-        
+        } 
     }
     const renderTable = () => {
         // eslint-disable-next-line array-callback-return
@@ -124,10 +110,12 @@ const [section, setSection] = useState()
                                             <i className="fas fa-search"/>
                                         </span>
                                 </div>
-                                    <select className="form-control mt-4" defaultValue="default" id="section">
+                                <FloatingLabel label="Select section">
+                                    <Form.Select className="form-control mt-4" defaultValue="default" id="section">
                                     <option value="default" selected>---</option>
                                     {sectionlist.map((gender) => <option key={gender.num} value={gender.course + ' ' + gender.section}>{gender.course + ' ' + gender.section}</option>)}
-                                    </select>
+                                    </Form.Select>
+                                </FloatingLabel>
                                     <div className="mt-4">
                                         <button className="form-control btn-bg-dark" onClick={searchSched}>
                                             SEARCH
