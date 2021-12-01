@@ -76,7 +76,7 @@ function Masterlist() {
                                 <h6>Subject Title: <b>{ddata ? ddata[0].subject_title : ''}</b> </h6>
                                 <h6>Lecture Units: <b>{ddata ? ddata[0].credit_unit_lec : ''}</b></h6>
                                 <h6>Lab Units: <b>{ddata ? ddata[0].credit_unit_lab : ''}</b> </h6>
-                                <h6>Section: <b>{ddata ? ddata[0].section : ''}</b> </h6>
+                                <h6>Section: <b>{ddata ? ddata[0].course + ' ' + ddata[0].section : ''}</b> </h6>
                                 </span>
                                 { /* dito table for list of students */ }
                                 <div className="mt-3 table-holder">
