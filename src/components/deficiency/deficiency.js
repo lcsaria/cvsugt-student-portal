@@ -28,7 +28,10 @@ function Deficiency() {
     },[]) 
     
     const renderTable = () => {
-        return data.map(meow => {
+        return data.filter(meow => {
+            if (meow.grade.includes('INC')) return meow
+            else if (meow.grade.includes('DRP')) return meow
+        }).map(meow => {
             return (
                 <tr key = {meow.num}>
                     <td data-label="Subject Code : ">{meow.subject_code}</td>

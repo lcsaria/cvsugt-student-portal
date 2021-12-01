@@ -39,7 +39,8 @@ const [section, setSection] = useState()
         let sect = document.getElementById('section').value
         let search = document.getElementById('search').value
         search = search.toUpperCase()
-        
+        let testing = sect.split(" ");
+        sect = testing
 
         console.log('section : ',sect)
         console.log(search)
@@ -75,12 +76,11 @@ const [section, setSection] = useState()
         // eslint-disable-next-line array-callback-return
         
         return data.filter(user => {
-            
             if (!section && !search){
                 return user
             } else if (section === "default" && search === ""){
                 return user
-            } else if(search === "" && user.course.includes(section)){
+            } else if(search === "" && user.course.includes(section[0]) && user.section.includes(section[1])){
                 return user
             } else if(section === "" && user.subject_code.includes(search)){
                 return user
