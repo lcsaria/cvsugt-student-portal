@@ -22,7 +22,7 @@ export const Sidebardata = [
         link : '/deficiency',
     },
     {
-        title : 'Subject Portal',
+        title : 'Subjects Portal',
         icon : <i className="fas fa-scroll "/>,
         link : '/schedule',
     },
