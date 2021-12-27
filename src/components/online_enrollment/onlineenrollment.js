@@ -72,52 +72,52 @@ function Online_enrollment() {
             // process for enrollment. 
             var ror = []
             var meow = {}
-            if (document.getElementById('code1').value != ''){
+            if (document.getElementById('code1').value !== ''){
                 meow = {}
                 meow.subject = document.getElementById('code1').value
                 ror.push(meow)
             }
-            if (document.getElementById('code2').value != ''){
+            if (document.getElementById('code2').value !== ''){
                 meow = {}
                 meow.subject = document.getElementById('code2').value
                 ror.push(meow)
             }
-            if (document.getElementById('code3').value != ''){
+            if (document.getElementById('code3').value !== ''){
                 meow = {}
                 meow.subject = document.getElementById('code3').value
                 ror.push(meow)
             }
-            if (document.getElementById('code4').value != ''){
+            if (document.getElementById('code4').value !== ''){
                 meow = {}
                 meow.subject = document.getElementById('code4').value
                 ror.push(meow)
             }
-            if (document.getElementById('code5').value != ''){
+            if (document.getElementById('code5').value !== ''){
                 meow = {}
                 meow.subject = document.getElementById('code5').value
                 ror.push(meow)
             }
-            if (document.getElementById('code6').value != ''){
+            if (document.getElementById('code6').value !== ''){
                 meow = {}
                 meow.subject = document.getElementById('code6').value
                 ror.push(meow)
             }
-            if (document.getElementById('code7').value != ''){
+            if (document.getElementById('code7').value !== ''){
                 meow = {}
                 meow.subject = document.getElementById('code7').value
                 ror.push(meow)
             }
-            if (document.getElementById('code8').value != ''){
+            if (document.getElementById('code8').value !== ''){
                 meow = {}
                 meow.subject = document.getElementById('code8').value
                 ror.push(meow)
             }
-            if (document.getElementById('code9').value != ''){
+            if (document.getElementById('code9').value !== ''){
                 meow = {}
                 meow.subject = document.getElementById('code9').value
                 ror.push(meow)
             }
-            if (document.getElementById('code10').value != ''){
+            if (document.getElementById('code10').value !== ''){
                 meow = {}
                 meow.subject = document.getElementById('code10').value
                 ror.push(meow)

@@ -2,8 +2,7 @@ import React, { useState } from 'react';
 import '../../assets/css/latestsidebar.css'
 import {Sidebardata} from './sidebardata'
 import logo from '../../assets/logo.png'
-import { Collapse, OverlayTrigger, Tooltip } from 'react-bootstrap';
-import { left } from '@popperjs/core';
+import { OverlayTrigger, Tooltip } from 'react-bootstrap';
 
 
 const Sidebar = () => {
@@ -35,7 +34,7 @@ const Sidebar = () => {
                     return(
                         <li key={key} 
                         className="row" 
-                        onClick={() => { (val.link == "/request") ?  window.open(val.link, '_blank') : window.location.pathname = val.link}}
+                        onClick={() => { (val.link === "/request") ?  window.open(val.link, '_blank') : window.location.pathname = val.link}}
                         id={window.location.pathname === val.link ? "active" : ""}
                         > 
                         {

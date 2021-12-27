@@ -1,7 +1,4 @@
-import React, {useState, useEffect} from 'react'
-import Navbar from '../templates/Navbar'
-import Footer from '../templates/Footer'
-import Sidebar from '../templates/sidebar'
+import React from 'react'
 
 function RequestDocuments() {
     return (
