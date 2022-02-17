@@ -5,30 +5,13 @@ import {Nav, Navbar, Container, NavDropdown} from 'react-bootstrap';
 import axios from '../../api/api'
 import logo from '../../assets/logo.png';
 import logomini from '../../assets/logomini.png';
+import Dashboard from '../dashboard/Dashboard';
 
-function Navbars() {
-
+function Navbars(info) {
   const history = useHistory();
-  const [name, setName] = useState('');
-  useEffect( () => {
-    let id = localStorage.getItem('student_number');
-    const teka = async () => {
-      await axios.get(`userInfo/${id}`)
-      .then((response) => {
-        localStorage.setItem('course', response.data[0].course)
-        setName(response.data[0].first_name)
-      })
-      .catch((err) => {
-        console.log(err.data);
-      })
-    }
-    teka()
-  },[])
-
   const logOut = async () => {
-    let meowid = localStorage.getItem('refreshToken');
-    await axios.get(`deleterefresh/${meowid}`)
-    .then((response) => {
+    await axios.get('deleterefresh')
+    .then(() => {
       alert("Thank you!");
       localStorage.clear();
       history.push("/login");
@@ -39,7 +22,6 @@ function Navbars() {
   }
   
     return (
-
       <Navbar bg="white" expand="lg" sticky="top"> 
         <Container fluid>
         <Navbar.Brand href="/dashboard" className="meowlogo">
@@ -67,7 +49,7 @@ function Navbars() {
               <Nav.Link className="d-lg-none" href="/schedule"><i class="fas fa-scroll mr-3"/>Subjects Portal</Nav.Link>
               <Nav.Link className="d-lg-none" href="/enrollment"><i className="fas fa-file mr-3"/>Online Enrollment</Nav.Link>
               <Nav.Link className="d-lg-none" href="/request" target = "_blank" rel="noreferrer"><i className="fas fa-file-download mr-3"/>Request Documents</Nav.Link>
-              <NavDropdown title={<div style={{display: "inline-block"}}><i class="fas fa-user-graduate mr-2"/> {name ? name : 'User'}</div> } id="basic-nav-dropdown" clas>
+              <NavDropdown title={<div style={{display: "inline-block"}}><i class="fas fa-user-graduate mr-2"/> {info ? info.name : 'User'}</div> } id="basic-nav-dropdown" clas>
                 <NavDropdown.Item href="/settings">Account Settings</NavDropdown.Item>
                 <NavDropdown.Divider />
                 <NavDropdown.Item onClick={logOut}>Logout</NavDropdown.Item>

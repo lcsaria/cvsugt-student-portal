@@ -23,9 +23,7 @@ function Home() {
         .then(response => {
             //console.log('token : ',response.data.accessToken)
             alert('Welcome')
-            localStorage.setItem('student_number',response.data.student_number)
             localStorage.setItem('token', response.data.accessToken)
-            localStorage.setItem('refreshToken', response.data.refreshToken)
             localStorage.setItem("isAuthenticated", true)
             history.push("/dashboard")
             setLoading(false)
@@ -39,6 +37,7 @@ function Home() {
                 setLoading(false)
             }
             catch{
+                setLoading(false)
                 alert('Something went wrong, please try agian later.')
             }
         })

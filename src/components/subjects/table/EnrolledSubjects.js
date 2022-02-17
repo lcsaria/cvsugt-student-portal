@@ -7,14 +7,11 @@ function EnrolledSubjects() {
     const [data, setData] = useState([]);
     const [semdata, setSemdata] = useState();
     const [loading, setLoading] = useState(false);
-
-    let id = localStorage.getItem('student_number');
     useEffect(() => {
         setLoading(true)
-        axios.get(`enrolledSubject/${id}`)
+        axios.get('enrolledSubject')
         .then(response => {
             setData(response.data);
-            setSemdata(response.data);
             console.log(response.data);
             setLoading(false)
         })

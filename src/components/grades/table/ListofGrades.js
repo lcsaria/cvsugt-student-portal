@@ -9,7 +9,6 @@ import fontkit from '@pdf-lib/fontkit'
 
 const ListofGrades = () => {
     const [loading, setLoading] = useState(false)
-    let id = localStorage.getItem('student_number')
     const [data, setData] = useState([])
     const [grades, setGrades] = useState([])
     const [average, setAverage] = useState({
@@ -20,7 +19,7 @@ const ListofGrades = () => {
     const [selected, setSelected] = useState(false)
 
     useEffect(() => {
-        axios.get(`semforgrades/${id}`)
+        axios.get('semforgrades')
         .then(res => {
             setData(res.data)
             setMeow(true)
@@ -292,7 +291,7 @@ const ListofGrades = () => {
             <div className="dropdown input-group">
                 <select className="form-control form-dropdown dropdown-toggle" defaultValue="default" id="grade_type" onChange={(e) => displayGrade(e)} > 
                     <option value = "default" disabled hidden>SEMESTER | SCHOOL YEAR</option>
-                    {data.map((semdata) => <option key={semdata.num} value={JSON.stringify({semester : semdata.semester, schoolyear: semdata.schoolyear, student_number: id})}>{semdata.semester + " | " + semdata.schoolyear}</option>)}
+                    {data.map((semdata) => <option key={semdata.num} value={JSON.stringify({semester : semdata.semester, schoolyear: semdata.schoolyear, student_number: semdata.student_number})}>{semdata.semester + " | " + semdata.schoolyear}</option>)}
                 </select>
             </div>
             <div className="mt-3 table-holder">

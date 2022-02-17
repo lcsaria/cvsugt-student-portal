@@ -11,10 +11,7 @@ function Deficiency() {
 
     useEffect(() => {
         setLoading(true)
-        let id = localStorage.getItem('student_number')
-        axios.post('deficiency',{
-            student_number : id
-        })
+        axios.post('deficiency')
         .then(res => {
             setData(res.data)
             console.log(res.data);

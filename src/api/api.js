@@ -1,6 +1,7 @@
 import axios from 'axios'
 
 const api = axios.create({
+    withCredentials : true,
     baseURL : 'http://localhost:4000/api/v1',
     timeout: 10000, 
     headers: {
@@ -8,17 +9,17 @@ const api = axios.create({
     }
 })
 
-
-
 api.interceptors.request.use(function (config) {
-    const tokitoki = localStorage.getItem('token');
-    config.headers.Authorization = 'Bearer ' + tokitoki
+    const toktok = localStorage.getItem('token');
+    config.headers.Authorization = 'Bearer ' + toktok
     return config
 })
 
 api.interceptors.response.use(
     (res) => {
         // dito response. 
+        const origconfig = res.config
+        console.log(origconfig.url);
         if(res.config.url === "login"){
             
         }
@@ -26,17 +27,14 @@ api.interceptors.response.use(
     },
     async (err) => {
         const origconfig = err.config
-        if(origconfig.url !== '/auth/signin' && err.response){
+        console.log(origconfig.url !== 'login');
+        if(origconfig.url !== 'login' && err.response){
             // Access Token was expired
-            if(err.response.status === 403 && !origconfig._retry) {
+            if(err.response.status === 400 && !origconfig._retry) {
                 console.log('Access token was expired!');
                 origconfig._retry = true
                 try{
-                    const meow = await api.post('refreshmeow', {
-                        student_number: localStorage.getItem('student_number'),
-                        refreshToken: localStorage.getItem('refreshToken')
-                    })
-                    
+                    const meow = await api.post('refreshmeow')
                     console.log('data : ',meow.data);
                     if(meow.status === 400){
                         alert('please login again.')
@@ -54,10 +52,16 @@ api.interceptors.response.use(
                     return Promise.reject(error)
                 }
             }
+            else if (err.response.status === 401){
+                alert('Please log in again.')
+                window.location.href = '/'
+            }
         }
+        /*
         else if (err.request){
             alert('System under maintenance! please try again later.')
         }
+        */
         return Promise.reject(err)
     }
 )

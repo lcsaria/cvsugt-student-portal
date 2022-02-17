@@ -9,18 +9,26 @@ import Navbar from '../templates/Navbar'
 function Dashboard() {
   const [show, setShow] = useState(false);
   const [modal, setModal] = useState("");
-  const [info, setInfo] = useState('');
+  const [info, setInfo] = useState({
+    last_name : '',
+    first_name  : '',
+    suffix : '',
+    middle_name : '',
+    student_number : '',
+    gender : '',
+    course_name : '',
+    course_major : '',
+    add_no : '',
+    add_brgy : '',
+    add_town : '',
+    add_province : '',
+    email : '',
+  });
 
   useEffect(() => {
-    let id = localStorage.getItem('student_number');
-    const config = {
-      headers: {
-        Authorization : 'Bearer ' + localStorage.getItem('token')
-      }
-    }
-    axios.get(`userInfo/${id}`, config)
+    axios.get('userInfo')
     .then((response) => {
-      setInfo(response.data);
+      setInfo(response.data[0]);
     })
     .catch((err) => {
       console.log('err : ',err);
@@ -47,7 +55,7 @@ function Dashboard() {
         <div className="d-flex flex-column" id="content-wrapper">
           <div id="content">
 
-            <Navbar/>
+            <Navbar name={info.first_name} />
             <div className="container-fluid">
               <div className="d-sm-flex justify-content-between align-items-center mb-4" />
             </div>
@@ -66,10 +74,10 @@ function Dashboard() {
                     <h6 className="card-subtitle mb-2 text-weight-bold text-black">
                     <h6 className="card-subtitle mb-1 text-weight-bold text-black"> <i class="fas fa-user-graduate mr-3"/>  Name: <b>{info 
                       ? 
-                      `${info[0].last_name}, 
-                      ${info[0].first_name} 
-                      ${info[0].suffix} 
-                      (${info[0].middle_name !== "" ? info[0].middle_name : "N/A"})`
+                      `${info.last_name}, 
+                      ${info.first_name} 
+                      ${info.suffix} 
+                      (${info.middle_name !== "" ? info.middle_name : "N/A"})`
                       :
                       ''
                       }</b> </h6>
@@ -77,12 +85,12 @@ function Dashboard() {
                   </div>
                   <div className = "col-lg-4 mb-3" >
                     <h6 className="card-subtitle mb-2 text-weight-bold text-black">
-                    <h6 className="card-subtitle mb-1 text-weight-bold text-black"> <i class="fas fa-id-card mr-3"/>Student Number:  <b>{info ? info[0].student_number : ''}</b></h6> 
+                    <h6 className="card-subtitle mb-1 text-weight-bold text-black"> <i class="fas fa-id-card mr-3"/>Student Number:  <b>{info.student_number}</b></h6> 
                     </h6>
                     </div>
                     <div className = "col-md-4" >
                     <h6 className="card-subtitle mb-2 text-weight-bold text-black">
-                    <h6 className="card-subtitle mb-1 text-weight-bold text-black"> <i class="fas fa-venus-mars mr-3"/>Gender: <b>{info ? info[0].gender : ''}</b></h6>
+                    <h6 className="card-subtitle mb-1 text-weight-bold text-black"> <i class="fas fa-venus-mars mr-3"/>Gender: <b>{info.gender}</b></h6>
                     </h6>
                   </div>
                 </div>
@@ -102,14 +110,14 @@ function Dashboard() {
                   <div className = "col-md-8 mb-3" >
                   <h6 className="card-subtitle mb-2 text-weight-bold text-black">
                   <h6 className="card-subtitle mb-1 text-weight-bold text-black"> <i class="fas fa-graduation-cap mr-3"/>Course:  </h6>
-                    <b>{info ? info[0].course_name : ''}</b>
+                    <b>{info.course_name}</b>
                   </h6>
                   </div>
                   
                   <div className = "col-md-4" >
                   <h6 className="card-subtitle mb-2 text-weight-bold text-black">
                   <h6 className="card-subtitle mb-1 text-weight-bold text-black"> <i class="fas fa-file-alt mr-3"/>Major:  </h6>
-                  <b>{info ? info[0].course_major !== "" ? info[0].course_major : 'Not Applicable' : ''}</b>
+                  <b>{info.course_major !== "" ? info.course_major : 'Not Applicable'}</b>
                   </h6>
                   </div>
                 </div>
@@ -131,10 +139,10 @@ function Dashboard() {
                   <h6 className="card-subtitle mb-1 text-weight-bold text-black"> <i class="fas fa-home mr-3"/>Address:  </h6>
                   <b>{info 
                       ? 
-                      `${info[0].add_no}, 
-                      ${info[0].add_brgy},
-                      ${info[0].add_town}, 
-                      ${info[0].add_province}`
+                      `${info.add_no}, 
+                      ${info.add_brgy},
+                      ${info.add_town}, 
+                      ${info.add_province}`
                       :
                       ''
                       }</b>
@@ -143,13 +151,13 @@ function Dashboard() {
                   <div className = "col-12 mb-3" >
                   <h6 className="card-subtitle mb-2 text-weight-bold text-black">
                   <h6 className="card-subtitle mb-1 text-weight-bold text-black"> <i class="fas fa-envelope mr-3"/>Email Address:  </h6>
-                  <b>{info ? info[0].email : ''}</b>
+                  <b>{info.email}</b>
                   </h6>
                   </div>
                   <div className = "col-12" >
                   <h6 className="card-subtitle mb-2 text-weight-bold text-black">
                   <h6 className="card-subtitle mb-1 text-weight-bold text-black"> <i class="fas fa-envelope mr-3"/>CvSU Email Address and default password :  </h6>
-                  <b>{info ? info[0].email : 'Not Available'} | default-password</b>{ /* wala pang data ang info[0].cvsu_email */ }
+                  <b>{info.email} | default-password</b>{ /* wala pang data ang info[0].cvsu_email */ }
                   </h6>
                   </div>
                 </div>
