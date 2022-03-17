@@ -2,149 +2,90 @@ import React, {useState, useEffect} from 'react'
 import Navbar from '../templates/Navbar'
 import Footer from '../templates/Footer'
 import Sidebar from '../templates/sidebar'
-import { Form, FloatingLabel, Button } from 'react-bootstrap';
+import { Form, FloatingLabel, Button, Spinner } from 'react-bootstrap';
 import axios from '../../api/api'
 
 function Online_enrollment() {
-    const [enrollmentMethod, setEnrollmentMethod] = useState(true);
-    const [checkpoint, setCheckpoint] = useState(false);
-    const [ys, setys] = useState([])
-    const [sy, setsy] = useState()
+    const [open, isOpen] = useState(false)
+    const [data, setData] = useState([])
+    const [loading, isLoading] = useState(true)
+    const [section, setSection] = useState([])
+
 
     useEffect(() => {
-        let id = localStorage.getItem('student_number');
-        let course = localStorage.getItem('course');
-        axios.get(`checkenrollment/${id}`)
-        .then(response => {
-            setsy(response.data)
-            setCheckpoint(true)
-        })
-        .catch(err => {
-            try{
-                if (err.response.status === 401) alert('you already have pending enrollment request.')
-                else alert('you are not qualified to use this function. please contact your registrar.')
-                window.location.href = '/dashboard'
-            }
-            catch(err){
-                alert('Something went wrong, please try again later.')
-            }
-            
-        })
-        axios.get(`yearandsection/${course}`)
-        .then(response => {
-            setys(response.data)
-        })
-        .catch(err => {
-
-            console.log(err);
-        })
-    },[])
-
-    const meow = () => {
-        setEnrollmentMethod(!enrollmentMethod)
-    }
-    const fastenroll = () => {
-        let id = localStorage.getItem('student_number');
-        if (document.getElementById('year').value === 'a') return alert('please select year and section.')
-        axios.post(`fastenrollment/${id}`,{
-            course : localStorage.getItem('course'),
-            yearandsection : document.getElementById('year').value 
-        })
-        .then(response => {
-            alert('Enrollment request has beed sent to registrar. give us time to send your reg form in your cvsu email.')
-            window.location.href = '/dashboard'
-        })
-        .catch(err => {
-            try{
-                if (err.response.status === 401) alert('you already have pending enrollment request.')
-                else alert('something went wrong, please try again later.')
-                window.location.href = '/dashboard'
-            }
-            catch(err){
-                alert('Something went wrong, please try again later.')
-                window.location.href = '/dashboard'
-            }
-        })
-    }
-    const manualenroll = () => {
-        if (!document.getElementById('code1').value && !document.getElementById('code2').value && !document.getElementById('code3').value && !document.getElementById('code4').value && !document.getElementById('code5').value && !document.getElementById('code6').value && !document.getElementById('code7').value && !document.getElementById('code8').value && !document.getElementById('code9').value) alert('add atleast 1 subject code.');
-        else{
-            // process for enrollment. 
-            var ror = []
-            var meow = {}
-            if (document.getElementById('code1').value !== ''){
-                meow = {}
-                meow.subject = document.getElementById('code1').value
-                ror.push(meow)
-            }
-            if (document.getElementById('code2').value !== ''){
-                meow = {}
-                meow.subject = document.getElementById('code2').value
-                ror.push(meow)
-            }
-            if (document.getElementById('code3').value !== ''){
-                meow = {}
-                meow.subject = document.getElementById('code3').value
-                ror.push(meow)
-            }
-            if (document.getElementById('code4').value !== ''){
-                meow = {}
-                meow.subject = document.getElementById('code4').value
-                ror.push(meow)
-            }
-            if (document.getElementById('code5').value !== ''){
-                meow = {}
-                meow.subject = document.getElementById('code5').value
-                ror.push(meow)
-            }
-            if (document.getElementById('code6').value !== ''){
-                meow = {}
-                meow.subject = document.getElementById('code6').value
-                ror.push(meow)
-            }
-            if (document.getElementById('code7').value !== ''){
-                meow = {}
-                meow.subject = document.getElementById('code7').value
-                ror.push(meow)
-            }
-            if (document.getElementById('code8').value !== ''){
-                meow = {}
-                meow.subject = document.getElementById('code8').value
-                ror.push(meow)
-            }
-            if (document.getElementById('code9').value !== ''){
-                meow = {}
-                meow.subject = document.getElementById('code9').value
-                ror.push(meow)
-            }
-            if (document.getElementById('code10').value !== ''){
-                meow = {}
-                meow.subject = document.getElementById('code10').value
-                ror.push(meow)
-            }
-            console.log(ror);
-            let id = localStorage.getItem('student_number');
-            axios.post(`enrollment/${id}`, ror)
-            .then(response => {
-                alert('Enrollment request has beed sent to registrar. give us time to send your reg form in your cvsu email.')
-                window.location.href = '/dashboard'
+        const enrollmentstatus =  () => {
+            axios.get('enrollment')
+            .then((response) => {
+                if (response.data[0].isopen === 0) {
+                    alert('Online Enrollment is not activated at the moment, please try again later.')
+                    isOpen(false)
+                    window.location.href = '/dashboard'
+                }
+                else isOpen(true)
             })
-            .catch(err => {
-                try{
-                    if (err.response.status === 401) alert('you already have pending enrollment request.')
-                    else alert('something went wrong, please try again later.')
-                    window.location.href = '/dashboard'
-                }
-                catch(err){
-                    alert('Something went wrong, please try again later.')
-                    window.location.href = '/dashboard'
-                }
-
+            .catch((err) => {
+                isOpen(false)
             })
         }
+        const enrollstatus = () => {
+            axios.get('enrollmentstatus')
+            .then((response) => {
+                console.log(response.data);
+                if(response.data[0].status != 0){
+                    alert('You already done with pre-register!')
+                    window.location.href = '/dashboard'
+                }
+            })
+        }
+        const enrollofferedsubjects = () => {
+            axios.get('enrollofferedsubjects')
+            .then((response) => {
+                setSection(response.data)
+            })
+            .finally(() => {
+                isLoading(false)
+            })
+        }
+        enrollmentstatus()
+        enrollstatus()
+        enrollofferedsubjects()
+    },[])
+    const enrollnow = (e) => {
+        e.preventDefault()
+        // throw data to backend
+        axios.post('enrollingsubject', data)
+        .then((response) => {
+            console.log('success!');
+        })
+        .catch((err) => {
+            console.log('failed!');
+        })
     }
+    const onsectionselect = (e) => {
+        e.preventDefault()
+        console.log(e.target.value);
+        axios.get(`/subjectsonsection/${e.target.value}`)
+        .then((response) => {
+            setData(response.data)
+        })
+
+    }
+    const generatetable = () => {
+        return(
+            data.map(meow => {
+                return(
+                    <tr key = {meow.sched_code}>
+                        <td data-label="SCHEDULE CODE : ">{meow.sched_code}</td>
+                        <td data-label="TITLE : ">{meow.subject_title}</td>
+                        <td data-label="UNITS : ">{meow.credit_unit_lec + meow.credit_unit_lab}</td>
+                        <td data-label="HOURS : ">{meow.contact_hrs_lec + meow.contact_hrs_lab}</td>  
+                    </tr>
+                )
+            })
+        ) 
+    }
+
     return (
-        (checkpoint) ?
         <div id="wrapper">
             <Sidebar/>
             <div className="d-flex flex-column" id="content-wrapper">
@@ -163,66 +104,48 @@ function Online_enrollment() {
                                 <b className="text-uppercase text-black">Online Enrollment</b>
                                 </span> 
                                 { /* content here */ }
-                                <FloatingLabel controlId="floatingSelect" label="Enrollment Method">
-                                    <Form.Select aria-label="enrollment type" onChange={() => meow()}>
-                                        <option value="true">Fast Enrollment</option>
-                                        <option value="false">Manual Enrollment</option>
-                                    </Form.Select>
-                                </FloatingLabel>
-                                {
-                                    (enrollmentMethod) ?
-                                    <div className='mt-4'>
-                                        <FloatingLabel label="Year and Section">
-                                            <Form.Select aria-label="year" id='year' defaultValue='a'>
-                                                <option value='a' disabled hidden selected>--</option>
-                                                {ys.map((meow) => <option key={meow.section} value={meow.section}>{localStorage.getItem('course') + ' ' + meow.section}</option>)}
-                                            </Form.Select>
-                                        </FloatingLabel>
-                                        <div>
-                                        * fast enrollment means you are enrolling all subjects in selected section for <b>{sy ? sy.semester : '[semester]'}</b> semester, AY <b>{sy ? sy.schoolyear : '[ACADEMIC YEAR]'}</b>
+                                { open ? 
+                                <>
+                                    {loading ? 
+                                    <>
+                                    <div className="d-flex justify-content-center mt-4">
+                                        <Spinner className="d-flex justify-content-center" animation="border" role="status"/>
+                                    </div></> 
+                                    : 
+                                    <>
+                                    <FloatingLabel label="SELECT SECTION">
+                                        <Form.Select className="form-control" defaultValue="default" id="section" onChange={(e) => onsectionselect(e)}>
+                                            <option value="default" selected hidden>---</option>
+                                            {section.map((meow) => <option key={meow} value={meow.section}>{meow.course} {meow.section}</option>)}
+                                        </Form.Select>
+                                    </FloatingLabel>
+                                    <div className="mt-3">
+                                        <div className="mt-3 table-holder">
+                                        <form>
+                                            <table className="table" id="dataTable">
+                                            <thead>
+                                                <tr>
+                                                <th>SCHEDULE CODE</th>
+                                                <th>TITLE</th>
+                                                <th>UNITS</th>
+                                                <th>HRS</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                {generatetable()}
+                                            </tbody>
+                                            </table>
+                                            <Button variant="success" type="submit" size="md" onClick={e => enrollnow(e)}>
+                                                    Enroll Subject
+                                            </Button>
+                                            </form>
                                         </div>
-                                        <Button variant='success' className="mt-3" onClick={() => fastenroll()}>Enroll Now</Button>
                                     </div>
-                                    
-                                    :
-                                    <div className='mt-4'>
-                                        <div>
-                                        Enter list of subject codes (check subject portal for subject codes)
-                                        <Form>
-                                            <Form.Group className="mt-2" controlId="formscode1">
-                                                <Form.Control type="number" id="code1" placeholder="Enter Subject Code 1" />
-                                            </Form.Group>
-                                            <Form.Group className="mt-2" controlId="formscode2">
-                                                <Form.Control type="number" id="code2" placeholder="Enter Subject Code 2" />
-                                            </Form.Group>
-                                            <Form.Group className="mt-2" controlId="formscode3">
-                                                <Form.Control type="number" id="code3" placeholder="Enter Subject Code 3" />
-                                            </Form.Group>
-                                            <Form.Group className="mt-2" controlId="formscode4">
-                                                <Form.Control type="number" id="code4" placeholder="Enter Subject Code 4" />
-                                            </Form.Group>
-                                            <Form.Group className="mt-2" controlId="formscode5">
-                                                <Form.Control type="number" id="code5" placeholder="Enter Subject Code 5" />
-                                            </Form.Group>
-                                            <Form.Group className="mt-2" controlId="formscode6">
-                                                <Form.Control type="number" id="code6" placeholder="Enter Subject Code 6" />
-                                            </Form.Group>
-                                            <Form.Group className="mt-2" controlId="formscode7">
-                                                <Form.Control type="number" id="code7" placeholder="Enter Subject Code 7" />
-                                            </Form.Group>
-                                            <Form.Group className="mt-2" controlId="formscode8">
-                                                <Form.Control type="number" id="code8" placeholder="Enter Subject Code 8" />
-                                            </Form.Group>
-                                            <Form.Group className="mt-2" controlId="formscode9">
-                                                <Form.Control type="number" id="code9" placeholder="Enter Subject Code 9" />
-                                            </Form.Group>
-                                            <Form.Group className="mt-2" controlId="formscode10">
-                                                <Form.Control type="number" id="code10" placeholder="Enter Subject Code 10" />
-                                            </Form.Group>
-                                        </Form>
-                                        </div>
-                                        <Button variant='success' className="mt-2" onClick={() => manualenroll()}>Enroll Now</Button>
-                                    </div>
+                                    </>
+                                    }
+                                </>
+                                : 
+                                <></>
                                 }
                             </div>
                         </div>
@@ -231,8 +154,6 @@ function Online_enrollment() {
                 <Footer/>
             </div>
         </div>
-        : 
-        <div></div>
     )
 }
 

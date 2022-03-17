@@ -24,6 +24,8 @@ function Home() {
             //console.log('token : ',response.data.accessToken)
             alert('Welcome')
             localStorage.setItem('token', response.data.accessToken)
+            localStorage.setItem('name', response.data.fname)
+            console.log(response.data);
             localStorage.setItem("isAuthenticated", true)
             history.push("/dashboard")
             setLoading(false)
