@@ -31,7 +31,7 @@ function Online_enrollment() {
             axios.get('enrollmentstatus')
             .then((response) => {
                 console.log(response.data);
-                if(response.data[0].status != 0){
+                if(response.data.status != 0){
                     alert('You already done with pre-register!')
                     window.location.href = '/dashboard'
                 }
