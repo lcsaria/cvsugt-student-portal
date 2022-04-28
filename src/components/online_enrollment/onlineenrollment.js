@@ -56,6 +56,8 @@ function Online_enrollment() {
         axios.post('enrollingsubject', data)
         .then((response) => {
             console.log('success!');
+            alert('pre registration success!')
+            window.location.href = '/dashboard'
         })
         .catch((err) => {
             console.log('failed!');
